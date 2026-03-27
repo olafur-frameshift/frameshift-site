@@ -1,5 +1,7 @@
 /* Frameshift — Company Site Stylesheet */
 
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+
 :root {
   --accent: #1a6b3c;
   --accent-light: #e8f5ee;
@@ -8,9 +10,9 @@
   --border: #e2ddd9;
   --bg: #faf6f3;
   --white: #ffffff;
-  --header-bg: #ffffff;
-  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-serif: Georgia, "Times New Roman", serif;
+  --header-bg: #faf6f3;
+  --font-sans: "EB Garamond", Georgia, serif;
+  --font-serif: "EB Garamond", Georgia, serif;
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 }
 
@@ -305,7 +307,7 @@ a:hover { text-decoration: underline; }
 
 /* ---- Footer ---- */
 .site-footer {
-  background: var(--white);
+  background: var(--bg);
   border-top: 1px solid var(--border);
   padding: 1.5rem 0;
   text-align: center;
