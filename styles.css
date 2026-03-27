@@ -357,6 +357,120 @@ img { display: block; max-width: 100%; }
   color: var(--accent);
 }
 
+/* ── Team LinkedIn ───────────────────────────────────────────── */
+.team-linkedin {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: var(--space-3);
+}
+
+/* ── Why Frameshift ──────────────────────────────────────────── */
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+.why-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-sm);
+}
+
+.why-card h3 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: var(--space-3);
+  line-height: 1.3;
+}
+
+.why-card p {
+  font-size: 0.93rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* ── Contact meta ────────────────────────────────────────────── */
+.contact-meta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.contact-steps {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.contact-step {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 0.9rem;
+  color: var(--ink-2);
+}
+
+.step-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent-dim);
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.contact-arrow {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.contact-email {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* ── Footer ──────────────────────────────────────────────────── */
+/* (overrides the earlier simple footer rule) */
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}
+
+.footer-left {
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+.footer-links {
+  display: flex;
+  gap: var(--space-6);
+}
+
+.footer-links a {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+.footer-links a:hover { color: var(--accent); text-decoration: none; }
+
 /* ── Research ────────────────────────────────────────────────── */
 .research-scroll-outer {
   position: relative;
@@ -681,13 +795,18 @@ img { display: block; max-width: 100%; }
 /* ── Responsive ──────────────────────────────────────────────── */
 @media (max-width: 860px) {
   .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 600px) {
   .hero { padding: var(--space-16) 0; }
   .section { padding: var(--space-16) 0; }
   .services-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
+  .footer-inner { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
+  .contact-steps { flex-direction: column; align-items: flex-start; }
+  .contact-arrow { display: none; }
   .team-card { flex-direction: column; gap: var(--space-4); }
   .site-nav { gap: var(--space-4); }
   .site-nav a { font-size: 0.875rem; }
