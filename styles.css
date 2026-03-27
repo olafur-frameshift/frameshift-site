@@ -9,17 +9,18 @@
   --muted: #6b7280;
   --border: #e2ddd9;
   --bg: #faf6f3;
+  --bg-alt: #f2ece7;
   --white: #ffffff;
-  --header-bg: #faf6f3;
-  --font-sans: "EB Garamond", Georgia, serif;
-  --font-serif: "EB Garamond", Georgia, serif;
+  --font: "EB Garamond", Georgia, serif;
   --font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 }
+
+html { scroll-behavior: smooth; }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font);
   background: var(--bg);
   color: var(--text);
   line-height: 1.7;
@@ -30,16 +31,23 @@ a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 .container {
-  max-width: 780px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
+.container--narrow {
+  max-width: 600px;
+}
+
 /* ---- Header ---- */
 .site-header {
-  background: var(--header-bg);
+  background: var(--bg);
   border-bottom: 1px solid var(--border);
   padding: 0.85rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .site-header .container {
@@ -68,48 +76,222 @@ a:hover { text-decoration: underline; }
 }
 
 .site-nav a {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--muted);
   font-weight: 500;
   transition: color 0.15s;
 }
 
-.site-nav a:hover,
-.site-nav a.active {
+.site-nav a:hover {
   color: var(--text);
   text-decoration: none;
 }
 
-/* ---- Page intro (used on index) ---- */
-.page-intro {
-  padding: 2.5rem 0 1.5rem;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 2.5rem;
+/* ---- Button ---- */
+.btn {
+  display: inline-block;
+  background: var(--accent);
+  color: var(--white);
+  padding: 0.65rem 1.6rem;
+  border-radius: 4px;
+  font-family: var(--font);
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  text-decoration: none;
 }
 
-.page-intro h1 {
-  font-family: var(--font-serif);
-  font-size: 1.6rem;
+.btn:hover { opacity: 0.88; text-decoration: none; color: var(--white); }
+
+/* ---- Hero ---- */
+.hero {
+  padding: 7rem 0 6rem;
+  background: var(--bg);
+}
+
+.hero-inner {
+  max-width: 720px;
+}
+
+.hero-eyebrow {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-size: 3rem;
   font-weight: 700;
-  margin-bottom: 0.4rem;
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
   color: var(--text);
 }
 
-.page-intro p {
-  font-size: 0.95rem;
+.hero-sub {
+  font-size: 1.15rem;
   color: var(--muted);
+  max-width: 580px;
+  margin-bottom: 2rem;
+  line-height: 1.7;
 }
 
-/* ---- Post Card (index page) ---- */
+/* ---- Sections ---- */
+.section {
+  padding: 5rem 0;
+  background: var(--bg);
+}
+
+.section--alt {
+  background: var(--bg-alt);
+}
+
+.section-title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+  color: var(--text);
+}
+
+.section-lead {
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  font-style: italic;
+  line-height: 1.65;
+}
+
+/* ---- Team ---- */
+.team-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.team-card {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.75rem;
+}
+
+.team-avatar {
+  flex-shrink: 0;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.team-info h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.15rem;
+}
+
+.team-role {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.team-info p {
+  font-size: 0.97rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* ---- Services ---- */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.service-card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem 1.75rem;
+}
+
+.service-card h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+.service-card p {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+/* ---- Contact form ---- */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.form-group label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.form-group input,
+.form-group textarea {
+  font-family: var(--font);
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.6rem 0.85rem;
+  transition: border-color 0.15s;
+  width: 100%;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* ---- Post Cards (Insights section) ---- */
 .posts {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  margin-bottom: 4rem;
 }
 
 .post-card {
-  background: var(--white);
+  background: var(--bg);
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 1.75rem 2rem;
@@ -145,7 +327,6 @@ a:hover { text-decoration: underline; }
   font-weight: 700;
   line-height: 1.3;
   margin-bottom: 0.6rem;
-  font-family: var(--font-serif);
 }
 
 .post-title a { color: var(--text); }
@@ -153,7 +334,7 @@ a:hover { text-decoration: underline; }
 
 .post-excerpt {
   color: var(--muted);
-  font-size: 0.93rem;
+  font-size: 0.97rem;
   margin-bottom: 1.1rem;
   line-height: 1.6;
 }
@@ -174,13 +355,22 @@ a:hover { text-decoration: underline; }
   color: var(--accent);
 }
 
+/* ---- Footer ---- */
+.site-footer {
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 0;
+  text-align: center;
+  font-size: 0.83rem;
+  color: var(--muted);
+}
+
 /* ---- Single Post Page ---- */
 .post-header { margin: 2.5rem 0 1.75rem; }
-
 .post-header .post-meta { margin-bottom: 0.85rem; }
 
 .post-header h1 {
-  font-family: var(--font-serif);
+  font-family: var(--font);
   font-size: 1.95rem;
   font-weight: 700;
   line-height: 1.22;
@@ -198,9 +388,8 @@ a:hover { text-decoration: underline; }
   margin: 1.75rem 0;
 }
 
-/* ---- Article Body ---- */
 .post-body {
-  font-family: var(--font-serif);
+  font-family: var(--font);
   font-size: 1.05rem;
   line-height: 1.82;
   color: #2d2d2d;
@@ -210,7 +399,6 @@ a:hover { text-decoration: underline; }
 .post-body p { margin-bottom: 1.2rem; }
 
 .post-body h2 {
-  font-family: var(--font-sans);
   font-size: 1.2rem;
   font-weight: 700;
   margin: 2.25rem 0 0.65rem;
@@ -223,7 +411,6 @@ a:hover { text-decoration: underline; }
 }
 
 .post-body li { margin-bottom: 0.4rem; }
-
 .post-body strong { font-weight: 700; }
 .post-body em { font-style: italic; }
 
@@ -239,7 +426,6 @@ a:hover { text-decoration: underline; }
 }
 
 .post-body figcaption {
-  font-family: var(--font-sans);
   font-size: 0.83rem;
   color: var(--muted);
   margin-top: 0.5rem;
@@ -252,11 +438,9 @@ a:hover { text-decoration: underline; }
   padding: 1rem 1.25rem;
   border-radius: 0 6px 6px 0;
   margin: 1.5rem 0;
-  font-family: var(--font-sans);
   font-size: 0.93rem;
 }
 
-/* ---- Code block ---- */
 .post-body details {
   background: #1e1e2e;
   border-radius: 8px;
@@ -266,7 +450,7 @@ a:hover { text-decoration: underline; }
 
 .post-body details summary {
   color: #a6e3a1;
-  font-family: var(--font-sans);
+  font-family: var(--font-mono);
   font-size: 0.88rem;
   cursor: pointer;
   font-weight: 600;
@@ -295,9 +479,7 @@ a:hover { text-decoration: underline; }
 
 .post-body pre code { background: transparent; padding: 0; font-size: inherit; }
 
-/* ---- Reference block ---- */
 .post-reference {
-  font-family: var(--font-sans);
   font-size: 0.84rem;
   color: var(--muted);
   border-top: 1px solid var(--border);
@@ -305,17 +487,6 @@ a:hover { text-decoration: underline; }
   margin-top: 2rem;
 }
 
-/* ---- Footer ---- */
-.site-footer {
-  background: var(--bg);
-  border-top: 1px solid var(--border);
-  padding: 1.5rem 0;
-  text-align: center;
-  font-size: 0.83rem;
-  color: var(--muted);
-}
-
-/* ---- Back link ---- */
 .back-link {
   display: inline-block;
   font-size: 0.88rem;
@@ -326,10 +497,14 @@ a:hover { text-decoration: underline; }
 .back-link:hover { color: var(--accent); }
 
 /* ---- Responsive ---- */
-@media (max-width: 600px) {
+@media (max-width: 700px) {
+  .hero-title { font-size: 2.1rem; }
+  .services-grid { grid-template-columns: 1fr; }
+  .team-card { flex-direction: column; }
+  .site-nav { gap: 1rem; }
+  .site-nav a { font-size: 0.9rem; }
+  .site-logo img { height: 28px; }
   .post-header h1 { font-size: 1.5rem; }
   .post-body { font-size: 1rem; }
   .post-card { padding: 1.25rem; }
-  .site-nav { gap: 1rem; }
-  .site-logo img { height: 28px; }
 }
