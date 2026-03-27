@@ -209,10 +209,10 @@ img { display: block; max-width: 100%; }
 
 .hero-visual {
   position: absolute;
-  right: -2%;
+  right: 0;
   top: 50%;
   transform: translateY(-50%);
-  width: clamp(280px, 38vw, 500px);
+  width: clamp(300px, 42vw, 560px);
   opacity: 0.12;
   pointer-events: none;
   z-index: 0;
@@ -262,17 +262,11 @@ img { display: block; max-width: 100%; }
 
 .team-avatar {
   flex-shrink: 0;
-  width: 52px;
-  height: 52px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
+  object-fit: cover;
   background: var(--accent-dim);
-  color: var(--accent);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
 }
 
 .team-info h3 {
