@@ -291,6 +291,16 @@ img { display: block; max-width: 100%; }
   line-height: 1.65;
 }
 
+.about-sub-heading {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+  margin-top: var(--space-12);
+  margin-bottom: var(--space-6);
+}
+
 /* ── Posts ───────────────────────────────────────────────────── */
 .posts {
   display: flex;
