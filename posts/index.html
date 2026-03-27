@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Posts | Frameshift</title>
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="site-logo">
+        <img src="../logo.svg" alt="Frameshift">
+      </a>
+      <nav class="site-nav">
+        <a href="../index.html#home">Home</a>
+        <a href="../index.html#about">About</a>
+        <a href="../index.html#why">Why Frameshift</a>
+        <a href="../index.html#posts">Posts</a>
+        <a href="../index.html#research">Research</a>
+        <a href="../index.html#services">Services</a>
+        <a href="../index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container">
+      <p class="eyebrow">Frameshift Insights</p>
+      <h1 class="section-title">All posts.</h1>
+      <p class="section-lead">Methodological essays on epidemiology, biostatistics, and study design.</p>
+
+      <!-- Filters -->
+      <div class="filter-bar">
+        <div class="filter-group">
+          <span class="filter-label">Tags</span>
+          <div class="filter-tags" id="tag-filters">
+            <!-- Populated by JS from post data attributes -->
+          </div>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-label">Author</span>
+          <select class="filter-select" id="author-filter">
+            <option value="all">All authors</option>
+            <!-- Populated by JS -->
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-label">Sort</span>
+          <button class="filter-sort-btn" id="sort-btn" data-dir="desc">
+            Newest first <span class="sort-arrow">↓</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Post list -->
+      <div class="post-list" id="post-list">
+
+        <article class="post-card"
+                 data-tags="epidemiology,methods"
+                 data-author="Ólafur B. Davíðsson"
+                 data-date="2026-03-26">
+          <div class="post-meta">
+            <span class="post-date">26 March 2026</span>
+            <span class="post-tag">Epidemiology</span>
+            <span class="post-tag">Methods</span>
+          </div>
+          <h3 class="post-title">
+            <a href="immortal-time-bias.html">Sun Exposure, Skin Cancer, and a Methodological Sunburn</a>
+          </h3>
+          <p class="post-excerpt">A 2013 Danish register study found that skin cancer patients had half the all-cause mortality of the general population, an effect that survives even a lottery prize with no biological mechanism whatsoever. Here is why.</p>
+          <div class="post-footer">
+            <span class="post-author">Ólafur B. Davíðsson, PhD</span>
+            <a href="immortal-time-bias.html" class="read-more">Read post →</a>
+          </div>
+        </article>
+
+      </div>
+
+      <p class="no-results" id="no-results" hidden>No posts match the current filters.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <p class="footer-tagline">Biostatistics and clinical trial methodology for sponsors, CROs, and research groups.</p>
+        <p>© 2026 Frameshift · Copenhagen, Denmark · CVR 44531410 · <a href="mailto:info@frameshift.dk">info@frameshift.dk</a></p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/olafurbirgir/" target="_blank" rel="noopener">Ólafur</a>
+        <a href="https://www.linkedin.com/in/ragnarpk/" target="_blank" rel="noopener">Ragnar</a>
+        <a href="https://www.linkedin.com/in/mikkel-werling-a200202ba/" target="_blank" rel="noopener">Mikkel</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const posts = Array.from(document.querySelectorAll('#post-list .post-card'));
+      const tagContainer = document.getElementById('tag-filters');
+      const authorSelect = document.getElementById('author-filter');
+      const sortBtn = document.getElementById('sort-btn');
+      const postList = document.getElementById('post-list');
+      const noResults = document.getElementById('no-results');
+
+      // Collect all unique tags and authors from post data attributes
+      const allTags = new Set();
+      const allAuthors = new Set();
+
+      posts.forEach(p => {
+        p.dataset.tags.split(',').forEach(t => allTags.add(t.trim()));
+        allAuthors.add(p.dataset.author.trim());
+      });
+
+      // Build tag filter buttons
+      const allBtn = document.createElement('button');
+      allBtn.className = 'tag-filter-btn active';
+      allBtn.textContent = 'All';
+      allBtn.dataset.tag = 'all';
+      tagContainer.appendChild(allBtn);
+
+      Array.from(allTags).sort().forEach(tag => {
+        const btn = document.createElement('button');
+        btn.className = 'tag-filter-btn';
+        btn.textContent = tag.charAt(0).toUpperCase() + tag.slice(1);
+        btn.dataset.tag = tag.toLowerCase();
+        tagContainer.appendChild(btn);
+      });
+
+      // Build author options
+      Array.from(allAuthors).sort().forEach(author => {
+        const opt = document.createElement('option');
+        opt.value = author;
+        opt.textContent = author;
+        authorSelect.appendChild(opt);
+      });
+
+      // State
+      let activeTag = 'all';
+      let activeAuthor = 'all';
+      let sortDir = 'desc';
+
+      function applyFilters() {
+        let visible = 0;
+        posts.forEach(p => {
+          const tags = p.dataset.tags.toLowerCase().split(',').map(t => t.trim());
+          const author = p.dataset.author.trim();
+
+          const tagMatch = activeTag === 'all' || tags.includes(activeTag);
+          const authorMatch = activeAuthor === 'all' || author === activeAuthor;
+
+          if (tagMatch && authorMatch) {
+            p.style.display = '';
+            visible++;
+          } else {
+            p.style.display = 'none';
+          }
+        });
+
+        noResults.hidden = visible > 0;
+      }
+
+      function applySort() {
+        const sorted = posts.slice().sort((a, b) => {
+          const da = new Date(a.dataset.date);
+          const db = new Date(b.dataset.date);
+          return sortDir === 'desc' ? db - da : da - db;
+        });
+        sorted.forEach(p => postList.appendChild(p));
+      }
+
+      // Tag click
+      tagContainer.addEventListener('click', (e) => {
+        if (!e.target.classList.contains('tag-filter-btn')) return;
+        tagContainer.querySelectorAll('.tag-filter-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        activeTag = e.target.dataset.tag;
+        applyFilters();
+      });
+
+      // Author change
+      authorSelect.addEventListener('change', () => {
+        activeAuthor = authorSelect.value;
+        applyFilters();
+      });
+
+      // Sort toggle
+      sortBtn.addEventListener('click', () => {
+        sortDir = sortDir === 'desc' ? 'asc' : 'desc';
+        sortBtn.innerHTML = sortDir === 'desc'
+          ? 'Newest first <span class="sort-arrow">↓</span>'
+          : 'Oldest first <span class="sort-arrow">↑</span>';
+        applySort();
+      });
+    })();
+  </script>
+</body>
+</html>
