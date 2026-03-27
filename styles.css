@@ -358,6 +358,34 @@ img { display: block; max-width: 100%; }
 }
 
 /* ── Research ────────────────────────────────────────────────── */
+.research-scroll-outer {
+  position: relative;
+}
+
+.research-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  color: var(--ink);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s, box-shadow 0.15s;
+}
+
+.research-arrow:hover { box-shadow: var(--shadow-md); }
+.research-arrow--left  { left: var(--space-3); }
+.research-arrow--right { right: var(--space-3); }
+
 .research-scroll-wrap {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -390,7 +418,7 @@ img { display: block; max-width: 100%; }
   padding: var(--space-8);
   box-shadow: var(--shadow-sm);
   flex-shrink: 0;
-  width: 360px;
+  width: 460px;
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
