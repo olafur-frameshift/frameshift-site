@@ -112,8 +112,6 @@
       <p class="section-lead">A selection of peer-reviewed work from the Frameshift team.</p>
     </div>
     <div class="research-scroll-outer">
-      <button class="research-arrow research-arrow--left" aria-label="Scroll left">&#8592;</button>
-      <button class="research-arrow research-arrow--right" aria-label="Scroll right">&#8594;</button>
     <div class="research-scroll-wrap">
       <div class="research-track">
 
@@ -237,9 +235,6 @@
   <script>
     (() => {
       const wrap = document.querySelector('.research-scroll-wrap');
-      const btnL = document.querySelector('.research-arrow--left');
-      const btnR = document.querySelector('.research-arrow--right');
-      const step = 380;
 
       // Wheel → horizontal scroll
       wrap.addEventListener('wheel', (e) => {
@@ -248,21 +243,6 @@
           wrap.scrollBy({ left: e.deltaY * 1.2, behavior: 'smooth' });
         }
       }, { passive: false });
-
-      // Arrow buttons
-      btnL.addEventListener('click', () => wrap.scrollBy({ left: -step, behavior: 'smooth' }));
-      btnR.addEventListener('click', () => wrap.scrollBy({ left:  step, behavior: 'smooth' }));
-
-      // Show/hide arrows based on scroll position
-      const update = () => {
-        btnL.style.opacity = wrap.scrollLeft > 10 ? '1' : '0';
-        btnL.style.pointerEvents = wrap.scrollLeft > 10 ? 'auto' : 'none';
-        const maxScroll = wrap.scrollWidth - wrap.clientWidth;
-        btnR.style.opacity = wrap.scrollLeft < maxScroll - 10 ? '1' : '0';
-        btnR.style.pointerEvents = wrap.scrollLeft < maxScroll - 10 ? 'auto' : 'none';
-      };
-      wrap.addEventListener('scroll', update);
-      update();
     })();
   </script>
 </body>
