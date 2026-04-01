@@ -6,6 +6,14 @@
   <meta name="description" content="How immortal time bias can distort epidemiological findings — illustrated through the sun exposure and skin cancer survival paradox.">
   <title>Sun Exposure, Skin Cancer, and a Methodological Sunburn | Frameshift</title>
   <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <meta property="og:title" content="Sun Exposure, Skin Cancer, and a Methodological Sunburn">
+  <meta property="og:description" content="How immortal time bias can distort epidemiological findings — illustrated through the sun exposure and skin cancer survival paradox.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.frameshift.dk/posts/immortal-time-bias.html">
+  <meta property="og:image" content="https://www.frameshift.dk/posts/immortal-time-bias/fig1_nmsc.webp">
 </head>
 <body>
   <header class="site-header">
@@ -13,6 +21,9 @@
       <a href="../index.html" class="site-logo">
         <img src="../logo.svg" alt="Frameshift">
       </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
       <nav class="site-nav">
         <a href="../index.html#home">Home</a>
         <a href="../index.html#about">About</a>
@@ -56,7 +67,7 @@
       <p>The simulation below reproduces the study design under the assumption that skin cancer has <strong>zero causal effect on mortality</strong>. Mortality is drawn from a Gompertz model calibrated to Danish population life tables. The grey band marks the immortal time window.</p>
 
       <figure>
-        <img src="immortal-time-bias/fig1_nmsc.png" alt="Figure 1: NMSC study design simulation">
+        <img loading="lazy" src="immortal-time-bias/fig1_nmsc.webp" alt="Figure 1: NMSC study design simulation">
         <figcaption>Simulation of the Brøndum-Jacobsen study design with no true protective effect built in. NMSC patients show HR = 0.68 (95% CI 0.66–0.70) for all-cause mortality, in the same direction and order of magnitude as the paper's HR = 0.52. The grey region is the immortal time window.</figcaption>
       </figure>
 
@@ -71,7 +82,7 @@
       <p>To isolate this, consider a thought experiment: instead of a skin cancer diagnosis, we award a <strong>lottery prize</strong> to a random subset of the cohort at a random age between 70 and 80. No selection on health. No biology. We then run the same analysis, comparing prize winners to non-winners for all-cause mortality from age 40.</p>
 
       <figure>
-        <img src="immortal-time-bias/fig2_prize.png" alt="Figure 2: Lottery prize analogy">
+        <img loading="lazy" src="immortal-time-bias/fig2_prize.webp" alt="Figure 2: Lottery prize analogy">
         <figcaption>A randomly awarded lottery prize, with no conceivable biological mechanism, produces HR = 0.57 (95% CI 0.55–0.59) for all-cause mortality. The effect is larger than in the NMSC simulation because the prize window (ages 70–80) sits later in life than the NMSC diagnostic window (ages 60–80), creating a longer average immortal period.</figcaption>
       </figure>
 
@@ -82,7 +93,7 @@
       <p>Rather than starting follow-up at age 40 for everyone, we start at the <strong>prize award date</strong>. Controls are assigned a pseudo-prize at the same age as their matched case. Both groups now begin observation at the same point; the immortal window is removed.</p>
 
       <figure>
-        <img src="immortal-time-bias/fig3_correct.png" alt="Figure 3: Correct analysis">
+        <img loading="lazy" src="immortal-time-bias/fig3_correct.webp" alt="Figure 3: Correct analysis">
         <figcaption>Once follow-up begins at the prize date and controls are assigned a matched pseudo-prize age, the curves overlap. HR = 0.97 (95% CI 0.93–1.01), p = 0.14. No effect. As expected.</figcaption>
       </figure>
 
@@ -161,8 +172,22 @@ coxph(Surv(time, event) ~ prize, data = correct) |&gt; coef() |&gt; exp()
         <a href="https://www.linkedin.com/in/olafurbirgir/" target="_blank" rel="noopener">Ólafur</a>
         <a href="https://www.linkedin.com/in/ragnarpk/" target="_blank" rel="noopener">Ragnar</a>
         <a href="https://www.linkedin.com/in/mikkel-werling-a200202ba/" target="_blank" rel="noopener">Mikkel</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../legal.html">Legal</a>
       </div>
     </div>
   </footer>
+  <script>
+  (() => {
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.site-nav');
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        toggle.classList.toggle('active');
+        nav.classList.toggle('open');
+      });
+    }
+  })();
+  </script>
 </body>
 </html>

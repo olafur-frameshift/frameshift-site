@@ -6,6 +6,14 @@
   <meta name="description" content="Colorectal cancer incidence is rising sharply in young Nordic adults. How does the trend compare to the US, and is CRC really the leading cancer killer under 50?">
   <title>Colon Cancer Is the Leading Killer of Young Americans. How Do the Nordics Compare? | Frameshift</title>
   <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <meta property="og:title" content="Colon Cancer Is the Leading Killer of Young Americans. How Do the Nordics Compare?">
+  <meta property="og:description" content="Colorectal cancer incidence is rising sharply in young Nordic adults. How does the trend compare to the US, and is CRC really the leading cancer killer under 50?">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://www.frameshift.dk/posts/crc-leading-killer.html">
+  <meta property="og:image" content="https://www.frameshift.dk/posts/crc-leading-killer/fig1_under50_incidence_sex.webp">
 </head>
 <body>
   <header class="site-header">
@@ -13,6 +21,9 @@
       <a href="../index.html" class="site-logo">
         <img src="../logo.svg" alt="Frameshift">
       </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
       <nav class="site-nav">
         <a href="../index.html#home">Home</a>
         <a href="../index.html#about">About</a>
@@ -46,7 +57,7 @@
       <p>Fortunately, this is a question we can actually answer. <a href="https://nordcan.iarc.fr/en" target="_blank">NORDCAN</a>, maintained by the International Agency for Research on Cancer (IARC) in collaboration with the national cancer registries of Denmark, Finland, Iceland, Norway, and Sweden, has been making high-quality, harmonised cancer data freely available to the public for decades. It is one of the most valuable open resources in cancer epidemiology, and work like this would not be possible without it. Pulling roughly 40 years of registry data and pooling across all five Nordic countries from 1980 to 2024, I find that the answer is nuanced. The trend is there, but the ranking as per the Guardian headline does not translate directly.</p>
 
       <figure>
-        <img src="crc-leading-killer/fig1_under50_incidence_sex.png" alt="Figure 1: CRC incidence in under-50s by sex, 1980-2024">
+        <img loading="lazy" src="crc-leading-killer/fig1_under50_incidence_sex.webp" alt="Figure 1: CRC incidence in under-50s by sex, 1980-2024">
         <figcaption>CRC incidence per 100,000 in the under-50 population across all five Nordic countries, stratified by sex. Both sexes show a sustained upward trend since 1980, with a notable acceleration after 2015.</figcaption>
       </figure>
 
@@ -55,7 +66,7 @@
       <p>A natural follow-up question would be: is CRC incidence rising in step with cancer incidence overall, or is it growing disproportionately fast?</p>
 
       <figure>
-        <img src="crc-leading-killer/fig2_crc_share.png" alt="Figure 2: CRC as a share of all cancer incidence in under-50s">
+        <img loading="lazy" src="crc-leading-killer/fig2_crc_share.webp" alt="Figure 2: CRC as a share of all cancer incidence in under-50s">
         <figcaption>CRC as a share of all cancer diagnoses in under-50s, by sex. In males, CRC's share has climbed from 7% to nearly 10%. In females, it has stayed relatively flat at 5&ndash;6%.</figcaption>
       </figure>
 
@@ -64,7 +75,7 @@
       <p>Alongside rising incidence, outcomes are improving. Five-year relative survival for CRC across the Nordic countries has climbed from approximately 71% in the mid-1980s to 88% today. Better surgical techniques, targeted therapies, and earlier symptomatic detection have all undoubtedly contributed. But improving survival does not fully offset the concern. So is CRC really the leading cancer killer in young Nordic adults, as it now is in the US?</p>
 
       <figure>
-        <img src="crc-leading-killer/fig4_ranking_sex.png" alt="Figure 4: Cancer death ranking in under-50s by sex">
+        <img loading="lazy" src="crc-leading-killer/fig4_ranking_sex.webp" alt="Figure 4: Cancer death ranking in under-50s by sex">
         <figcaption>Cancer death rankings in under-50s across all Nordic countries, shown separately for men and women. CRC (highlighted) has held a consistent #3 position for both sexes across the entire period.</figcaption>
       </figure>
 
@@ -89,8 +100,22 @@
         <a href="https://www.linkedin.com/in/olafurbirgir/" target="_blank" rel="noopener">&Oacute;lafur</a>
         <a href="https://www.linkedin.com/in/ragnarpk/" target="_blank" rel="noopener">Ragnar</a>
         <a href="https://www.linkedin.com/in/mikkel-werling-a200202ba/" target="_blank" rel="noopener">Mikkel</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../legal.html">Legal</a>
       </div>
     </div>
   </footer>
+  <script>
+  (() => {
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.site-nav');
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        toggle.classList.toggle('active');
+        nav.classList.toggle('open');
+      });
+    }
+  })();
+  </script>
 </body>
 </html>

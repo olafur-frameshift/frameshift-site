@@ -6,6 +6,14 @@
 <meta name="description" content="Frameshift provides expert biostatistics consulting and clinical trial methodology for pharmaceutical and biotech companies in Copenhagen and beyond.">
 <title>Frameshift | Biostatistics & Clinical Trial Methodology</title>
 <link rel="stylesheet" href="styles.css">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta property="og:title" content="Frameshift | Biostatistics & Clinical Trial Methodology">
+<meta property="og:description" content="Frameshift provides expert biostatistics consulting and clinical trial methodology for pharmaceutical and biotech companies in Copenhagen and beyond.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.frameshift.dk/">
+<meta property="og:image" content="https://www.frameshift.dk/apple-touch-icon.png">
 
 <!-- ─── ANIMATION ADDITIONS ONLY ─── -->
 <style>
@@ -71,6 +79,9 @@
     <a href="#home" class="site-logo">
       <img src="logo.svg" alt="Frameshift">
     </a>
+    <button class="nav-toggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
     <nav class="site-nav">
       <a href="#home">Home</a>
       <a href="#about">About</a>
@@ -85,7 +96,7 @@
 <!-- HOME -->
 <section id="home" class="hero">
   <div class="hero-visual" aria-hidden="true">
-    <img src="hero-illustration.png" alt="">
+    <img src="hero-illustration.webp" alt="" loading="lazy">
   </div>
   <div class="container hero-layout">
     <div class="hero-content">
@@ -109,7 +120,7 @@
 
     <div class="team-grid">
       <div class="team-card reveal reveal-d1">
-        <img class="team-avatar" src="team-olafur.png" alt="Ólafur B. Davíðsson">
+        <img class="team-avatar" loading="lazy" src="team-olafur.webp" alt="Ólafur B. Davíðsson">
         <div class="team-info">
           <h3>Ólafur B. Davíðsson</h3>
           <span class="team-role">Co-Founder</span>
@@ -118,7 +129,7 @@
         </div>
       </div>
       <div class="team-card reveal reveal-d2">
-        <img class="team-avatar" src="team-ragnar.png" alt="Ragnar P. Kristjánsson">
+        <img class="team-avatar" loading="lazy" src="team-ragnar.webp" alt="Ragnar P. Kristjánsson">
         <div class="team-info">
           <h3>Ragnar P. Kristjánsson</h3>
           <span class="team-role">Co-Founder</span>
@@ -127,7 +138,7 @@
         </div>
       </div>
       <div class="team-card reveal reveal-d3">
-        <img class="team-avatar" src="team-mikkel.png" alt="Mikkel Werling">
+        <img class="team-avatar" loading="lazy" src="team-mikkel.webp" alt="Mikkel Werling">
         <div class="team-info">
           <h3>Mikkel Werling</h3>
           <span class="team-role">Computational Methods Lead</span>
@@ -321,6 +332,7 @@
         <textarea id="message" name="message" rows="5" placeholder="Describe your project or question…" required></textarea>
       </div>
       <button type="submit" class="btn btn--primary btn--full">Send message</button>
+      <p style="font-size: 0.85rem; color: var(--muted); margin-top: var(--space-3); text-align: center;">This will open your default email client.</p>
     </form>
   </div>
 </section>
@@ -335,11 +347,31 @@
       <a href="https://www.linkedin.com/in/olafurbirgir/" target="_blank" rel="noopener">Ólafur</a>
       <a href="https://www.linkedin.com/in/ragnarpk/" target="_blank" rel="noopener">Ragnar</a>
       <a href="https://www.linkedin.com/in/mikkel-werling-a200202ba/" target="_blank" rel="noopener">Mikkel</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="legal.html">Legal</a>
     </div>
   </div>
 </footer>
 
 <script>
+/* ─── Hamburger toggle ─── */
+(() => {
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.site-nav');
+  if (toggle && nav) {
+    toggle.addEventListener('click', () => {
+      toggle.classList.toggle('active');
+      nav.classList.toggle('open');
+    });
+    nav.addEventListener('click', (e) => {
+      if (e.target.tagName === 'A') {
+        toggle.classList.remove('active');
+        nav.classList.remove('open');
+      }
+    });
+  }
+})();
+
 /* ─── NEW: nav scroll state ─── */
 (() => {
   const header = document.querySelector('.site-header');
