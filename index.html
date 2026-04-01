@@ -1,178 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Frameshift provides expert biostatistics consulting and clinical trial methodology for pharmaceutical and biotech companies in Copenhagen and beyond.">
-  <title>Frameshift | Biostatistics & Clinical Trial Methodology</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Frameshift provides expert biostatistics consulting and clinical trial methodology for pharmaceutical and biotech companies in Copenhagen and beyond.">
+<title>Frameshift | Biostatistics & Clinical Trial Methodology</title>
+<link rel="stylesheet" href="styles.css">
+
+<!-- ─── ANIMATION ADDITIONS ONLY ─── -->
+<style>
+/* ---------- Nav scroll state ---------- */
+.site-header {
+  transition:
+    background 0.35s ease,
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+.site-header.scrolled {
+  background: rgba(250, 246, 243, 0.97);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.07);
+  border-bottom-color: rgba(0, 0, 0, 0.13);
+}
+
+/* ---------- Scroll-reveal ---------- */
+.reveal {
+  opacity: 0;
+  transform: translateY(44px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+/* Stagger helpers */
+.reveal-d1 { transition-delay: 0.12s; }
+.reveal-d2 { transition-delay: 0.24s; }
+.reveal-d3 { transition-delay: 0.36s; }
+
+/* ---------- Card hover lift ---------- */
+.team-card,
+.why-card,
+.post-card,
+.research-card,
+.service-card {
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.team-card:hover,
+.post-card:hover,
+.research-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 48px rgba(28, 28, 26, 0.14);
+}
+
+.why-card:hover,
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 32px rgba(28, 28, 26, 0.11);
+}
+</style>
+<!-- ─────────────────────────────────── -->
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="container">
-      <a href="#home" class="site-logo">
-        <img src="logo.svg" alt="Frameshift">
-      </a>
-      <nav class="site-nav">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#posts">Posts</a>
-        <a href="#research">Research</a>
-        <a href="#services">Services</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+<header class="site-header">
+  <div class="container">
+    <a href="#home" class="site-logo">
+      <img src="logo.svg" alt="Frameshift">
+    </a>
+    <nav class="site-nav">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#posts">Posts</a>
+      <a href="#research">Research</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
 
-  <!-- HOME -->
-  <section id="home" class="hero">
-    <div class="hero-visual" aria-hidden="true">
-      <img src="hero-illustration.png" alt="">
+<!-- HOME -->
+<section id="home" class="hero">
+  <div class="hero-visual" aria-hidden="true">
+    <img src="hero-illustration.png" alt="">
+  </div>
+  <div class="container hero-layout">
+    <div class="hero-content">
+      <p class="eyebrow">Biostatistics & Clinical Trial Methodology · Copenhagen</p>
+      <h1 class="hero-title">Statistical design, analysis, and reporting for trials and registry research.</h1>
+      <p class="hero-sub">Frameshift is a biostatistics consultancy supporting biotech sponsors, CROs, and academic research groups. We deliver statistical analysis plans, clinical study reports, and publication-ready outputs, from protocol to manuscript.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn--primary">Get in touch</a>
+        <a href="#services" class="btn btn--ghost">Our services</a>
+      </div>
     </div>
-    <div class="container hero-layout">
-      <div class="hero-content">
-        <p class="eyebrow">Biostatistics & Clinical Trial Methodology · Copenhagen</p>
-        <h1 class="hero-title">Statistical design, analysis, and reporting for trials and registry research.</h1>
-        <p class="hero-sub">Frameshift is a biostatistics consultancy supporting biotech sponsors, CROs, and academic research groups. We deliver statistical analysis plans, clinical study reports, and publication-ready outputs, from protocol to manuscript.</p>
-        <div class="hero-actions">
-          <a href="#contact" class="btn btn--primary">Get in touch</a>
-          <a href="#services" class="btn btn--ghost">Our services</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section section--tinted">
+  <div class="container">
+    <p class="eyebrow">Who we are</p>
+    <h2 class="section-title">Built on rigour, driven by expertise.</h2>
+    <p class="section-lead">"We believe good research rests on three pillars: clear questions, rigorous design, and honest reporting."</p>
+
+    <div class="team-grid">
+      <div class="team-card reveal reveal-d1">
+        <img class="team-avatar" src="team-olafur.png" alt="Ólafur B. Davíðsson">
+        <div class="team-info">
+          <h3>Ólafur B. Davíðsson</h3>
+          <span class="team-role">Co-Founder</span>
+          <p>Statistical design and registry epidemiology. Leads methodological work on clinical trials and observational studies, with a focus on translating complex analyses into decisions that hold up under scrutiny.</p>
+          <a class="team-linkedin" href="https://www.linkedin.com/in/olafurbirgir/" target="_blank" rel="noopener">LinkedIn →</a>
+        </div>
+      </div>
+      <div class="team-card reveal reveal-d2">
+        <img class="team-avatar" src="team-ragnar.png" alt="Ragnar P. Kristjánsson">
+        <div class="team-info">
+          <h3>Ragnar P. Kristjánsson</h3>
+          <span class="team-role">Co-Founder</span>
+          <p>Translational science and clinical biomedical reasoning. Bridges academic rigour and industry practicality, from study conception through interpretation and reporting.</p>
+          <a class="team-linkedin" href="https://www.linkedin.com/in/ragnarpk/" target="_blank" rel="noopener">LinkedIn →</a>
+        </div>
+      </div>
+      <div class="team-card reveal reveal-d3">
+        <img class="team-avatar" src="team-mikkel.png" alt="Mikkel Werling">
+        <div class="team-info">
+          <h3>Mikkel Werling</h3>
+          <span class="team-role">Computational Methods Lead</span>
+          <p>Machine learning and computational analysis applied to clinical and health research. Brings model development and validation expertise to projects where standard methods are insufficient.</p>
+          <a class="team-linkedin" href="https://www.linkedin.com/in/mikkel-werling-a200202ba/" target="_blank" rel="noopener">LinkedIn →</a>
         </div>
       </div>
     </div>
-  </section>
 
-  <!-- ABOUT -->
-  <section id="about" class="section section--tinted">
-    <div class="container">
-      <p class="eyebrow">Who we are</p>
-      <h2 class="section-title">Built on rigour, driven by expertise.</h2>
-      <p class="section-lead">"We believe good research rests on three pillars: clear questions, rigorous design, and honest reporting."</p>
-
-      <div class="team-grid">
-
-        <div class="team-card">
-          <img class="team-avatar" src="team-olafur.png" alt="Ólafur B. Davíðsson">
-          <div class="team-info">
-            <h3>Ólafur B. Davíðsson</h3>
-            <span class="team-role">Co-Founder</span>
-            <p>Statistical design and registry epidemiology. Leads methodological work on clinical trials and observational studies, with a focus on translating complex analyses into decisions that hold up under scrutiny.</p>
-            <a class="team-linkedin" href="https://www.linkedin.com/in/olafurbirgir/" target="_blank" rel="noopener">LinkedIn →</a>
-          </div>
-        </div>
-
-        <div class="team-card">
-          <img class="team-avatar" src="team-ragnar.png" alt="Ragnar P. Kristjánsson">
-          <div class="team-info">
-            <h3>Ragnar P. Kristjánsson</h3>
-            <span class="team-role">Co-Founder</span>
-            <p>Translational science and clinical biomedical reasoning. Bridges academic rigour and industry practicality, from study conception through interpretation and reporting.</p>
-            <a class="team-linkedin" href="https://www.linkedin.com/in/ragnarpk/" target="_blank" rel="noopener">LinkedIn →</a>
-          </div>
-        </div>
-
-        <div class="team-card">
-          <img class="team-avatar" src="team-mikkel.png" alt="Mikkel Werling">
-          <div class="team-info">
-            <h3>Mikkel Werling</h3>
-            <span class="team-role">Computational Methods Lead</span>
-            <p>Machine learning and computational analysis applied to clinical and health research. Brings model development and validation expertise to projects where standard methods are insufficient.</p>
-            <a class="team-linkedin" href="https://www.linkedin.com/in/mikkel-werling-a200202ba/" target="_blank" rel="noopener">LinkedIn →</a>
-          </div>
-        </div>
-
+    <h3 class="about-sub-heading">Why Frameshift</h3>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <h3>Senior judgment on every project</h3>
+        <p>No junior analysts. Every engagement is led by a statistician or epidemiologist with doctoral-level training and hands-on experience across industry and academia.</p>
       </div>
-
-      <h3 class="about-sub-heading">Why Frameshift</h3>
-
-      <div class="why-grid">
-
-        <div class="why-card">
-          <h3>Senior judgment on every project</h3>
-          <p>No junior analysts. Every engagement is led by a statistician or epidemiologist with doctoral-level training and hands-on experience across industry and academia.</p>
-        </div>
-
-        <div class="why-card">
-          <h3>Trial and registry expertise</h3>
-          <p>Experience spanning randomised clinical trials, cohort studies, and Danish administrative register research at population scale.</p>
-        </div>
-
-        <div class="why-card">
-          <h3>Results decision-makers can use</h3>
-          <p>Analyses translated into language that sponsors, investigators, and regulators can act on, not just p-values and confidence intervals.</p>
-        </div>
-
-        <div class="why-card">
-          <h3>Flexible from scoping to publication</h3>
-          <p>From a single design review or SAP to a long-term methods partnership embedded in your team. We adapt to the shape of your project.</p>
-        </div>
-
+      <div class="why-card reveal reveal-d1">
+        <h3>Trial and registry expertise</h3>
+        <p>Experience spanning randomised clinical trials, cohort studies, and Danish administrative register research at population scale.</p>
+      </div>
+      <div class="why-card reveal reveal-d2">
+        <h3>Results decision-makers can use</h3>
+        <p>Analyses translated into language that sponsors, investigators, and regulators can act on, not just p-values and confidence intervals.</p>
+      </div>
+      <div class="why-card reveal reveal-d3">
+        <h3>Flexible from scoping to publication</h3>
+        <p>From a single design review or SAP to a long-term methods partnership embedded in your team. We adapt to the shape of your project.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- POSTS -->
-  <section id="posts" class="section section--tinted">
-    <div class="container">
-      <p class="eyebrow">Frameshift Insights</p>
-      <div class="section-header-row">
-        <div>
-          <h2 class="section-title">From the team.</h2>
-          <p class="section-lead">Methodological essays on epidemiology, biostatistics, and study design.</p>
+<!-- POSTS -->
+<section id="posts" class="section">
+  <div class="container">
+    <p class="eyebrow">Frameshift Insights</p>
+    <div class="section-header-row">
+      <div>
+        <h2 class="section-title">From the team.</h2>
+        <p class="section-lead">Methodological essays on epidemiology, biostatistics, and study design.</p>
+      </div>
+      <a href="posts/" class="btn btn--ghost btn--see-all">See all posts →</a>
+    </div>
+    <div class="posts">
+      <article class="post-card reveal">
+        <div class="post-meta">
+          <span class="post-date">1 April 2026</span>
+          <span class="post-tag">Epidemiology</span>
+          <span class="post-tag">Methods</span>
+          <span class="post-tag">Registry Data</span>
         </div>
-        <a href="posts/" class="btn btn--ghost btn--see-all">See all posts →</a>
-      </div>
-
-      <div class="posts">
-        <article class="post-card">
-          <div class="post-meta">
-            <span class="post-date">1 April 2026</span>
-            <span class="post-tag">Epidemiology</span>
-            <span class="post-tag">Methods</span>
-            <span class="post-tag">Registry Data</span>
-          </div>
-          <h3 class="post-title">
-            <a href="posts/crc-leading-killer.html">Colon Cancer Is the Leading Killer of Young Americans. How Do the Nordics Compare?</a>
-          </h3>
-          <p class="post-excerpt">The Guardian reported that CRC is now the #1 cancer killer in Americans under 50. We pooled 44 years of NORDCAN data across five countries. The trend is real, but the ranking is not: CRC is #3 in the Nordics for both sexes, and the rise is hitting young men hardest.</p>
-          <div class="post-footer">
-            <span class="post-author">Ólafur B. Davíðsson, PhD</span>
-            <a href="posts/crc-leading-killer.html" class="read-more">Read post →</a>
-          </div>
-        </article>
-
-        <article class="post-card">
-          <div class="post-meta">
-            <span class="post-date">26 March 2026</span>
-            <span class="post-tag">Epidemiology</span>
-            <span class="post-tag">Methods</span>
-          </div>
-          <h3 class="post-title">
-            <a href="posts/immortal-time-bias.html">Sun Exposure, Skin Cancer, and a Methodological Sunburn</a>
-          </h3>
-          <p class="post-excerpt">A 2013 Danish register study found that skin cancer patients had half the all-cause mortality of the general population, an effect that survives even a lottery prize with no biological mechanism whatsoever. Here is why.</p>
-          <div class="post-footer">
-            <span class="post-author">Ólafur B. Davíðsson, PhD</span>
-            <a href="posts/immortal-time-bias.html" class="read-more">Read post →</a>
-          </div>
-        </article>
-      </div>
+        <h3 class="post-title">
+          <a href="posts/crc-leading-killer.html">Colon Cancer Is the Leading Killer of Young Americans. How Do the Nordics Compare?</a>
+        </h3>
+        <p class="post-excerpt">The Guardian reported that CRC is now the #1 cancer killer in Americans under 50. We pooled 44 years of NORDCAN data across five countries. The trend is real, but the ranking is not: CRC is #3 in the Nordics for both sexes, and the rise is hitting young men hardest.</p>
+        <div class="post-footer">
+          <span class="post-author">Ólafur B. Davíðsson, PhD</span>
+          <a href="posts/crc-leading-killer.html" class="read-more">Read post →</a>
+        </div>
+      </article>
+      <article class="post-card reveal reveal-d2">
+        <div class="post-meta">
+          <span class="post-date">26 March 2026</span>
+          <span class="post-tag">Epidemiology</span>
+          <span class="post-tag">Methods</span>
+        </div>
+        <h3 class="post-title">
+          <a href="posts/immortal-time-bias.html">Sun Exposure, Skin Cancer, and a Methodological Sunburn</a>
+        </h3>
+        <p class="post-excerpt">A 2013 Danish register study found that skin cancer patients had half the all-cause mortality of the general population, an effect that survives even a lottery prize with no biological mechanism whatsoever. Here is why.</p>
+        <div class="post-footer">
+          <span class="post-author">Ólafur B. Davíðsson, PhD</span>
+          <a href="posts/immortal-time-bias.html" class="read-more">Read post →</a>
+        </div>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- RESEARCH -->
-  <section id="research" class="section">
-    <div class="container">
-      <p class="eyebrow">Selected publications</p>
-      <h2 class="section-title">Publications.</h2>
-      <p class="section-lead">A selection of peer-reviewed work from the Frameshift team.</p>
-    </div>
-    <div class="research-scroll-outer">
+<!-- RESEARCH -->
+<section id="research" class="section section--tinted">
+  <div class="container">
+    <p class="eyebrow">Selected publications</p>
+    <h2 class="section-title">Publications.</h2>
+    <p class="section-lead">A selection of peer-reviewed work from the Frameshift team.</p>
+  </div>
+  <div class="research-scroll-outer">
     <div class="research-scroll-wrap">
       <div class="research-track">
-
-        <div class="research-card">
+        <div class="research-card reveal">
           <div class="research-meta">
             <span class="research-journal">NEJM Evidence</span>
             <span class="research-year">2024</span>
@@ -181,8 +225,7 @@
           <p class="research-summary">Randomised trial across 255 patients testing fish skin grafts against standard care for deep diabetic foot ulcers. Fish skin achieved wound closure in 44% versus 26% at 16 weeks.</p>
           <a class="research-link" href="https://doi.org/10.1056/EVIDoa2400171" target="_blank" rel="noopener">View Article →</a>
         </div>
-
-        <div class="research-card">
+        <div class="research-card reveal reveal-d1">
           <div class="research-meta">
             <span class="research-journal">British Journal of Cancer</span>
             <span class="research-year">2024</span>
@@ -191,8 +234,7 @@
           <p class="research-summary">Danish registry study of 30,000 patients showing infection burden is elevated up to 15 years before diagnosis of B-cell malignancies, with implications for early immune dysfunction and prognosis.</p>
           <a class="research-link" href="https://doi.org/10.1038/s41416-024-02816-2" target="_blank" rel="noopener">View Article →</a>
         </div>
-
-        <div class="research-card">
+        <div class="research-card reveal reveal-d2">
           <div class="research-meta">
             <span class="research-journal">The Lancet Regional Health: Europe</span>
             <span class="research-year">2025</span>
@@ -201,125 +243,138 @@
           <p class="research-summary">Nationwide Danish cohort and genetic risk score study finding shared aetiological pathways between migraine and pre-eclampsia, with implications for cardiovascular risk stratification.</p>
           <a class="research-link" href="https://doi.org/10.1016/S3050-5038(25)00114-1" target="_blank" rel="noopener">View Article →</a>
         </div>
-
       </div>
     </div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <!-- SERVICES -->
-  <section id="services" class="section section--tinted">
-    <div class="container">
-      <p class="eyebrow">What we deliver</p>
-      <h2 class="section-title">Concrete outputs<br>for your research.</h2>
-      <p class="section-lead">Deliverables for biotech teams and research groups, across the full analytical lifecycle.</p>
-
-      <div class="services-grid">
-
-        <div class="service-card">
-          <span class="service-num">01</span>
-          <h3>Statistical Analysis Plans</h3>
-          <p>Pre-specified SAPs for clinical trials and observational studies, including endpoint definitions, multiplicity strategies, and regulatory-ready documentation.</p>
-        </div>
-
-        <div class="service-card">
-          <span class="service-num">02</span>
-          <h3>Clinical Trial Biostatistics</h3>
-          <p>Primary, secondary, and exploratory analyses for Phase I–IV trials. Clinical study reports and tables, listings, figures (TLFs).</p>
-        </div>
-
-        <div class="service-card">
-          <span class="service-num">03</span>
-          <h3>Registry & Population Studies</h3>
-          <p>Study design, cohort definition, and analysis using Danish national registers and Nordic administrative data at population scale.</p>
-        </div>
-
-        <div class="service-card">
-          <span class="service-num">04</span>
-          <h3>Real-World Evidence</h3>
-          <p>Comparative effectiveness, treatment utilisation, and health outcomes studies using claims, registry, or EHR data.</p>
-        </div>
-
-        <div class="service-card">
-          <span class="service-num">05</span>
-          <h3>Scientific Writing & Figures</h3>
-          <p>Publication-quality figures, statistical methods sections, results interpretation, and manuscript support for peer-reviewed journals.</p>
-        </div>
-
-        <div class="service-card">
-          <span class="service-num">06</span>
-          <h3>Embedded Methods Partner</h3>
-          <p>Ongoing senior biostatistical support integrated into your team, from early-phase scoping through final deliverables.</p>
-        </div>
-
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="container">
+    <p class="eyebrow">What we deliver</p>
+    <h2 class="section-title">Concrete outputs<br>for your research.</h2>
+    <p class="section-lead">Deliverables for biotech teams and research groups, across the full analytical lifecycle.</p>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-num">01</span>
+        <h3>Statistical Analysis Plans</h3>
+        <p>Pre-specified SAPs for clinical trials and observational studies, including endpoint definitions, multiplicity strategies, and regulatory-ready documentation.</p>
+      </div>
+      <div class="service-card reveal reveal-d1">
+        <span class="service-num">02</span>
+        <h3>Clinical Trial Biostatistics</h3>
+        <p>Primary, secondary, and exploratory analyses for Phase I–IV trials. Clinical study reports and tables, listings, figures (TLFs).</p>
+      </div>
+      <div class="service-card reveal reveal-d2">
+        <span class="service-num">03</span>
+        <h3>Registry & Population Studies</h3>
+        <p>Study design, cohort definition, and analysis using Danish national registers and Nordic administrative data at population scale.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-num">04</span>
+        <h3>Real-World Evidence</h3>
+        <p>Comparative effectiveness, treatment utilisation, and health outcomes studies using claims, registry, or EHR data.</p>
+      </div>
+      <div class="service-card reveal reveal-d1">
+        <span class="service-num">05</span>
+        <h3>Scientific Writing & Figures</h3>
+        <p>Publication-quality figures, statistical methods sections, results interpretation, and manuscript support for peer-reviewed journals.</p>
+      </div>
+      <div class="service-card reveal reveal-d2">
+        <span class="service-num">06</span>
+        <h3>Embedded Methods Partner</h3>
+        <p>Ongoing senior biostatistical support integrated into your team, from early-phase scoping through final deliverables.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CONTACT -->
-  <section id="contact" class="section">
-    <div class="container container--narrow">
-      <p class="eyebrow">Get in touch</p>
-      <h2 class="section-title">Let's talk about<br>your research.</h2>
-      <p class="section-lead">We work best with teams that have a defined research question and need statistical methodology, analysis, or reporting support. Tell us about your project and we will typically respond within one business day.</p>
-
-      <div class="contact-meta">
-        <div class="contact-steps">
-          <span class="contact-step"><span class="step-num">1</span> 15–20 min scoping call</span>
-          <span class="contact-arrow">→</span>
-          <span class="contact-step"><span class="step-num">2</span> Quick assessment</span>
-          <span class="contact-arrow">→</span>
-          <span class="contact-step"><span class="step-num">3</span> Proposal</span>
-        </div>
-        <a href="mailto:info@frameshift.dk" class="contact-email">info@frameshift.dk</a>
+<!-- CONTACT -->
+<section id="contact" class="section section--tinted">
+  <div class="container container--narrow">
+    <p class="eyebrow">Get in touch</p>
+    <h2 class="section-title">Let's talk about<br>your research.</h2>
+    <p class="section-lead">We work best with teams that have a defined research question and need statistical methodology, analysis, or reporting support. Tell us about your project and we will typically respond within one business day.</p>
+    <div class="contact-meta">
+      <div class="contact-steps">
+        <span class="contact-step"><span class="step-num">1</span> 15–20 min scoping call</span>
+        <span class="contact-arrow">→</span>
+        <span class="contact-step"><span class="step-num">2</span> Quick assessment</span>
+        <span class="contact-arrow">→</span>
+        <span class="contact-step"><span class="step-num">3</span> Proposal</span>
       </div>
-
-      <form class="contact-form" action="mailto:info@frameshift.dk" method="post" enctype="text/plain">
-        <div class="form-row">
-          <div class="form-group">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required>
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="your@email.com" required>
-          </div>
+      <a href="mailto:info@frameshift.dk" class="contact-email">info@frameshift.dk</a>
+    </div>
+    <form class="contact-form" action="mailto:info@frameshift.dk" method="post" enctype="text/plain">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your name" required>
         </div>
         <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="5" placeholder="Describe your project or question…" required></textarea>
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="your@email.com" required>
         </div>
-        <button type="submit" class="btn btn--primary btn--full">Send message</button>
-      </form>
-    </div>
-  </section>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-left">
-        <p class="footer-tagline">Biostatistics and clinical trial methodology for sponsors, CROs, and research groups.</p>
-        <p>© 2026 Frameshift · Copenhagen, Denmark · CVR 44531410 · <a href="mailto:info@frameshift.dk">info@frameshift.dk</a></p>
       </div>
-      <div class="footer-links">
-        <a href="https://www.linkedin.com/in/olafurbirgir/" target="_blank" rel="noopener">Ólafur</a>
-        <a href="https://www.linkedin.com/in/ragnarpk/" target="_blank" rel="noopener">Ragnar</a>
-        <a href="https://www.linkedin.com/in/mikkel-werling-a200202ba/" target="_blank" rel="noopener">Mikkel</a>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="5" placeholder="Describe your project or question…" required></textarea>
       </div>
+      <button type="submit" class="btn btn--primary btn--full">Send message</button>
+    </form>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-left">
+      <p class="footer-tagline">Biostatistics and clinical trial methodology for sponsors, CROs, and research groups.</p>
+      <p>© 2026 Frameshift · Copenhagen, Denmark · CVR 44531410 · <a href="mailto:info@frameshift.dk">info@frameshift.dk</a></p>
     </div>
-  </footer>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/olafurbirgir/" target="_blank" rel="noopener">Ólafur</a>
+      <a href="https://www.linkedin.com/in/ragnarpk/" target="_blank" rel="noopener">Ragnar</a>
+      <a href="https://www.linkedin.com/in/mikkel-werling-a200202ba/" target="_blank" rel="noopener">Mikkel</a>
+    </div>
+  </div>
+</footer>
 
-  <script>
-    (() => {
-      const wrap = document.querySelector('.research-scroll-wrap');
+<script>
+/* ─── NEW: nav scroll state ─── */
+(() => {
+  const header = document.querySelector('.site-header');
+  if (!header) return;
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+})();
 
-      // Wheel → horizontal scroll
-      wrap.addEventListener('wheel', (e) => {
-        if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-          e.preventDefault();
-          wrap.scrollBy({ left: e.deltaY * 1.2, behavior: 'smooth' });
-        }
-      }, { passive: false });
-    })();
-  </script>
+/* ─── Original: horizontal scroll on research track ─── */
+(() => {
+  const wrap = document.querySelector('.research-scroll-wrap');
+  if (!wrap) return;
+  wrap.addEventListener('wheel', (e) => {
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      e.preventDefault();
+      wrap.scrollBy({ left: e.deltaY * 1.2, behavior: 'smooth' });
+    }
+  }, { passive: false });
+})();
+
+/* ─── NEW: scroll-reveal via IntersectionObserver ─── */
+(() => {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+})();
+</script>
+
 </body>
 </html>
