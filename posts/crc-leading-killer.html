@@ -97,18 +97,18 @@ library(purrr)
 library(ggplot2)
 library(scales)
 
-# --- Source nordcanr package functions ----------------------------------------
-pkg_dir &lt;- file.path(getwd(), "R")
-if (!dir.exists(pkg_dir)) pkg_dir &lt;- file.path(getwd(), "../../R")
-for (f in list.files(pkg_dir, pattern = "\\.R$", full.names = TRUE)) source(f)
+# --- Install and load nordcanr from GitHub ------------------------------------
+# install.packages("remotes")
+remotes::install_github("olafur-frameshift/nordcanr")
+library(nordcanr)
 
 # --- Parameters --------------------------------------------------------------
 countries &lt;- c(208L, 246L, 352L, 578L, 752L)  # DK, FI, IS, NO, SE
 yr_start  &lt;- 1980L
 yr_end    &lt;- 2024L
 
-out_dir &lt;- "social_posts/crc_leading_killer_01042026/figures"
-dir.create(out_dir, showWarnings = FALSE, recursive = TRUE)
+out_dir &lt;- "figures"
+dir.create(out_dir, showWarnings = FALSE)
 
 # =============================================================================
 # DATA PULL
