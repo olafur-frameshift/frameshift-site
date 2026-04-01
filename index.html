@@ -90,6 +90,9 @@
       <a href="#services">Services</a>
       <a href="#contact">Contact</a>
     </nav>
+    <button class="ghost-toggle" aria-label="Toggle dark mode">
+      <img src="ghost.webp" alt="">
+    </button>
   </div>
 </header>
 
@@ -370,6 +373,17 @@
       }
     });
   }
+})();
+
+/* ─── Ghost dark-mode toggle ─── */
+(() => {
+  const ghost = document.querySelector('.ghost-toggle');
+  if (!ghost) return;
+  if (localStorage.getItem('dark') === '1') document.body.classList.add('dark');
+  ghost.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0');
+  });
 })();
 
 /* ─── NEW: nav scroll state ─── */

@@ -1097,3 +1097,82 @@ img { display: block; max-width: 100%; }
   .research-card { width: 85vw; }
   .post-card { padding: var(--space-6); }
 }
+
+/* ── Ghost toggle (dark mode easter egg) ─────────────────────── */
+.ghost-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  margin-left: var(--space-2);
+  opacity: 0.25;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.ghost-toggle:hover {
+  opacity: 0.6;
+  transform: scale(1.15);
+}
+
+.ghost-toggle img {
+  height: 26px;
+  width: auto;
+}
+
+/* ── Dark mode ──────────────────────────────────────────────── */
+body.dark {
+  --ink:        #e8e4e0;
+  --ink-2:      #c5c0ba;
+  --muted:      #9a9590;
+  --accent:     #3dba73;
+  --accent-dim: #1a2e23;
+  --bg:         #1c1c1e;
+  --tint:       #252527;
+  --surface:    #2c2c2e;
+  --border:     rgba(255, 255, 255, 0.1);
+
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.2);
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.25), 0 1px 2px rgba(0,0,0,0.15);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.3), 0 2px 4px rgba(0,0,0,0.15);
+}
+
+body.dark .site-header {
+  background: rgba(28, 28, 30, 0.85);
+}
+
+body.dark .site-header.scrolled {
+  background: rgba(28, 28, 30, 0.97);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+body.dark .site-logo img {
+  filter: hue-rotate(280deg) saturate(3) brightness(3);
+}
+
+body.dark .ghost-toggle img {
+  filter: invert(1);
+}
+
+body.dark .btn--primary {
+  background: var(--accent);
+  color: #111;
+}
+
+body.dark .btn--ghost {
+  border-color: var(--border);
+  color: var(--ink);
+}
+
+body.dark code {
+  background: #333;
+}
+
+body.dark .post-body pre {
+  background: #252527;
+}
+
+body.dark img:not(.site-logo img):not(.ghost-toggle img) {
+  border-radius: var(--radius-sm);
+}

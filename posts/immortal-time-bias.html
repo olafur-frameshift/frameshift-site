@@ -32,6 +32,9 @@
         <a href="../index.html#services">Services</a>
         <a href="../index.html#contact">Contact</a>
       </nav>
+      <button class="ghost-toggle" aria-label="Toggle dark mode">
+        <img src="../ghost.webp" alt="">
+      </button>
     </div>
   </header>
 
@@ -178,6 +181,15 @@ coxph(Surv(time, event) ~ prize, data = correct) |&gt; coef() |&gt; exp()
     </div>
   </footer>
   <script>
+  (() => {
+    const ghost = document.querySelector('.ghost-toggle');
+    if (!ghost) return;
+    if (localStorage.getItem('dark') === '1') document.body.classList.add('dark');
+    ghost.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0');
+    });
+  })();
   (() => {
     const toggle = document.querySelector('.nav-toggle');
     const nav = document.querySelector('.site-nav');

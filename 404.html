@@ -15,6 +15,9 @@
       <a href="index.html" class="site-logo">
         <img src="logo.svg" alt="Frameshift">
       </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
       <nav class="site-nav">
         <a href="index.html#home">Home</a>
         <a href="index.html#about">About</a>
@@ -23,6 +26,9 @@
         <a href="index.html#services">Services</a>
         <a href="index.html#contact">Contact</a>
       </nav>
+      <button class="ghost-toggle" aria-label="Toggle dark mode">
+        <img src="ghost.webp" alt="">
+      </button>
     </div>
   </header>
 
@@ -43,5 +49,26 @@
       </div>
     </div>
   </footer>
+  <script>
+  (() => {
+    const ghost = document.querySelector('.ghost-toggle');
+    if (!ghost) return;
+    if (localStorage.getItem('dark') === '1') document.body.classList.add('dark');
+    ghost.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0');
+    });
+  })();
+  (() => {
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.site-nav');
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        toggle.classList.toggle('active');
+        nav.classList.toggle('open');
+      });
+    }
+  })();
+  </script>
 </body>
 </html>
