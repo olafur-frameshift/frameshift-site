@@ -1157,7 +1157,7 @@ body.dark .ghost-toggle img {
 
 body.dark .hero-visual img {
   filter: brightness(0) invert(1);
-  opacity: 0.12;
+  opacity: 0.2;
 }
 
 body.dark .btn--primary {
