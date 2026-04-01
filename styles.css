@@ -1155,6 +1155,10 @@ body.dark .ghost-toggle img {
   filter: invert(1);
 }
 
+body.dark .error-logo {
+  filter: brightness(0) invert(1) !important;
+}
+
 body.dark .hero-visual img {
   filter: brightness(0) invert(1);
   opacity: 0.2;
