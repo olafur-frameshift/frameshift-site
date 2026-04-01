@@ -1148,7 +1148,7 @@ body.dark .site-header.scrolled {
 }
 
 body.dark .site-logo img {
-  filter: hue-rotate(280deg) saturate(3) brightness(3);
+  filter: brightness(0) invert(1);
 }
 
 body.dark .ghost-toggle img {
