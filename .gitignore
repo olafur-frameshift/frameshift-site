@@ -1,0 +1,21 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Environment / secrets
+.env
+.env.*
+credentials.json
+
+# Claude Code
+.claude/
+
+# Node (in case of future tooling)
+node_modules/
