@@ -1052,7 +1052,12 @@ img { display: block; max-width: 100%; }
 
 /* Small tablet / large phone — hamburger kicks in */
 @media (max-width: 600px) {
-  .nav-toggle { display: block; }
+  .site-header .container {
+    position: relative;
+  }
+  .nav-toggle { display: block; order: -1; }
+  .site-logo { order: 0; margin: 0 auto; }
+  .ghost-toggle { order: 1; margin-left: 0; }
 
   .site-nav {
     display: none;
