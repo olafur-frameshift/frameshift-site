@@ -19,3 +19,8 @@ credentials.json
 
 # Node (in case of future tooling)
 node_modules/
+
+# Prototype staging / local archives
+/site/
+/site.zip
+/site.rar
