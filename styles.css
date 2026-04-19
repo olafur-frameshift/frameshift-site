@@ -77,6 +77,9 @@
   --bg:         #faf6f3;
   --tint:       #f3ede8;
   --surface:    #ffffff;
+  /* Hero particle canvas reads these (see hero-variants.js readInk/readBg). */
+  --hero-ink:   var(--ink);
+  --hero-bg:    var(--bg);
   --border:     rgba(0, 0, 0, 0.08);
 
   /* Shadow */
@@ -282,6 +285,37 @@ img { display: block; max-width: 100%; }
 }
 
 .hero-visual img { width: 100%; }
+
+/* When the animated canvas is mounted, expand .hero-visual to fill the hero
+   and drop the fallback opacity tint (the canvas sets its own alpha per
+   particle). Uses :has() — modern-browser only; older browsers see the
+   pinned-right fallback with the static illustration. */
+.hero-visual:has(#hero-anim) {
+  inset: 0;
+  right: 0;
+  top: 0;
+  left: 0;
+  transform: none;
+  width: auto;
+  opacity: 1;
+}
+
+.hero-anim {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero-anim__stage {
+  position: relative;
+  width: 100%;
+  max-width: 1600px;
+  aspect-ratio: 2 / 1;
+  max-height: 100%;
+}
 
 .hero-title {
   font-size: clamp(2rem, 5vw, 3.75rem);
@@ -1048,6 +1082,7 @@ img { display: block; max-width: 100%; }
   .site-nav { gap: var(--space-4); }
   .site-nav a { font-size: 0.85rem; }
   .hero-visual { opacity: 0.09; }
+  .hero-visual:has(#hero-anim) { opacity: 0.35; }
 }
 
 /* Small tablet / large phone — hamburger kicks in */
@@ -1148,6 +1183,10 @@ body.dark {
   --tint:       #252527;
   --surface:    #2c2c2e;
   --border:     rgba(255, 255, 255, 0.1);
+  /* Custom properties don't re-resolve var() references through inheritance,
+     so --hero-ink/--hero-bg must be re-declared here to pick up dark mode. */
+  --hero-ink:   #e8e4e0;
+  --hero-bg:    #1c1c1e;
 
   --shadow-xs: 0 1px 2px rgba(0,0,0,0.2);
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.25), 0 1px 2px rgba(0,0,0,0.15);
