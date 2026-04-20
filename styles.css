@@ -128,7 +128,7 @@ img { display: block; max-width: 100%; }
 
 /* ── Layout ──────────────────────────────────────────────────── */
 .container {
-  max-width: 960px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 var(--space-6);
 }
@@ -298,6 +298,12 @@ img { display: block; max-width: 100%; }
   transform: none;
   width: auto;
   opacity: 1;
+}
+
+/* Hide the static fallback as soon as CSS paints, so there's no flash
+   while the canvas mounts. No-:has() / no-JS browsers keep the fallback. */
+.hero-visual:has(#hero-anim) > img {
+  display: none;
 }
 
 .hero-anim {
@@ -1122,7 +1128,19 @@ img { display: block; max-width: 100%; }
   .contact-steps { flex-direction: column; align-items: flex-start; }
   .contact-arrow { display: none; }
   .team-card { flex-direction: column; gap: var(--space-4); }
-  .hero-visual { display: none; }
+  /* On mobile, the canvas doesn't mount — show the static illustration
+     pinned behind the text instead. */
+  .hero-visual:has(#hero-anim) {
+    inset: auto;
+    right: -5%;
+    top: 50%;
+    left: auto;
+    transform: translateY(-50%);
+    width: clamp(220px, 70vw, 420px);
+    opacity: 0.08;
+  }
+  .hero-visual:has(#hero-anim) > img { display: block; }
+  #hero-anim { display: none; }
   .filter-bar { flex-direction: column; align-items: flex-start; }
   .section-header-row { flex-direction: column; }
   .btn--see-all { margin-top: 0; }
