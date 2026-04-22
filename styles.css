@@ -110,7 +110,7 @@
 }
 
 /* ── Reset ───────────────────────────────────────────────────── */
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; font-size: 112.5%; /* 16px → 18px base; rem-based sizing scales up */ }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
