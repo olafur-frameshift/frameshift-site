@@ -27,3 +27,6 @@ node_modules/
 
 # Internal review documents (do not publish)
 review/
+
+# Agent orientation notes (private, do not publish)
+AGENT_NOTES.md
