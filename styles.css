@@ -812,6 +812,15 @@ img { display: block; max-width: 100%; }
   color: var(--muted);
 }
 
+.research-role {
+  margin-left: auto;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
 .research-title {
   font-size: 1.05rem;
   font-weight: 700;
