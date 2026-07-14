@@ -224,6 +224,15 @@ img { display: block; max-width: 100%; }
 
 .btn--full { width: 100%; }
 
+.nav-cta {
+  font-size: 0.875rem;
+  padding: 0.5rem 1rem;
+  flex-shrink: 0;
+}
+
+/* Mobile-only CTA shown inside the hamburger dropdown */
+.nav-mobile-cta { display: none; }
+
 /* ── Eyebrow ─────────────────────────────────────────────────── */
 .eyebrow {
   font-size: 0.78rem;
@@ -611,6 +620,55 @@ img { display: block; max-width: 100%; }
   padding: var(--space-8) 0;
 }
 
+/* Author bio at the end of an article */
+.post-author-bio {
+  display: flex;
+  gap: var(--space-4);
+  align-items: flex-start;
+  margin-top: var(--space-8);
+  padding: var(--space-6);
+  background: var(--tint);
+  border-radius: var(--radius);
+}
+
+.post-author-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.post-author-name {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.post-author-role {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--accent);
+  margin-bottom: var(--space-2);
+}
+
+.post-author-desc {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: var(--space-2);
+}
+
+.post-author-links {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.post-author-links a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--accent);
+}
+
 /* ── Team LinkedIn ───────────────────────────────────────────── */
 .team-linkedin {
   display: inline-block;
@@ -744,44 +802,19 @@ img { display: block; max-width: 100%; }
 .footer-links a:hover { color: var(--accent); text-decoration: none; }
 
 /* ── Research ────────────────────────────────────────────────── */
-.research-scroll-outer {
-  position: relative;
-}
-
-
-.research-scroll-wrap {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding: 0.5rem 0 var(--space-4);
-  cursor: grab;
-}
-
-.research-scroll-wrap::-webkit-scrollbar { display: none; }
-
-.research-track {
-  display: flex;
+.research-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: var(--space-4);
-  padding: 0.5rem var(--space-6);
-  width: max-content;
-  max-width: 100%;
-}
-
-/* Align left edge with .container */
-@media (min-width: 601px) {
-  .research-track {
-    padding-left: max(var(--space-6), calc((100vw - 960px) / 2 + var(--space-6)));
-    padding-right: max(var(--space-6), calc((100vw - 960px) / 2 + var(--space-6)));
-  }
+  margin-top: var(--space-8);
 }
 
 .research-card {
   background: var(--surface);
   border-radius: var(--radius);
+  border-top: 3px solid var(--accent);
   padding: var(--space-8);
   box-shadow: var(--shadow-sm);
-  flex-shrink: 0;
-  width: 460px;
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
@@ -795,8 +828,14 @@ img { display: block; max-width: 100%; }
 
 .research-meta {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: var(--space-3);
+}
+
+.research-venue {
+  flex: 1;
+  min-width: 0;
+  line-height: 1.5;
 }
 
 .research-journal {
@@ -810,15 +849,138 @@ img { display: block; max-width: 100%; }
 .research-year {
   font-size: 0.78rem;
   color: var(--muted);
+  white-space: nowrap;
+}
+
+.research-year::before {
+  content: "·";
+  margin: 0 0.35em;
+  color: var(--muted);
 }
 
 .research-role {
-  margin-left: auto;
-  font-size: 0.7rem;
-  font-weight: 600;
+  flex-shrink: 0;
+  font-size: 0.66rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
+  padding: 0.2rem 0.62rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--surface);
+  white-space: nowrap;
+}
+
+/* Client-engagement cards: faint-green "featured" treatment.
+   color-mix keeps the tint reading as highlighted (not recessed) in dark mode;
+   accent-dim is the fallback for browsers without color-mix. */
+.research-card--engagement {
+  background: var(--accent-dim);
+  background: color-mix(in srgb, var(--accent) 12%, var(--surface));
+  box-shadow: var(--shadow-md);
+}
+
+/* Give the "Client engagement" badge its own row above the journal name,
+   so a wide badge never squeezes the venue into ragged multi-line wraps. */
+.research-card--engagement .research-meta {
+  flex-wrap: wrap;
+  row-gap: var(--space-2);
+}
+
+.research-card--engagement .research-role {
+  order: -1;
+}
+
+.research-card--engagement .research-venue {
+  flex-basis: 100%;
+}
+
+/* ── Works archive page ─────────────────────────────────────── */
+.works-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin: var(--space-6) 0;
+}
+
+.works-count {
+  font-size: 0.9rem;
+  font-weight: 600;
   color: var(--muted);
+}
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr));
+  gap: var(--space-4);
+}
+
+a.research-card {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* "+N more" tile that closes the homepage grid */
+.research-card--more {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: var(--space-2);
+  text-decoration: none;
+  background: var(--accent-dim);
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface));
+}
+
+.more-count {
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--accent);
+}
+
+.more-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+}
+
+.works-tools {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.works-filter {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.works-filter-btn {
+  font-family: var(--font);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.35rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.works-filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.works-filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--surface);
 }
 
 .research-title {
@@ -911,7 +1073,13 @@ img { display: block; max-width: 100%; }
   letter-spacing: 0.01em;
 }
 
+.label-optional {
+  font-weight: 400;
+  color: var(--muted);
+}
+
 .form-group input,
+.form-group select,
 .form-group textarea {
   font-family: var(--font);
   font-size: 1rem;
@@ -929,6 +1097,7 @@ img { display: block; max-width: 100%; }
 .form-group textarea::placeholder { color: #bbb; }
 
 .form-group input:focus,
+.form-group select:focus,
 .form-group textarea:focus {
   outline: none;
   border-color: var(--accent);
@@ -1136,6 +1305,19 @@ img { display: block; max-width: 100%; }
 
   .site-nav.open { display: flex; }
 
+  .nav-cta { display: none; }
+
+  .site-nav a.nav-mobile-cta {
+    display: block;
+    margin-top: var(--space-2);
+    padding: var(--space-3) var(--space-4);
+    background: var(--accent);
+    color: #fff;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    font-weight: 600;
+  }
+
   .site-nav a {
     font-size: 1rem;
     padding: var(--space-2) 0;
@@ -1172,7 +1354,6 @@ img { display: block; max-width: 100%; }
   .site-logo img { height: 24px; }
   .hero-actions { flex-direction: column; }
   .hero-actions .btn { width: 100%; justify-content: center; }
-  .research-card { width: 85vw; }
   .post-card { padding: var(--space-6); }
 }
 

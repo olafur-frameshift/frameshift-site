@@ -85,11 +85,13 @@
     <nav class="site-nav">
       <a href="#home">Home</a>
       <a href="#about">About</a>
-      <a href="#posts">Posts</a>
+      <a href="#posts">Insights</a>
       <a href="#research">Research</a>
       <a href="#services">Services</a>
       <a href="#contact">Contact</a>
+      <a class="nav-mobile-cta" href="#contact">Discuss a study</a>
     </nav>
+    <a href="#contact" class="btn btn--primary nav-cta">Discuss a study</a>
     <button class="ghost-toggle" aria-label="Toggle dark mode">
       <img src="ghost.webp" alt="">
     </button>
@@ -101,8 +103,8 @@
   <div class="hero-visual" aria-hidden="true">
     <!-- Animated particle canvas mounts here when JS + wide-enough viewport. -->
     <div id="hero-anim" class="hero-anim"></div>
-    <!-- Fallback for no-JS / mobile. Hidden by hero-mount.js when canvas mounts. -->
-    <img src="hero-illustration.webp" alt="" loading="lazy">
+    <!-- Fallback for no-JS / mobile: a static bell curve echoing the animation. Hidden by hero-mount.js when canvas mounts. -->
+    <img src="hero-bell.png" alt="" loading="lazy">
   </div>
   <div class="container hero-layout">
     <div class="hero-content">
@@ -178,6 +180,126 @@
   </div>
 </section>
 
+<!-- RESEARCH -->
+<section id="research" class="section section--tinted">
+  <div class="container">
+    <p class="eyebrow">Track record</p>
+    <div class="section-header-row">
+      <div>
+        <h2 class="section-title">Selected work.</h2>
+        <p class="section-lead">Peer-reviewed research from our team, and client engagements where we led the statistics.</p>
+      </div>
+      <a href="selected-work.html" class="btn btn--ghost btn--see-all">See all →</a>
+    </div>
+
+    <div class="research-grid">
+        <div class="research-card research-card--engagement reveal">
+          <div class="research-meta">
+            <div class="research-venue"><span class="research-journal">NEJM Evidence</span><span class="research-year">2024</span></div>
+            <span class="research-role">Client engagement</span>
+          </div>
+          <h3 class="research-title">Intact Fish Skin Graft to Treat Deep Diabetic Foot Ulcers</h3>
+          <p class="research-summary">Randomised trial across 255 patients testing fish skin grafts against standard care for deep diabetic foot ulcers. Fish skin achieved wound closure in 44% versus 26% at 16 weeks.</p>
+          <a class="research-link" href="https://doi.org/10.1056/EVIDoa2400171" target="_blank" rel="noopener">View Article →</a>
+        </div>
+        <div class="research-card reveal reveal-d1">
+          <div class="research-meta">
+            <div class="research-venue"><span class="research-journal">npj Aging</span><span class="research-year">2026</span></div>
+          </div>
+          <h3 class="research-title">Disentangling shifting demographic and treatment effects on years of life lost to cancer in Denmark</h3>
+          <p class="research-summary">Nationwide decomposition separating demographic change from treatment progress in years of life lost to cancer across Denmark.</p>
+          <a class="research-link" href="https://doi.org/10.1038/s41514-026-00420-7" target="_blank" rel="noopener">View Article →</a>
+        </div>
+        <div class="research-card reveal reveal-d2">
+          <div class="research-meta">
+            <div class="research-venue"><span class="research-journal">Nature Genetics</span><span class="research-year">2019</span></div>
+          </div>
+          <h3 class="research-title">A loss-of-function variant in ALOX15 protects against nasal polyps and chronic rhinosinusitis</h3>
+          <p class="research-summary">Genome-wide analysis identifying a protective ALOX15 loss-of-function variant, implicating the pathway in nasal polyps and chronic rhinosinusitis.</p>
+          <a class="research-link" href="https://doi.org/10.1038/s41588-018-0314-6" target="_blank" rel="noopener">View Article →</a>
+        </div>
+        <div class="research-card reveal reveal-d3">
+          <div class="research-meta">
+            <div class="research-venue"><span class="research-journal">The Lancet Obstetrics, Gynaecology, &amp; Women's Health</span><span class="research-year">2026</span></div>
+          </div>
+          <h3 class="research-title">Epidemiological and genetic evidence for shared mechanisms between migraine and pre-eclampsia</h3>
+          <p class="research-summary">Nationwide Danish cohort and genetic risk score study finding shared aetiological pathways between migraine and pre-eclampsia, with implications for cardiovascular risk stratification.</p>
+          <a class="research-link" href="https://doi.org/10.1016/S3050-5038(25)00114-1" target="_blank" rel="noopener">View Article →</a>
+        </div>
+        <div class="research-card reveal reveal-d1">
+          <div class="research-meta">
+            <div class="research-venue"><span class="research-journal">HemaSphere</span><span class="research-year">2026</span></div>
+          </div>
+          <h3 class="research-title">Machine learning enhances risk stratification and treatment failure prediction in diffuse large B-cell lymphoma</h3>
+          <p class="research-summary">Machine-learning models that sharpen risk stratification and predict treatment failure in diffuse large B-cell lymphoma from routine clinical data.</p>
+          <a class="research-link" href="https://doi.org/10.1002/hem3.70336" target="_blank" rel="noopener">View Article →</a>
+        </div>
+        <div class="research-card research-card--engagement reveal reveal-d2">
+          <div class="research-meta">
+            <div class="research-venue"><span class="research-journal">Wound Repair and Regeneration</span><span class="research-year">2020</span></div>
+            <span class="research-role">Client engagement</span>
+          </div>
+          <h3 class="research-title">Fish skin grafts compared to human amnion/chorion membrane allografts: A double-blind, prospective, randomized clinical trial of acute wound healing</h3>
+          <p class="research-summary">Double-blind randomised trial comparing intact fish skin grafts with human amnion/chorion allografts for healing of acute full-thickness wounds.</p>
+          <a class="research-link" href="https://doi.org/10.1111/wrr.12761" target="_blank" rel="noopener">View Article →</a>
+        </div>
+        <div class="research-card reveal reveal-d3">
+          <div class="research-meta">
+            <div class="research-venue"><span class="research-journal">Nature Communications</span><span class="research-year">2016</span></div>
+          </div>
+          <h3 class="research-title">Common and rare variants associating with serum levels of creatine kinase and lactate dehydrogenase</h3>
+          <p class="research-summary">Sequence-variant analysis identifying common and rare genetic determinants of serum creatine kinase and lactate dehydrogenase.</p>
+          <a class="research-link" href="https://doi.org/10.1038/ncomms10572" target="_blank" rel="noopener">View Article →</a>
+        </div>
+        <a class="research-card research-card--more reveal reveal-d1" href="selected-work.html">
+          <span class="more-count">+48</span>
+          <span class="more-label">more studies &rarr;</span>
+        </a>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <div class="container">
+    <p class="eyebrow">What we deliver</p>
+    <h2 class="section-title">Concrete outputs<br>for your research.</h2>
+    <p class="section-lead">Deliverables for biotech teams and research groups, across the full analytical lifecycle.</p>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-num">01</span>
+        <h3>Statistical Analysis Plans</h3>
+        <p>Pre-specified SAPs for clinical trials and observational studies, including endpoint definitions, multiplicity strategies, and regulatory-ready documentation.</p>
+      </div>
+      <div class="service-card reveal reveal-d1">
+        <span class="service-num">02</span>
+        <h3>Clinical Trial Biostatistics</h3>
+        <p>Primary, secondary, and exploratory analyses for Phase I–IV trials. Clinical study reports and tables, listings, figures (TLFs).</p>
+      </div>
+      <div class="service-card reveal reveal-d2">
+        <span class="service-num">03</span>
+        <h3>Registry & Population Studies</h3>
+        <p>Study design, cohort definition, and analysis using Danish national registers and Nordic administrative data at population scale.</p>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-num">04</span>
+        <h3>Real-World Evidence</h3>
+        <p>Comparative effectiveness, treatment utilisation, and health outcomes studies using claims, registry, or EHR data.</p>
+      </div>
+      <div class="service-card reveal reveal-d1">
+        <span class="service-num">05</span>
+        <h3>Scientific Writing & Figures</h3>
+        <p>Publication-quality figures, statistical methods sections, results interpretation, and manuscript support for peer-reviewed journals.</p>
+      </div>
+      <div class="service-card reveal reveal-d2">
+        <span class="service-num">06</span>
+        <h3>Embedded Methods Partner</h3>
+        <p>Ongoing senior biostatistical support integrated into your team, from early-phase scoping through final deliverables.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- POSTS -->
 <section id="posts" class="section">
   <div class="container">
@@ -240,162 +362,6 @@
   </div>
 </section>
 
-<!-- RESEARCH -->
-<section id="research" class="section section--tinted">
-  <div class="container">
-    <p class="eyebrow">Track record</p>
-    <h2 class="section-title">Selected work.</h2>
-    <p class="section-lead">Peer-reviewed studies our team has led as first authors, and clinical trials we have supported as statistical lead.</p>
-  </div>
-  <div class="research-scroll-outer">
-    <div class="research-scroll-wrap">
-      <div class="research-track">
-        <div class="research-card reveal">
-          <div class="research-meta">
-            <span class="research-journal">NEJM Evidence</span>
-            <span class="research-year">2024</span>
-            <span class="research-role">Statistical lead</span>
-          </div>
-          <h3 class="research-title">Intact Fish Skin Graft to Treat Deep Diabetic Foot Ulcers</h3>
-          <p class="research-summary">Randomised trial across 255 patients testing fish skin grafts against standard care for deep diabetic foot ulcers. Fish skin achieved wound closure in 44% versus 26% at 16 weeks.</p>
-          <a class="research-link" href="https://doi.org/10.1056/EVIDoa2400171" target="_blank" rel="noopener">View Article →</a>
-        </div>
-        <div class="research-card reveal reveal-d1">
-          <div class="research-meta">
-            <span class="research-journal">npj Aging</span>
-            <span class="research-year">2026</span>
-            <span class="research-role">First author</span>
-          </div>
-          <h3 class="research-title">Disentangling Shifting Demographic and Treatment Effects on Years of Life Lost to Cancer in Denmark</h3>
-          <p class="research-summary">Nationwide decomposition separating demographic change from treatment progress in years of life lost to cancer across Denmark.</p>
-          <a class="research-link" href="https://doi.org/10.1038/s41514-026-00420-7" target="_blank" rel="noopener">View Article →</a>
-        </div>
-        <div class="research-card reveal reveal-d2">
-          <div class="research-meta">
-            <span class="research-journal">Nature Genetics</span>
-            <span class="research-year">2019</span>
-            <span class="research-role">First author</span>
-          </div>
-          <h3 class="research-title">A Loss-of-Function Variant in ALOX15 Protects Against Nasal Polyps and Chronic Rhinosinusitis</h3>
-          <p class="research-summary">Genome-wide analysis identifying a protective ALOX15 loss-of-function variant, implicating the pathway in nasal polyps and chronic rhinosinusitis.</p>
-          <a class="research-link" href="https://doi.org/10.1038/s41588-018-0314-6" target="_blank" rel="noopener">View Article →</a>
-        </div>
-        <div class="research-card reveal reveal-d3">
-          <div class="research-meta">
-            <span class="research-journal">The Lancet Obstetrics, Gynaecology, &amp; Women's Health</span>
-            <span class="research-year">2026</span>
-            <span class="research-role">First author</span>
-          </div>
-          <h3 class="research-title">Epidemiological and Genetic Evidence for Shared Mechanisms Between Migraine and Pre-eclampsia</h3>
-          <p class="research-summary">Nationwide Danish cohort and genetic risk score study finding shared aetiological pathways between migraine and pre-eclampsia, with implications for cardiovascular risk stratification.</p>
-          <a class="research-link" href="https://doi.org/10.1016/S3050-5038(25)00114-1" target="_blank" rel="noopener">View Article →</a>
-        </div>
-        <div class="research-card reveal reveal-d1">
-          <div class="research-meta">
-            <span class="research-journal">HemaSphere</span>
-            <span class="research-year">2026</span>
-            <span class="research-role">First author</span>
-          </div>
-          <h3 class="research-title">Machine Learning Enhances Risk Stratification and Treatment-Failure Prediction in Diffuse Large B-cell Lymphoma</h3>
-          <p class="research-summary">Machine-learning models that sharpen risk stratification and predict treatment failure in diffuse large B-cell lymphoma from routine clinical data.</p>
-          <a class="research-link" href="https://doi.org/10.1002/hem3.70336" target="_blank" rel="noopener">View Article →</a>
-        </div>
-        <div class="research-card reveal reveal-d2">
-          <div class="research-meta">
-            <span class="research-journal">Wound Repair and Regeneration</span>
-            <span class="research-year">2020</span>
-            <span class="research-role">Statistical lead</span>
-          </div>
-          <h3 class="research-title">Fish Skin Grafts Compared to Human Amnion/Chorion Membrane Allografts: A Double-Blind, Prospective, Randomized Clinical Trial of Acute Wound Healing</h3>
-          <p class="research-summary">Double-blind randomised trial comparing intact fish skin grafts with human amnion/chorion allografts for healing of acute full-thickness wounds.</p>
-          <a class="research-link" href="https://doi.org/10.1111/wrr.12761" target="_blank" rel="noopener">View Article →</a>
-        </div>
-        <div class="research-card reveal reveal-d3">
-          <div class="research-meta">
-            <span class="research-journal">Nature Communications</span>
-            <span class="research-year">2016</span>
-            <span class="research-role">First author</span>
-          </div>
-          <h3 class="research-title">Common and Rare Variants Associating with Serum Levels of Creatine Kinase and Lactate Dehydrogenase</h3>
-          <p class="research-summary">Sequence-variant analysis identifying common and rare genetic determinants of serum creatine kinase and lactate dehydrogenase.</p>
-          <a class="research-link" href="https://doi.org/10.1038/ncomms10572" target="_blank" rel="noopener">View Article →</a>
-        </div>
-        <div class="research-card reveal reveal-d1">
-          <div class="research-meta">
-            <span class="research-journal">Cephalalgia</span>
-            <span class="research-year">2021</span>
-            <span class="research-role">First author</span>
-          </div>
-          <h3 class="research-title">Twenty-Five Years of Triptans — A Nationwide Population Study</h3>
-          <p class="research-summary">A twenty-five-year nationwide study of triptan use in Denmark, characterising uptake, prescribing, and long-term treatment trends.</p>
-          <a class="research-link" href="https://doi.org/10.1177/0333102421991809" target="_blank" rel="noopener">View Article →</a>
-        </div>
-        <div class="research-card reveal reveal-d2">
-          <div class="research-meta">
-            <span class="research-journal">Scientific Reports</span>
-            <span class="research-year">2025</span>
-            <span class="research-role">First author</span>
-          </div>
-          <h3 class="research-title">Associations Between Past Infectious Mononucleosis Diagnosis and 47 Inflammatory and Vascular Stress Biomarkers</h3>
-          <p class="research-summary">Registry-based study linking a prior infectious mononucleosis diagnosis to a panel of inflammatory and vascular stress biomarkers.</p>
-          <a class="research-link" href="https://doi.org/10.1038/s41598-025-95276-4" target="_blank" rel="noopener">View Article →</a>
-        </div>
-        <div class="research-card reveal reveal-d3">
-          <div class="research-meta">
-            <span class="research-journal">Transfusion</span>
-            <span class="research-year">2024</span>
-            <span class="research-role">First author</span>
-          </div>
-          <h3 class="research-title">Blood Donation and Migraine Relief: A National Population Cohort Study</h3>
-          <p class="research-summary">National population cohort study assessing whether blood donation is associated with relief from migraine.</p>
-          <a class="research-link" href="https://doi.org/10.1111/trf.17770" target="_blank" rel="noopener">View Article →</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services" class="section">
-  <div class="container">
-    <p class="eyebrow">What we deliver</p>
-    <h2 class="section-title">Concrete outputs<br>for your research.</h2>
-    <p class="section-lead">Deliverables for biotech teams and research groups, across the full analytical lifecycle.</p>
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <span class="service-num">01</span>
-        <h3>Statistical Analysis Plans</h3>
-        <p>Pre-specified SAPs for clinical trials and observational studies, including endpoint definitions, multiplicity strategies, and regulatory-ready documentation.</p>
-      </div>
-      <div class="service-card reveal reveal-d1">
-        <span class="service-num">02</span>
-        <h3>Clinical Trial Biostatistics</h3>
-        <p>Primary, secondary, and exploratory analyses for Phase I–IV trials. Clinical study reports and tables, listings, figures (TLFs).</p>
-      </div>
-      <div class="service-card reveal reveal-d2">
-        <span class="service-num">03</span>
-        <h3>Registry & Population Studies</h3>
-        <p>Study design, cohort definition, and analysis using Danish national registers and Nordic administrative data at population scale.</p>
-      </div>
-      <div class="service-card reveal">
-        <span class="service-num">04</span>
-        <h3>Real-World Evidence</h3>
-        <p>Comparative effectiveness, treatment utilisation, and health outcomes studies using claims, registry, or EHR data.</p>
-      </div>
-      <div class="service-card reveal reveal-d1">
-        <span class="service-num">05</span>
-        <h3>Scientific Writing & Figures</h3>
-        <p>Publication-quality figures, statistical methods sections, results interpretation, and manuscript support for peer-reviewed journals.</p>
-      </div>
-      <div class="service-card reveal reveal-d2">
-        <span class="service-num">06</span>
-        <h3>Embedded Methods Partner</h3>
-        <p>Ongoing senior biostatistical support integrated into your team, from early-phase scoping through final deliverables.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- CONTACT -->
 <section id="contact" class="section section--tinted">
   <div class="container container--narrow">
@@ -419,15 +385,49 @@
           <input type="text" id="name" name="name" placeholder="Your name" required>
         </div>
         <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" id="email" name="_replyto" placeholder="your@email.com" required>
+          <label for="email">Work email</label>
+          <input type="email" id="email" name="_replyto" placeholder="you@organisation.com" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="organisation">Organisation</label>
+          <input type="text" id="organisation" name="organisation" placeholder="Company, CRO, or institution">
+        </div>
+        <div class="form-group">
+          <label for="project-type">Project type</label>
+          <select id="project-type" name="project-type">
+            <option value="" selected disabled>Select…</option>
+            <option>Clinical trial</option>
+            <option>Registry / real-world evidence</option>
+            <option>Study design</option>
+            <option>Analysis &amp; reporting</option>
+            <option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="project-stage">Project stage</label>
+          <select id="project-stage" name="project-stage">
+            <option value="" selected disabled>Select…</option>
+            <option>Early / planning</option>
+            <option>Protocol or SAP in progress</option>
+            <option>Data collected, needs analysis</option>
+            <option>Manuscript / reporting</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="deadline">Target date <span class="label-optional">(optional)</span></label>
+          <input type="text" id="deadline" name="deadline" placeholder="e.g. Q3 2026, or a submission date">
         </div>
       </div>
       <div class="form-group">
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="5" placeholder="Describe your project or question…" required></textarea>
+        <label for="message">What do you need help with?</label>
+        <textarea id="message" name="message" rows="5" placeholder="Share the study stage, available data, deadline, and where the methodological uncertainty sits." required></textarea>
       </div>
-      <button type="submit" class="btn btn--primary btn--full">Send message</button>
+      <button type="submit" class="btn btn--primary btn--full">Send enquiry</button>
       <p style="font-size: 0.8rem; color: var(--muted); margin-top: var(--space-3); text-align: center; line-height: 1.5;">This form is processed by <a href="https://formspree.io" target="_blank" rel="noopener">Formspree</a>. Your name, email, and message are forwarded to us and stored by Formspree until deleted. Formspree does not sell or share your data. See our <a href="privacy.html">privacy policy</a>. Please do not include confidential or patient-level data in an initial enquiry.</p>
     </form>
   </div>
@@ -488,19 +488,19 @@
   onScroll();
 })();
 
-/* ─── Original: horizontal scroll on research track ─── */
+/* ─── Auto-derive the "+N more" count from the Works page (its card count is the source of truth) ─── */
 (() => {
-  const wrap = document.querySelector('.research-scroll-wrap');
-  if (!wrap) return;
-  wrap.addEventListener('wheel', (e) => {
-    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-      e.preventDefault();
-      wrap.scrollBy({ left: e.deltaY * 1.2, behavior: 'smooth' });
-    }
-  }, { passive: false });
+  const el = document.querySelector('.research-card--more .more-count');
+  if (!el) return;
+  const SHOWN = 7;
+  fetch('selected-work.html').then(r => r.text()).then(html => {
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+    const total = doc.querySelectorAll('.works-grid .research-card').length;
+    if (total > SHOWN) el.textContent = '+' + (total - SHOWN);
+  }).catch(() => {});
 })();
 
-/* ─── NEW: scroll-reveal via IntersectionObserver ─── */
+/* ─── scroll-reveal via IntersectionObserver ─── */
 (() => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
