@@ -71,7 +71,7 @@
   /* Colour */
   --ink:        #0d0d0d;
   --ink-2:      #3a3a3a;
-  --muted:      #6e6e73;
+  --muted:      #5f5f64;
   --accent:     #1a6b3c;
   --accent-dim: #e6f2ec;
   --bg:         #faf6f3;
@@ -585,9 +585,8 @@ img { display: block; max-width: 100%; }
 }
 
 .filter-select:focus {
-  outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(26, 107, 60, 0.12);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 45%, transparent);
 }
 
 .filter-sort-btn {
@@ -763,6 +762,15 @@ img { display: block; max-width: 100%; }
   font-size: 1rem;
   font-weight: 600;
   color: var(--accent);
+}
+
+/* Visible keyboard focus. Nothing may suppress the outline without
+   supplying a replacement that clears 3:1 against its background.
+   :focus-visible keeps it off mouse clicks. */
+:where(a, button, input, select, textarea, summary):focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
 
 /* ── Footer ──────────────────────────────────────────────────── */
@@ -1147,9 +1155,8 @@ a.research-card {
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(26, 107, 60, 0.12);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 45%, transparent);
 }
 
 /* ── Footer ──────────────────────────────────────────────────── */
@@ -1704,7 +1711,7 @@ a.research-card {
 body.dark {
   --ink:        #e8e4e0;
   --ink-2:      #c5c0ba;
-  --muted:      #9a9590;
+  --muted:      #a8a39e;
   --accent:     #3dba73;
   --accent-dim: #1a2e23;
   --bg:         #1c1c1e;
@@ -1747,7 +1754,9 @@ body.dark .hero-visual img {
   opacity: 0.2;
 }
 
-body.dark .btn--primary {
+body.dark .btn--primary,
+body.dark .site-nav a.nav-mobile-cta,
+body.dark .tag-filter-btn.active {
   background: var(--accent);
   color: #111;
 }

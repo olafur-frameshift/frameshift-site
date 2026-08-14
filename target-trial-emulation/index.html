@@ -127,8 +127,8 @@
             </tr>
             <tr>
               <th scope="row" class="spec-component">Assignment</th>
-              <td>Randomised, so the arms are unconditionally exchangeable.</td>
-              <td>Not randomised. Conditional exchangeability targeted on measured baseline covariates, and named as an assumption.</td>
+              <td>Randomised, so the arms are exchangeable by design.</td>
+              <td>Not randomised. Conditional exchangeability targeted on measured covariates, sequentially on covariate history where treatment and confounders vary over time, and named as an assumption.</td>
             </tr>
             <tr>
               <th scope="row" class="spec-component">Time zero</th>
@@ -173,13 +173,13 @@
           <span class="service-num">01</span>
           <h3>Active-comparator, new-user design</h3>
           <p class="service-lead">The default starting point.</p>
-          <p>Restricting to initiators of a clinically plausible comparator removes prevalent-user selection and substantially reduces confounding by indication, because both arms face the same treatment decision at the same point in the disease course.</p>
+          <p>A new-user restriction removes prevalent-user bias, the depletion of susceptibles that arises when a comparison conditions on having already tolerated treatment. Choosing an active comparator that shares the indication reduces confounding by indication, to the extent that both arms genuinely sit at the same decision point. That equipoise is an argument to be made per question, not a property of the design, and it does not address channelling by severity within the indication.</p>
         </div>
         <div class="service-card">
           <span class="service-num">02</span>
           <h3>Time-zero alignment and cloning</h3>
           <p class="service-lead">For strategies not assignable at baseline.</p>
-          <p>Where a strategy is defined by what happens after time zero, cloning preserves assignment at a common time zero. Clones are censored when their observed treatment history becomes incompatible with the assigned strategy, and inverse-probability-of-censoring weighting is used to address the resulting informative censoring.</p>
+          <p>Where a strategy is defined by what happens after time zero, cloning preserves assignment at a common time zero. Clones are censored when their observed treatment history departs from the assigned strategy. That censoring is non-random with respect to prognosis, so inverse-probability-of-censoring weights are fitted on the time-varying covariates that predict it. Because cloning duplicates individuals, confidence intervals are obtained by bootstrapping over persons.</p>
         </div>
         <div class="service-card">
           <span class="service-num">03</span>
@@ -262,9 +262,9 @@
       <p class="eyebrow">Scope and limits</p>
       <h2 class="section-title">Assumptions, stated.</h2>
       <div class="tte-intro">
-        <p>Every effect estimate from observational data rests on three identifying assumptions: conditional exchangeability given the measured covariates, positivity across the strategies compared, and consistency in how treatment is defined. Emulation makes these assumptions explicit and testable in places where a conventional analysis leaves them implicit, but it does not discharge them.</p>
+        <p>Every effect estimate from observational data rests on identifying assumptions: conditional exchangeability given the measured covariate history, positivity within every stratum of the covariates conditioned on, and consistency, which requires the treatment strategies to be sufficiently well defined. No interference between individuals is assumed alongside consistency. Emulation makes these assumptions explicit rather than implicit, and makes some of them checkable: positivity can be diagnosed directly in the data, and exchangeability can be probed indirectly with negative controls and quantified through bias analysis. Exchangeability and consistency cannot be tested. Emulation makes them visible; it does not discharge them.</p>
         <div class="callout-box">
-          <strong>Observational data remain observational.</strong> Emulating a trial does not reproduce randomisation and does not eliminate residual confounding by unmeasured factors. What it does is remove the design biases that are avoidable, so that what remains is a confounding problem you can reason about and bound.
+          <strong>Observational data remain observational.</strong> Emulating a trial does not reproduce randomisation and does not eliminate residual confounding by unmeasured factors. What it does is remove the design biases that are avoidable, so that what remains is a confounding problem you can reason about and quantify sensitivity to.
         </div>
         <p>We report the assumptions each estimate depends on, evaluate observable implications and diagnostics where possible, quantify sensitivity to unmeasured confounding, and say plainly when a question cannot be answered credibly in the registers available.</p>
       </div>

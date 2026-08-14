@@ -269,7 +269,7 @@
           <a class="research-link" href="https://doi.org/10.1002/hem3.70172" target="_blank" rel="noopener">View Article →</a>
         </div>
         <a class="research-card research-card--more reveal reveal-d1" href="selected-work.html">
-          <span class="more-count">+53</span>
+          <span class="more-count">+54</span>
           <span class="more-label">more studies &rarr;</span>
         </a>
     </div>
@@ -586,10 +586,26 @@
 </script>
 
 <!-- Animated hero canvas -->
-<script src="vendor/react.production.min.js"></script>
-<script src="vendor/react-dom.production.min.js"></script>
-<script defer src="hero-variants.js"></script>
-<script defer src="hero-mount.js"></script>
+<!-- Hero canvas bundle. hero-mount.js bails below 600px and the CSS hides
+     #hero-anim there, so phones were downloading ~65 KB gzipped of React plus
+     the variants for an animation that never mounts. Load it only where it
+     can actually run. Same breakpoint as hero-mount.js and the stylesheet. -->
+<script>
+  if (window.matchMedia('(min-width: 601px)').matches) {
+    ['vendor/react.production.min.js',
+     'vendor/react-dom.production.min.js',
+     'hero-variants.js',
+     'hero-mount.js'].forEach(function (src) {
+      var el = document.createElement('script');
+      el.src = src;
+      // Dynamically inserted scripts are async by default, which would let
+      // hero-variants.js run before React exists. async=false preserves
+      // insertion order while staying non-blocking.
+      el.async = false;
+      document.head.appendChild(el);
+    });
+  }
+</script>
 
 </body>
 </html>
