@@ -1574,8 +1574,20 @@ a.research-card {
   .hero-visual:has(#hero-anim) { opacity: 0.35; }
 }
 
-/* Small tablet / large phone: hamburger kicks in */
-@media (max-width: 600px) {
+/* Seven nav items plus the CTA is a wide bar. Two-word labels must never wrap
+   to a second line, and the gap tightens before the hamburger takes over. */
+.site-nav a { white-space: nowrap; }
+
+@media (max-width: 1180px) {
+  .site-nav { gap: var(--space-4); }
+  .site-nav a { font-size: 0.875rem; }
+  .nav-cta { font-size: 0.8125rem; padding: 0.45rem 0.85rem; }
+}
+
+/* Tablet and below: hamburger kicks in. Raised from 600px when the nav grew to
+   seven items; below about 1000px the full bar no longer fits beside the logo
+   and the CTA. */
+@media (max-width: 1000px) {
   .site-header .container {
     position: relative;
   }
@@ -1616,7 +1628,10 @@ a.research-card {
     font-size: 1rem;
     padding: var(--space-2) 0;
   }
+}
 
+/* Phone: header rules already handled by the 1000px block above. */
+@media (max-width: 600px) {
   .container { padding: 0 var(--space-4); }
   .container--narrow { padding: 0 var(--space-4); }
   .form-row { grid-template-columns: 1fr; }
