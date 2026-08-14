@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Frameshift applies the target trial framework to comparative-effectiveness questions in Danish and Nordic registry data: protocol components specified in full, time zero aligned, and confounding addressed with g-methods and inverse probability weighting.">
+  <title>Target Trial Emulation Using Nordic Registry Data | Frameshift</title>
+  <link rel="canonical" href="https://frameshift.dk/target-trial-emulation/">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <meta property="og:title" content="Target Trial Emulation Using Nordic Registry Data | Frameshift">
+  <meta property="og:description" content="Answer trial-like causal questions using longitudinal real-world data. Frameshift brings trial-level design discipline to Danish and Nordic registry studies.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://frameshift.dk/target-trial-emulation/">
+  <meta property="og:image" content="https://frameshift.dk/apple-touch-icon.png">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="site-logo">
+        <img src="../logo.svg" alt="Frameshift">
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav">
+        <a href="../index.html#home">Home</a>
+        <a href="../index.html#services">RWE</a>
+        <a href="../index.html#registry-data">Registry Data</a>
+        <a href="../index.html#research">Research</a>
+        <a href="../index.html#posts">Insights</a>
+        <a href="../index.html#about">About</a>
+        <a class="nav-mobile-cta" href="../index.html#contact">Discuss a study</a>
+      </nav>
+      <a href="../index.html#contact" class="btn btn--primary nav-cta">Discuss a study</a>
+      <button class="ghost-toggle" aria-label="Toggle dark mode">
+        <img src="../ghost.webp" alt="">
+      </button>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <section class="section">
+    <div class="container">
+      <a href="../index.html#services" class="back-link">&larr; Home</a>
+      <div class="tte-hero">
+        <div class="tte-hero-text">
+          <p class="eyebrow">Comparative effectiveness</p>
+          <h1 class="section-title">Target Trial Emulation</h1>
+          <p class="section-lead">Answer trial-like causal questions using longitudinal real-world data.</p>
+          <div class="tte-intro">
+            <p>Frameshift applies the target trial framework to comparative-effectiveness questions in Danish and Nordic registry data. The protocol of the hypothetical randomised trial is written in full before any analysis begins, and each component is then emulated in the observational data.</p>
+            <p>The discipline is in the sequence. Eligibility, treatment assignment and the start of follow-up are aligned at a single time zero, preventing immortal-time and related design biases. Where treatment initiation is the decision of interest, a new-user design avoids conditioning the comparison on prior treatment survival or tolerance. Where the available data cannot faithfully reproduce a component of the target trial, we state the departure explicitly and assess its likely impact, quantitatively where possible.</p>
+          </div>
+        </div>
+
+        <figure class="tte-figure">
+          <svg class="tte-diagram" viewBox="0 0 560 300" role="img" aria-labelledby="tzTitle tzDesc">
+            <title id="tzTitle">Time zero alignment in a target trial emulation</title>
+            <desc id="tzDesc">Two timelines. In the aligned design, eligibility, treatment assignment and the start of follow-up all occur at a single time zero. In the misaligned design, follow-up begins before treatment is assigned, creating a stretch of immortal time during which the outcome cannot occur.</desc>
+            <defs>
+              <marker id="tzArrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M0,0 L10,5 L0,10 z" class="tz-arrow-accent"/>
+              </marker>
+              <marker id="tzArrowMuted" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                <path d="M0,0 L10,5 L0,10 z" class="tz-arrow-muted"/>
+              </marker>
+            </defs>
+
+            <!-- Panel A: aligned -->
+            <text x="0" y="12" class="tz-panel">ALIGNED</text>
+            <text x="142" y="46" class="tz-label" text-anchor="end">Eligibility</text>
+            <text x="142" y="66" class="tz-label" text-anchor="end">Assignment</text>
+            <text x="142" y="86" class="tz-label" text-anchor="end">Follow-up start</text>
+            <line x1="150" y1="30" x2="150" y2="102" class="tz-mark"/>
+            <line x1="150" y1="102" x2="516" y2="102" class="tz-flow" marker-end="url(#tzArrow)"/>
+            <text x="150" y="124" class="tz-zero" text-anchor="middle">TIME ZERO</text>
+            <text x="300" y="92" class="tz-label">Follow-up</text>
+            <text x="520" y="92" class="tz-label" text-anchor="end">Outcome</text>
+
+            <!-- Panel B: misaligned -->
+            <text x="0" y="186" class="tz-panel tz-panel--warn">MISALIGNED</text>
+            <text x="110" y="216" class="tz-label" text-anchor="middle">Follow-up starts</text>
+            <text x="300" y="216" class="tz-label" text-anchor="middle">Treatment assigned</text>
+            <rect x="110" y="230" width="190" height="22" rx="3" class="tz-immortal"/>
+            <text x="205" y="245" class="tz-immortal-label" text-anchor="middle">IMMORTAL TIME</text>
+            <line x1="110" y1="224" x2="110" y2="266" class="tz-mark tz-mark--muted"/>
+            <line x1="300" y1="224" x2="300" y2="266" class="tz-mark tz-mark--muted"/>
+            <line x1="110" y1="266" x2="300" y2="266" class="tz-flow tz-flow--dashed"/>
+            <line x1="300" y1="266" x2="516" y2="266" class="tz-flow tz-flow--muted" marker-end="url(#tzArrowMuted)"/>
+            <text x="205" y="288" class="tz-note" text-anchor="middle">outcome cannot occur here by construction</text>
+          </svg>
+          <figcaption>Aligning eligibility, assignment and the start of follow-up at a single time zero removes immortal time by design. Starting follow-up before treatment is assigned guarantees a stretch of person-time in which the outcome cannot occur, biasing the treated arm towards survival.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROTOCOL TABLE -->
+  <section class="section section--tinted">
+    <div class="container">
+      <p class="eyebrow">Protocol</p>
+      <h2 class="section-title">Specify, then emulate.</h2>
+      <p class="section-lead">The seven target-trial protocol components, with time-zero alignment shown separately because it is critical to the emulation. Each is fixed for the hypothetical trial and mapped to what the registers can actually support.</p>
+      <div class="spec-table-wrap">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th scope="col">Component</th>
+              <th scope="col">Target trial</th>
+              <th scope="col">Emulation in registry data</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" class="spec-component">Eligibility</th>
+              <td>Assessed once, before assignment, on information available at baseline.</td>
+              <td>Applied using pre-baseline register history, with the lookback window stated and held constant across arms.</td>
+            </tr>
+            <tr>
+              <th scope="row" class="spec-component">Treatment strategies</th>
+              <td>The regimens compared, including duration, switching and adherence rules.</td>
+              <td>Reconstructed from dispensing and procedure records, with an explicit grace period for initiation.</td>
+            </tr>
+            <tr>
+              <th scope="row" class="spec-component">Assignment</th>
+              <td>Randomised, so the arms are unconditionally exchangeable.</td>
+              <td>Not randomised. Conditional exchangeability targeted on measured baseline covariates, and named as an assumption.</td>
+            </tr>
+            <tr>
+              <th scope="row" class="spec-component">Time zero</th>
+              <td>Eligibility, assignment and start of follow-up coincide.</td>
+              <td>Aligned to the same instant. Misalignment here is a major source of immortal-time and related design bias.</td>
+            </tr>
+            <tr>
+              <th scope="row" class="spec-component">Follow-up</th>
+              <td>From time zero until outcome, loss to follow-up or administrative end.</td>
+              <td>Defined from the same time zero using national longitudinal follow-up, with censoring and competing events handled according to the estimand.</td>
+            </tr>
+            <tr>
+              <th scope="row" class="spec-component">Outcome</th>
+              <td>Prespecified outcome definition, ascertainment and assessment window.</td>
+              <td>Mapped to prespecified registry definitions, with differences in ascertainment, coding and measurement made explicit.</td>
+            </tr>
+            <tr>
+              <th scope="row" class="spec-component">Causal contrast</th>
+              <td>Intention-to-treat effect, per-protocol effect, or both.</td>
+              <td>The observational analogue of each, stated explicitly. Per-protocol effects may require artificial censoring and weighting.</td>
+            </tr>
+            <tr>
+              <th scope="row" class="spec-component">Analysis plan</th>
+              <td>Prespecified estimator, adjustment set and subgroup analyses.</td>
+              <td>Prespecified before the outcome is examined. Estimator chosen to match the contrast, not the other way round.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="spec-note">Departures from the target trial are documented as part of the deliverable. An emulation whose compromises are visible is worth more than one whose are not.</p>
+    </div>
+  </section>
+
+  <!-- ANALYSIS -->
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Method</p>
+      <h2 class="section-title">How the estimate is built.</h2>
+      <p class="section-lead">Design choices first, estimator second. The analysis follows from the causal contrast, not from what is convenient in the data.</p>
+      <div class="services-grid">
+        <div class="service-card">
+          <span class="service-num">01</span>
+          <h3>Active-comparator, new-user design</h3>
+          <p class="service-lead">The default starting point.</p>
+          <p>Restricting to initiators of a clinically plausible comparator removes prevalent-user selection and substantially reduces confounding by indication, because both arms face the same treatment decision at the same point in the disease course.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-num">02</span>
+          <h3>Time-zero alignment and cloning</h3>
+          <p class="service-lead">For strategies not assignable at baseline.</p>
+          <p>Where a strategy is defined by what happens after time zero, cloning preserves assignment at a common time zero. Clones are censored when their observed treatment history becomes incompatible with the assigned strategy, and inverse-probability-of-censoring weighting is used to address the resulting informative censoring.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-num">03</span>
+          <h3>Confounding control</h3>
+          <p class="service-lead">Matched to the estimand.</p>
+          <p>Inverse probability of treatment weighting, standardisation, or g-methods where treatment and confounders vary over time. Weight distributions and covariate balance are reported, not assumed.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-num">04</span>
+          <h3>Competing events and censoring</h3>
+          <p class="service-lead">Matched to the clinical question.</p>
+          <p>Death may preclude the outcome of interest and should be handled according to the estimand rather than treated mechanically as censoring. Cause-specific hazards, cumulative incidence functions and other competing-event quantities answer different questions, and we state which one the clinical question requires.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-num">05</span>
+          <h3>Sensitivity and bias analysis</h3>
+          <p class="service-lead">Where the estimate earns trust.</p>
+          <p>Negative control outcomes and exposures, alternative adjustment sets and lookback windows, and quantitative bias analysis to establish how strong unmeasured confounding would need to be to explain the result.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- USE CASES -->
+  <section class="section section--tinted">
+    <div class="container">
+      <p class="eyebrow">Questions it answers</p>
+      <h2 class="section-title">When to use it.</h2>
+      <p class="section-lead">Best suited to comparative questions where randomisation is unavailable, impractical, or too short to reach the outcome that matters.</p>
+      <ul class="checklist">
+        <li>How does treatment A compare with treatment B under routine care conditions?</li>
+        <li>What are the long-term effectiveness and safety outcomes of competing treatment strategies?</li>
+        <li>How do alternative treatment sequences and switching patterns compare?</li>
+        <li>Do effects seen in a trial population hold in groups the trial excluded?</li>
+        <li>What happens beyond the trial horizon, where events accrue but follow-up stopped?</li>
+        <li>How do competing standards of care compare when no head-to-head trial exists?</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- DELIVERABLES -->
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Deliverables</p>
+      <h2 class="section-title">What we deliver.</h2>
+      <p class="section-lead">From feasibility through final evidence package, the work is structured around the target-trial protocol rather than added retrospectively at the analysis stage.</p>
+      <div class="deliver-list">
+        <div class="deliver-item">
+          <span class="deliver-num">01</span>
+          <h3>Feasibility assessment</h3>
+          <p>Assess whether the available Danish or Nordic data can support a credible emulation of the target trial, and identify the main data and design limitations before a full study begins.</p>
+        </div>
+        <div class="deliver-item">
+          <span class="deliver-num">02</span>
+          <h3>Target-trial protocol</h3>
+          <p>Prespecify eligibility, treatment strategies, assignment procedure, time zero, follow-up, outcomes, causal contrast and analysis plan.</p>
+        </div>
+        <div class="deliver-item">
+          <span class="deliver-num">03</span>
+          <h3>Registry implementation</h3>
+          <p>Translate the protocol into operational cohort, exposure, covariate and outcome definitions using the available longitudinal data.</p>
+        </div>
+        <div class="deliver-item">
+          <span class="deliver-num">04</span>
+          <h3>Causal analysis</h3>
+          <p>Estimate the prespecified contrast with appropriate adjustment, diagnostics and sensitivity analyses.</p>
+        </div>
+        <div class="deliver-item">
+          <span class="deliver-num">05</span>
+          <h3>Final evidence package</h3>
+          <p>Deliver tables, figures, technical reporting and publication-ready methods and results, with assumptions and departures from the target trial documented explicitly.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ASSUMPTIONS AND LIMITS -->
+  <section class="section section--tinted">
+    <div class="container">
+      <p class="eyebrow">Scope and limits</p>
+      <h2 class="section-title">Assumptions, stated.</h2>
+      <div class="tte-intro">
+        <p>Every effect estimate from observational data rests on three identifying assumptions: conditional exchangeability given the measured covariates, positivity across the strategies compared, and consistency in how treatment is defined. Emulation makes these assumptions explicit and testable in places where a conventional analysis leaves them implicit, but it does not discharge them.</p>
+        <div class="callout-box">
+          <strong>Observational data remain observational.</strong> Emulating a trial does not reproduce randomisation and does not eliminate residual confounding by unmeasured factors. What it does is remove the design biases that are avoidable, so that what remains is a confounding problem you can reason about and bound.
+        </div>
+        <p>We report the assumptions each estimate depends on, evaluate observable implications and diagnostics where possible, quantify sensitivity to unmeasured confounding, and say plainly when a question cannot be answered credibly in the registers available.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container container--narrow">
+      <p class="eyebrow">Get in touch</p>
+      <h2 class="section-title">Planning a comparative-effectiveness study?</h2>
+      <p class="section-lead">Tell us the strategies you want to contrast and the outcome that matters. We will assess whether the available registers can support a credible emulation, what assumptions it would require, and where the important limitations lie.</p>
+      <div class="hero-actions">
+        <a href="../index.html#contact" class="btn btn--primary">Discuss an emulation study</a>
+        <a href="../posts/immortal-time-bias.html" class="btn btn--ghost">Read: immortal time bias</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <p class="footer-tagline">Real-world evidence from Danish and Nordic health data. Registry study design &middot; Epidemiology &middot; Biostatistics &middot; Analysis &middot; Reporting</p>
+        <p>© 2026 Frameshift ApS · Copenhagen, Denmark · CVR 44531410 · <a href="mailto:info@frameshift.dk">info@frameshift.dk</a></p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/olafurbirgir/" target="_blank" rel="noopener">Ólafur</a>
+        <a href="https://www.linkedin.com/in/ragnarpk/" target="_blank" rel="noopener">Ragnar</a>
+        <a href="https://www.linkedin.com/in/mikkel-werling-a200202ba/" target="_blank" rel="noopener">Mikkel</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../legal.html">Legal</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (() => {
+    const ghost = document.querySelector('.ghost-toggle');
+    if (!ghost) return;
+    if (localStorage.getItem('dark') === '1') document.body.classList.add('dark');
+    ghost.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0');
+    });
+  })();
+  (() => {
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.site-nav');
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        toggle.classList.toggle('active');
+        nav.classList.toggle('open');
+      });
+    }
+  })();
+  </script>
+</body>
+</html>

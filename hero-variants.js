@@ -1,4 +1,4 @@
-// Hero variants — stippled, animated, graphite-luminance
+// Hero variants: stippled, animated, graphite-luminance
 // All share: ~30% base opacity, black ink with occasional #1a6b3c accents,
 // subtle per-particle luminance, slow autonomous loop, gentle cursor parallax.
 //
@@ -68,7 +68,7 @@ function useCanvas(drawFn, deps = []) {
     let raf, start = performance.now();
     const tick = (now) => {
       // Refresh live ink/bg once per frame so dark-mode toggles are picked up
-      // without a reload. Cheap — CSS var lookup.
+      // without a reload. Cheap: CSS var lookup.
       INK = readInk();
       BG  = readBg();
       const t = (now - start) / 1000;
@@ -92,7 +92,7 @@ function useCanvas(drawFn, deps = []) {
   return { wrapRef, canvasRef };
 }
 
-// Helper: draw a single "pencil dot" — small filled circle with subtle
+// Helper: draw a single "pencil dot", small filled circle with subtle
 // graphite luminance driven by a per-dot phase.
 function dot(ctx, x, y, r, alpha, color = INK) {
   ctx.globalAlpha = alpha;
@@ -126,7 +126,7 @@ function smoothMask(v, e0, e1, e2, e3) {
 }
 
 // ════════════════════════════════════════════════════════════
-// 1. DNA double helix — dotted, slowly rotating
+// 1. DNA double helix: dotted, slowly rotating
 // ════════════════════════════════════════════════════════════
 function HeroDNA() {
   const { wrapRef, canvasRef } = useCanvas((ctx, t, w, h, m) => {
@@ -145,7 +145,7 @@ function HeroDNA() {
       const phase = u * turns * Math.PI * 2 + t * 0.35;
       const x1 = cx + Math.sin(phase) * helixW + par;
       const x2 = cx + Math.sin(phase + Math.PI) * helixW + par;
-      // depth 0..1 via cosine — closer strand is larger & darker
+      // depth 0..1 via cosine: closer strand is larger & darker
       const d1 = (Math.cos(phase) + 1) / 2;
       const d2 = (Math.cos(phase + Math.PI) + 1) / 2;
       // per-point luminance (graphite catching light)
@@ -178,7 +178,7 @@ function HeroDNA() {
 }
 
 // ════════════════════════════════════════════════════════════
-// 2. Kaplan–Meier survival curves — staircase step functions in stipple
+// 2. Kaplan–Meier survival curves: staircase step functions in stipple
 // ════════════════════════════════════════════════════════════
 function HeroKM() {
   // Generate stable step-function data once
@@ -209,7 +209,7 @@ function HeroKM() {
     const ph = h - pad.t - pad.b;
     const par = (m.x - 0.5) * 6;
 
-    // Axes — stippled
+    // Axes: stippled
     for (let i = 0; i < 180; i++) {
       const u = i / 180;
       // x axis
@@ -307,7 +307,7 @@ function HeroRegression() {
     const intercept = 0.25;
     const ciWidth = 0.05;
 
-    // CI band — dotted cloud bounded by two curves
+    // CI band: dotted cloud bounded by two curves
     for (let i = 0; i < 200; i++) {
       const u = i / 199;
       const cx = pad.l + pw * u + par;
@@ -320,7 +320,7 @@ function HeroRegression() {
       }
     }
 
-    // main regression line — green, travelling luminance
+    // main regression line: green, travelling luminance
     for (let i = 0; i < 260; i++) {
       const u = i / 259;
       const cx = pad.l + pw * u + par;
@@ -329,7 +329,7 @@ function HeroRegression() {
       dot(ctx, cx, cy, 1.4, (0.55 + 0.35 * lum), ACCENT);
     }
 
-    // scatter points — pencil-dot blobs (cluster of 2-3 mini dots each)
+    // scatter points: pencil-dot blobs (cluster of 2-3 mini dots each)
     points.forEach((p, i) => {
       const cx = pad.l + pw * p.x + par * 1.3;
       const cy = pad.t + ph * (1 - p.y) + parY * 1.3;
@@ -362,14 +362,14 @@ function HeroRegression() {
 // ════════════════════════════════════════════════════════════
 function HeroDistribution({ breathRef, safeRectRef, startState = 'chaos', endState = 'bell' }) {
   // Bell / KM / regression all fit into the same plot frame.
-  // Right-of-text zone — shapes fit inside this in plot-fraction coords.
+  // Right-of-text zone: shapes fit inside this in plot-fraction coords.
   const MEAN = 0.78;
   const SD = 0.08;
   const N_BARS = 23;
   const ACCENT_BARS = new Set([9, 13, 18]);
   const TOTAL = 1800;
 
-  // Bar x positions (normalized 0..1 across plot width) — span ±2.4 SD
+  // Bar x positions (normalized 0..1 across plot width): span ±2.4 SD
   const bars = React.useMemo(() => {
     const out = [];
     const spanSD = 2.4;
@@ -403,7 +403,7 @@ function HeroDistribution({ breathRef, safeRectRef, startState = 'chaos', endSta
     return out;
   }, []);
 
-  // End-state targets — each is an array of length TOTAL, with
+  // End-state targets: each is an array of length TOTAL, with
   // {x, y, accent, kind, radius, eagerness?}.
   // Allocated independently per end-state: the same particle can be an
   // outline point in the bell but an axis tick in the regression.
@@ -487,15 +487,15 @@ function HeroDistribution({ breathRef, safeRectRef, startState = 'chaos', endSta
         }
       });
 
-      // Three survival curves — different shapes, middle one green (best survival).
+      // Three survival curves: different shapes, middle one green (best survival).
       // Each curve is drawn as a step function with particles distributed along
       // horizontal segments and vertical drops.
       const curveDefs = [
-        // Middle curve: declines moderately — control, black.
+        // Middle curve: declines moderately, control, black.
         { steps: [[0,1.00],[0.10,0.92],[0.22,0.82],[0.36,0.70],[0.50,0.58],[0.64,0.46],[0.78,0.35],[0.90,0.25],[1.00,0.17]], accent: false },
-        // Top curve: best survival — green accent.
+        // Top curve: best survival, green accent.
         { steps: [[0,1.00],[0.15,0.97],[0.30,0.93],[0.45,0.88],[0.60,0.83],[0.75,0.78],[0.88,0.74],[1.00,0.70]], accent: true  },
-        // Bottom curve: worst survival — steepest drop.
+        // Bottom curve: worst survival, steepest drop.
         { steps: [[0,1.00],[0.06,0.82],[0.14,0.64],[0.24,0.48],[0.36,0.35],[0.50,0.24],[0.65,0.16],[0.82,0.09],[1.00,0.05]], accent: false },
       ];
 
@@ -585,7 +585,7 @@ function HeroDistribution({ breathRef, safeRectRef, startState = 'chaos', endSta
         arr[idx++] = { x: X0 + jx, y: Y0 + u * (Y1 - Y0), accent: false, kind: 'axis', radius: 1.0, eagerBias: 0.4 };
       }
 
-      // Fitted line (green) — positive slope, starts near bottom-left and
+      // Fitted line (green): positive slope, starts near bottom-left and
       // rises to upper-right. y_fit(x) = intercept + slope * x in data-coords.
       const slope = 0.72;
       const intercept = 0.12;
@@ -604,7 +604,7 @@ function HeroDistribution({ breathRef, safeRectRef, startState = 'chaos', endSta
         };
       }
 
-      // Scatter points (black) — gaussian noise around the line
+      // Scatter points (black): gaussian noise around the line
       const SCATTER_N = TOTAL - idx;
       for (let k = 0; k < SCATTER_N; k++) {
         // Stratified x so points spread evenly
@@ -640,7 +640,7 @@ function HeroDistribution({ breathRef, safeRectRef, startState = 'chaos', endSta
       const X0 = 0.58, X1 = 0.98, Y0 = 0.04, Y1 = 0.96;
       const W = X1 - X0, H = Y1 - Y0;
       const SYM_RX = 0.022;  // half-width in plot-fraction units
-      const SYM_RY = 0.055;  // half-height — compensates for wide artboard aspect (≈ RX * 2.5)
+      const SYM_RY = 0.055;  // half-height: compensates for wide artboard aspect (≈ RX * 2.5)
 
       const push = (x, y, opts = {}) => {
         if (idx >= TOTAL) return;
@@ -705,7 +705,7 @@ function HeroDistribution({ breathRef, safeRectRef, startState = 'chaos', endSta
       drawSymbol(I_Px, GY1, 'square', false);
       drawSymbol(I_Fx, GY1, 'circle', true);
 
-      // Gen II — 3 children spread wide + married-in partner at far right.
+      // Gen II: 3 children spread wide + married-in partner at far right.
       // c3 × p4 marriage midpoint sits far enough right to let Gen III
       // spread comfortably beneath it.
       const II_c1 = px(0.08);  // affected son
@@ -717,7 +717,7 @@ function HeroDistribution({ breathRef, safeRectRef, startState = 'chaos', endSta
       drawSymbol(II_c3, GY2, 'circle', true);
       drawSymbol(II_p4, GY2, 'square', false);
 
-      // Gen III — 3 grandchildren centered under II_c3 × II_p4 midpoint (0.73).
+      // Gen III: 3 grandchildren centered under II_c3 × II_p4 midpoint (0.73).
       // Wide horizontal spread so they don't visually crowd each other.
       const III_g1 = px(0.55);
       const III_g2 = px(0.73);
@@ -744,7 +744,7 @@ function HeroDistribution({ breathRef, safeRectRef, startState = 'chaos', endSta
       const I_mid = (I_Px + I_Fx) / 2;
       const SIB_Y = GY1 + (GY2 - GY1) * 0.50;
       drawLine(I_mid, GY1, I_mid, SIB_Y, 20);
-      // Gen II sibling line — horizontal from c1 to c3.
+      // Gen II sibling line: horizontal from c1 to c3.
       drawLine(II_c1, SIB_Y, II_c3, SIB_Y, 58);
       drawLine(II_c1, SIB_Y, II_c1, GY2 - SYM_RY, 18);
       drawLine(II_c2, SIB_Y, II_c2, GY2 - SYM_RY, 18);
@@ -798,7 +798,7 @@ function HeroDistribution({ breathRef, safeRectRef, startState = 'chaos', endSta
     // ── HEX LATTICE ──────────────────────────────────
     // Hexagonal (triangular) lattice of dots. One accent-green node.
     // Surprising because it reveals pure order after three data-viz
-    // variants — and reads as crystal/hex-binning resonant.
+    // variants: and reads as crystal/hex-binning resonant.
     const hexTargets = (() => {
       const rand = mulberry32(707);
       const arr = new Array(TOTAL);
@@ -821,7 +821,7 @@ function HeroDistribution({ breathRef, safeRectRef, startState = 'chaos', endSta
       // Hex lattice geometry.
       //
       // Artboard aspect is wide (~2.43:1 pw:ph in px). We want the lattice
-      // to LOOK regular — equilateral hex cells — in pixel space. In
+      // to LOOK regular: equilateral hex cells, in pixel space. In
       // plot-fraction coords, to render an equilateral hex row we set:
       //   dx_px = step_px     → dx_frac = step_px / pw
       //   dy_px = step_px * sqrt(3)/2 → dy_frac = step_px * (√3/2) / ph
@@ -839,7 +839,7 @@ function HeroDistribution({ breathRef, safeRectRef, startState = 'chaos', endSta
       const startY = Y0 + (H - gridH) / 2;
       const startX = X0 + (W - (COLS - 1) * dxFrac) / 2;
 
-      // Pick one accent node — roughly right-of-center, middle row.
+      // Pick one accent node: roughly right-of-center, middle row.
       // Slightly off-center for visual rhythm.
       const accentR = 4, accentC = 11;
 
@@ -866,7 +866,7 @@ function HeroDistribution({ breathRef, safeRectRef, startState = 'chaos', endSta
       const PER_NODE = Math.max(6, Math.floor((TOTAL * 0.75) / nodes.length));
 
       nodes.forEach((n) => {
-        // Small disc fill — stratified polar.
+        // Small disc fill: stratified polar.
         for (let k = 0; k < PER_NODE; k++) {
           const u = rand();
           const r = Math.sqrt(u);
@@ -883,7 +883,7 @@ function HeroDistribution({ breathRef, safeRectRef, startState = 'chaos', endSta
       });
 
       // Fill remainder by reinforcing existing nodes (random jitter around
-      // a random node center) — keeps all particles within the lattice.
+      // a random node center): keeps all particles within the lattice.
       while (idx < TOTAL) {
         const n = nodes[Math.floor(rand() * nodes.length)];
         const u = rand();
@@ -916,7 +916,7 @@ function HeroDistribution({ breathRef, safeRectRef, startState = 'chaos', endSta
       [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
 
-    // GRID — spreadsheet-like lattice with a slight per-cell jitter.
+    // GRID: spreadsheet-like lattice with a slight per-cell jitter.
     // Aspect-aware: ~N cells arranged to roughly fill the 16:9 plot.
     const cols = Math.ceil(Math.sqrt(N * 2.2));   // wider than tall
     const rows = Math.ceil(N / cols);
@@ -933,7 +933,7 @@ function HeroDistribution({ breathRef, safeRectRef, startState = 'chaos', endSta
       grid[idx] = { x: gx + jx, y: gy + jy };
     }
 
-    // ROWS — evenly-spaced horizontal bands like lines of streaming text/data.
+    // ROWS: evenly-spaced horizontal bands like lines of streaming text/data.
     // More y-jitter than the strict lattice so it reads as a coherent stream
     // with local structure, not rigid lanes.
     const ROW_COUNT = 12;
@@ -953,7 +953,7 @@ function HeroDistribution({ breathRef, safeRectRef, startState = 'chaos', endSta
       rowsArr[idx] = { x: rx + jx, y: ry + jy };
     }
 
-    // FLOW — per-particle "home" base position plus a unique phase.
+    // FLOW: per-particle "home" base position plus a unique phase.
     // The draw loop adds time-varying curl displacement around the home.
     const flow = new Array(N);
     for (let k = 0; k < N; k++) {
@@ -998,7 +998,7 @@ function HeroDistribution({ breathRef, safeRectRef, startState = 'chaos', endSta
     // a particle's personal 'progress' ramps from 0 (scatter) to 1 (target)
     // as the breath crosses its eagerness window.
     particles.forEach((p, i) => {
-      // Scatter origin — depends on startState. All modes decay toward the
+      // Scatter origin: depends on startState. All modes decay toward the
       // target as prog increases, so the bell always resolves the same way.
       let scatterX, scatterY;
       const drift = 0.045;
@@ -1051,7 +1051,7 @@ function HeroDistribution({ breathRef, safeRectRef, startState = 'chaos', endSta
       const end = start + SPREAD;
       let progRaw = (breath - start) / (end - start);
       progRaw = Math.max(0, Math.min(1, progRaw));
-      // Quintic smoothstep — softer start, longer tail. This ramps more
+      // Quintic smoothstep: softer start, longer tail. This ramps more
       // gently than cubic so particles don't appear to snap into motion
       // at the moment their form-up window opens.
       const prog = progRaw * progRaw * progRaw * (progRaw * (progRaw * 6 - 15) + 10);
@@ -1075,7 +1075,7 @@ function HeroDistribution({ breathRef, safeRectRef, startState = 'chaos', endSta
         const dx = Math.max(safe.x - x, x - (safe.x + safe.w), 0);
         const dy = Math.max(safe.y - y, y - (safe.y + safe.h), 0);
         const distOutside = Math.sqrt(dx * dx + dy * dy);
-        // Inside penalty: if both dx=0 and dy=0 we're inside — measure how
+        // Inside penalty: if both dx=0 and dy=0 we're inside, measure how
         // deep by taking min distance to an edge.
         const inside = dx === 0 && dy === 0;
         let insideDepth = 0;
@@ -1098,7 +1098,7 @@ function HeroDistribution({ breathRef, safeRectRef, startState = 'chaos', endSta
           // Outside: drop exponentially with distance.
           suppress = Math.exp(-distOutside / FALLOFF) * 0.5;
         }
-        // Only active while forming — as prog → 1 the safe zone vanishes.
+        // Only active while forming: as prog → 1 the safe zone vanishes.
         const lift = 1 - prog;
         safeMul = 1 - suppress * lift * 0.95;
       }
@@ -1106,7 +1106,7 @@ function HeroDistribution({ breathRef, safeRectRef, startState = 'chaos', endSta
       const cx = pad.l + pw * x + par * (1 - prog);
       const cy = pad.t + ph * y + parY * (1 - prog);
 
-      // Luminance shimmer fades as the shape settles — prog near 1 → nearly
+      // Luminance shimmer fades as the shape settles: prog near 1 → nearly
       // constant opacity, so the end state reads as clean and smooth.
       const shimmer = (1 - prog * 0.92);
       const lum = 0.85 + 0.15 * Math.sin(t * 0.9 + p.phase) * shimmer;

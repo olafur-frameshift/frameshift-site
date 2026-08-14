@@ -297,7 +297,7 @@ img { display: block; max-width: 100%; }
 
 /* When the animated canvas is mounted, expand .hero-visual to fill the hero
    and drop the fallback opacity tint (the canvas sets its own alpha per
-   particle). Uses :has() — modern-browser only; older browsers see the
+   particle). Uses :has(); modern-browser only, older browsers see the
    pinned-right fallback with the static illustration. */
 .hero-visual:has(#hero-anim) {
   inset: 0;
@@ -829,6 +829,7 @@ img { display: block; max-width: 100%; }
 .research-meta {
   display: flex;
   align-items: flex-start;
+  flex-wrap: wrap;
   gap: var(--space-3);
 }
 
@@ -869,6 +870,19 @@ img { display: block; max-width: 100%; }
   background: var(--accent);
   color: var(--surface);
   white-space: nowrap;
+}
+
+/* Study-type label on homepage proof cards. Deliberately NOT a filled pill;
+   the solid .research-role badge stays reserved for client engagements so it
+   keeps its signal value when both appear in the same grid. */
+.research-type {
+  order: -1;          /* own row, above the venue; same trick as the engagement badge */
+  flex-basis: 100%;
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
 }
 
 /* Client-engagement cards: faint-green "featured" treatment.
@@ -1030,6 +1044,32 @@ a.research-card {
 .service-card:hover {
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
+}
+
+/* Emphasised product card (Target Trial Emulation). Same faint-green treatment
+   as the client-engagement research cards, so "this one matters more" reads the
+   same way everywhere on the site. color-mix keeps it highlighted rather than
+   recessed in dark mode; accent-dim is the fallback. No badge: the tint and the
+   copy carry the emphasis. */
+.service-card--featured {
+  background: var(--accent-dim);
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface));
+  border: 1px solid var(--accent);
+  box-shadow: var(--shadow-md);
+}
+
+.service-lead {
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: var(--space-3);
+}
+
+.service-cta {
+  display: inline-block;
+  margin-top: var(--space-4);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--accent);
 }
 
 .service-num {
@@ -1194,13 +1234,259 @@ a.research-card {
   margin-top: var(--space-3);
 }
 
-.post-body .callout {
+.post-body .callout,
+.callout-box {
   background: var(--accent-dim);
   border-left: 3px solid var(--accent);
   padding: var(--space-4) var(--space-6);
   border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
   margin: var(--space-6) 0;
   font-size: 0.97rem;
+}
+
+/* Target Trial Emulation hero: copy left, time-zero schematic right.
+   The diagram is inline SVG rather than an image file so it inherits the theme
+   variables and stays legible in dark mode. */
+.tte-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.02fr);
+  gap: var(--space-12);
+  align-items: center;
+}
+
+@media (max-width: 980px) {
+  .tte-hero { grid-template-columns: 1fr; gap: var(--space-8); }
+}
+
+.tte-figure {
+  margin: 0;
+  padding: var(--space-6);
+  background: var(--surface);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+}
+
+.tte-figure figcaption {
+  margin-top: var(--space-4);
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.tte-diagram { width: 100%; height: auto; display: block; }
+
+.tte-diagram text {
+  font-family: var(--font);
+  font-size: 12px;
+  fill: var(--ink-2);
+}
+
+.tte-diagram .tz-panel {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  fill: var(--accent);
+}
+
+.tte-diagram .tz-panel--warn { fill: var(--muted); }
+
+.tte-diagram .tz-zero {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  fill: var(--accent);
+}
+
+.tte-diagram .tz-mark {
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+}
+
+.tte-diagram .tz-mark--muted { stroke: var(--muted); stroke-width: 2; }
+
+.tte-diagram .tz-flow {
+  stroke: var(--accent);
+  stroke-width: 2;
+  fill: none;
+}
+
+.tte-diagram .tz-flow--muted { stroke: var(--muted); }
+.tte-diagram .tz-flow--dashed {
+  stroke: var(--muted);
+  stroke-dasharray: 3 4;
+}
+
+/* Immortal time reads as a defect, so it is deliberately NOT accent green. */
+.tte-diagram .tz-immortal {
+  fill: var(--muted);
+  opacity: 0.16;
+  stroke: var(--muted);
+  stroke-width: 1;
+  stroke-dasharray: 3 3;
+}
+
+.tte-diagram .tz-immortal-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  fill: var(--ink);
+}
+
+.tte-diagram .tz-note {
+  font-size: 10.5px;
+  font-style: italic;
+  fill: var(--muted);
+}
+
+.tte-diagram .tz-arrow-accent { fill: var(--accent); }
+.tte-diagram .tz-arrow-muted { fill: var(--muted); }
+
+/* Body copy on the Target Trial Emulation page. Capped for line length; the
+   surrounding .container stays wide so the card grids still use full width. */
+.tte-intro {
+  max-width: 68ch;
+  margin-top: var(--space-6);
+}
+
+.tte-intro p + p {
+  margin-top: var(--space-4);
+}
+
+/* Protocol-component table on the Target Trial Emulation page. Wide content, so
+   it scrolls inside its own wrapper rather than forcing the page to scroll. */
+.spec-table-wrap {
+  overflow-x: auto;
+  margin-top: var(--space-8);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+}
+
+.spec-table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+.spec-table th,
+.spec-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--border);
+  line-height: 1.55;
+}
+
+.spec-table thead th {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+  white-space: nowrap;
+}
+
+.spec-table tbody tr:last-child th,
+.spec-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.spec-component {
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
+  width: 1%;
+}
+
+.spec-table td {
+  color: var(--ink-2);
+}
+
+/* Second column is the ideal trial, third is what the data actually allow.
+   Tinting the third keeps the contrast readable at a glance. */
+.spec-table tbody td:last-child {
+  background: var(--accent-dim);
+  background: color-mix(in srgb, var(--accent) 7%, var(--surface));
+}
+
+/* Deliverables list on the Target Trial Emulation page. Deliberately plainer
+   than the method cards above it: no card background, no shadow, just ruled
+   rows, so the commercial section does not compete with the method section. */
+.deliver-list {
+  margin-top: var(--space-8);
+  border-top: 1px solid var(--border);
+}
+
+.deliver-item {
+  display: grid;
+  grid-template-columns: 3rem 15rem 1fr;
+  gap: var(--space-6);
+  align-items: start;
+  padding: var(--space-6) 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.deliver-num {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  padding-top: 0.35rem;
+}
+
+.deliver-item h3 {
+  font-size: 1.0625rem;
+  line-height: 1.4;
+}
+
+.deliver-item p {
+  color: var(--ink-2);
+  max-width: 62ch;
+}
+
+@media (max-width: 860px) {
+  .deliver-item {
+    grid-template-columns: 2.5rem 1fr;
+    gap: var(--space-3) var(--space-4);
+  }
+  .deliver-item p { grid-column: 2; }
+}
+
+.spec-note {
+  margin-top: var(--space-4);
+  font-size: 0.92rem;
+  color: var(--muted);
+  max-width: 68ch;
+}
+
+/* Two-column question list, used on the Target Trial Emulation page. */
+.checklist {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3) var(--space-8);
+  margin-top: var(--space-6);
+  list-style: none;
+}
+
+.checklist li {
+  position: relative;
+  padding-left: var(--space-6);
+  line-height: 1.6;
+}
+
+.checklist li::before {
+  content: "\2192";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+@media (max-width: 760px) {
+  .checklist { grid-template-columns: 1fr; }
 }
 
 .post-body details {
@@ -1288,7 +1574,7 @@ a.research-card {
   .hero-visual:has(#hero-anim) { opacity: 0.35; }
 }
 
-/* Small tablet / large phone — hamburger kicks in */
+/* Small tablet / large phone: hamburger kicks in */
 @media (max-width: 600px) {
   .site-header .container {
     position: relative;
@@ -1338,7 +1624,7 @@ a.research-card {
   .contact-steps { flex-direction: column; align-items: flex-start; }
   .contact-arrow { display: none; }
   .team-card { flex-direction: column; gap: var(--space-4); }
-  /* On mobile, the canvas doesn't mount — show the static illustration
+  /* On mobile, the canvas doesn't mount, so show the static illustration
      pinned behind the text instead. */
   .hero-visual:has(#hero-anim) {
     inset: auto;

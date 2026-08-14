@@ -1,6 +1,6 @@
-// hero-mount.jsx — mounts the HeroDistribution canvas into the real site's
+// hero-mount.jsx: mounts the HeroDistribution canvas into the real site's
 // hero section. Unlike HeroFrame (the design-canvas version), this does NOT
-// render its own text or nav — the site's markup already provides those.
+// render its own text or nav: the site's markup already provides those.
 //
 // Responsibilities:
 //   • Mount a <canvas> inside #hero-anim
@@ -81,14 +81,14 @@ function SiteHeroAnim() {
   React.useEffect(() => {
     const wrap = wrapRef.current;
     if (!wrap) return;
-    // Reduced motion: pin breath to 1 and bail — no RAF, no IO, no hover cycle.
+    // Reduced motion: pin breath to 1 and bail, no RAF, no IO, no hover cycle.
     if (prefersReduced) {
       breathRef.current = 1;
       breathTargetRef.current = 1;
       return;
     }
     // We observe the .hero section (the parent the user actually scrolls past),
-    // not our own wrap — visibility of the animation container equals visibility
+    // not our own wrap: visibility of the animation container equals visibility
     // of the hero, and the hero is a bigger target for the threshold bands.
     const hero = wrap.closest('.hero') || wrap;
     let visible = 0;
@@ -145,12 +145,12 @@ function SiteHeroAnim() {
 }
 
 // ── Boot ─────────────────────────────────────────────────────
-// Only mount on non-mobile — the hero-visual is display:none below 600px anyway.
+// Only mount on non-mobile: the hero-visual is display:none below 600px anyway.
 // Keep a small guard in case someone loads this file on a very narrow viewport.
 (function boot() {
   const mount = document.getElementById('hero-anim');
   if (!mount) return;
-  // Respect the site's CSS breakpoint — don't bother mounting on phones.
+  // Respect the site's CSS breakpoint: don't bother mounting on phones.
   if (window.matchMedia('(max-width: 600px)').matches) {
     return;
   }
