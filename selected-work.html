@@ -500,7 +500,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
-        <p class="footer-tagline">Real-world evidence from Danish health registries, with Nordic study capabilities. Registry study design &middot; Epidemiology &middot; Biostatistics &middot; Analysis &middot; Reporting</p>
+        <p class="footer-tagline">Real-world evidence &middot; Registry study design &middot; Epidemiology &middot; Biostatistics &middot; Analysis &middot; Reporting</p>
         <p>&copy; 2026 Frameshift ApS &middot; Copenhagen, Denmark &middot; CVR 44531410 &middot; <a href="mailto:info@frameshift.dk">info@frameshift.dk</a></p>
       </div>
       <div class="footer-links">
@@ -518,10 +518,10 @@
     (() => {
       const ghost = document.querySelector('.ghost-toggle');
       if (!ghost) return;
-      if (localStorage.getItem('dark') === '1') document.body.classList.add('dark');
+      try { if (localStorage.getItem('dark') === '1') document.body.classList.add('dark'); } catch (e) {}
       ghost.addEventListener('click', () => {
         document.body.classList.toggle('dark');
-        localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0');
+        try { localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0'); } catch (e) {}
       });
     })();
 

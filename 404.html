@@ -4,51 +4,52 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Page not found. Frameshift generates real-world evidence from Danish health registry data.">
+  <meta name="robots" content="noindex">
   <title>Page Not Found | Frameshift</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
   <header class="site-header">
     <div class="container">
-      <a href="index.html" class="site-logo">
-        <img src="logo.svg" alt="Frameshift">
+      <a href="/index.html" class="site-logo">
+        <img src="/logo.svg" alt="Frameshift">
       </a>
       <button class="nav-toggle" aria-label="Toggle navigation">
         <span></span><span></span><span></span>
       </button>
       <nav class="site-nav">
-        <a href="index.html#home">Home</a>
-        <a href="index.html#registry-data">Registry Data</a>
-        <a href="index.html#services">Capabilities</a>
-        <a href="index.html#research">Selected Work</a>
-        <a href="index.html#about">About</a>
-        <a href="index.html#posts">Insights</a>
-        <a href="index.html#contact">Contact</a>
-        <a class="nav-mobile-cta" href="index.html#contact">Discuss a study</a>
+        <a href="/index.html#home">Home</a>
+        <a href="/index.html#registry-data">Registry Data</a>
+        <a href="/index.html#services">Capabilities</a>
+        <a href="/index.html#research">Selected Work</a>
+        <a href="/index.html#about">About</a>
+        <a href="/index.html#posts">Insights</a>
+        <a href="/index.html#contact">Contact</a>
+        <a class="nav-mobile-cta" href="/index.html#contact">Discuss a study</a>
       </nav>
-      <a href="index.html#contact" class="btn btn--primary nav-cta">Discuss a study</a>
+      <a href="/index.html#contact" class="btn btn--primary nav-cta">Discuss a study</a>
       <button class="ghost-toggle" aria-label="Toggle dark mode">
-        <img src="ghost.webp" alt="">
+        <img src="/ghost.webp" alt="">
       </button>
     </div>
   </header>
 
   <main class="section">
     <div class="container" style="text-align: center; padding: 6rem 1.5rem;">
-      <img class="error-logo" src="logo.svg" alt="Frameshift" style="height: 48px; margin: 0 auto 2rem; filter: hue-rotate(280deg) saturate(3) brightness(1.1); opacity: 0.5;">
+      <img class="error-logo" src="/logo.svg" alt="Frameshift" style="height: 48px; margin: 0 auto 2rem; filter: hue-rotate(280deg) saturate(3) brightness(1.1); opacity: 0.5;">
       <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">Oops, missing data!</h1>
       <p style="color: var(--muted); font-size: 1.15rem; max-width: 440px; margin: 0 auto 2rem;">The page you are looking for does not exist, was moved, or may have been a Type I error.</p>
-      <a href="index.html" class="btn btn--primary">Back to home</a>
+      <a href="/index.html" class="btn btn--primary">Back to home</a>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
-        <p class="footer-tagline">Real-world evidence from Danish health registries, with Nordic study capabilities. Registry study design &middot; Epidemiology &middot; Biostatistics &middot; Analysis &middot; Reporting</p>
+        <p class="footer-tagline">Real-world evidence &middot; Registry study design &middot; Epidemiology &middot; Biostatistics &middot; Analysis &middot; Reporting</p>
         <p>&copy; 2026 Frameshift ApS &middot; Copenhagen, Denmark &middot; CVR 44531410 &middot; <a href="mailto:info@frameshift.dk">info@frameshift.dk</a></p>
       </div>
     </div>
@@ -57,10 +58,10 @@
   (() => {
     const ghost = document.querySelector('.ghost-toggle');
     if (!ghost) return;
-    if (localStorage.getItem('dark') === '1') document.body.classList.add('dark');
+    try { if (localStorage.getItem('dark') === '1') document.body.classList.add('dark'); } catch (e) {}
     ghost.addEventListener('click', () => {
       document.body.classList.toggle('dark');
-      localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0');
+      try { localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0'); } catch (e) {}
     });
   })();
   (() => {

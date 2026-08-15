@@ -52,7 +52,7 @@
           <h1 class="section-title">Target Trial Emulation</h1>
           <p class="section-lead">Answer trial-like causal questions using longitudinal real-world data.</p>
           <div class="tte-intro">
-            <p>Frameshift applies the target trial framework to comparative-effectiveness questions in Danish registry data. The protocol of the hypothetical randomised trial is written in full before any analysis begins, and each component is then emulated in the observational data.</p>
+            <p>Frameshift applies the target trial framework to comparative-effectiveness questions in Danish registry data. The protocol of the hypothetical randomised trial is written in full and fixed before the outcome is examined, and each component is then emulated in the observational data.</p>
             <p>The discipline is in the sequence. Eligibility, treatment assignment and the start of follow-up are aligned at a single time zero, preventing immortal-time and related design biases. Where treatment initiation is the decision of interest, a new-user design avoids conditioning the comparison on prior treatment survival or tolerance. Where the available data cannot faithfully reproduce a component of the target trial, we state the departure explicitly and assess its likely impact, quantitatively where possible.</p>
           </div>
         </div>
@@ -127,7 +127,7 @@
             </tr>
             <tr>
               <th scope="row" class="spec-component">Assignment</th>
-              <td>Randomised, so the arms are exchangeable by design.</td>
+              <td>Randomised, so the arms are exchangeable in expectation.</td>
               <td>Not randomised. Conditional exchangeability targeted on measured covariates, sequentially on covariate history where treatment and confounders vary over time, and named as an assumption.</td>
             </tr>
             <tr>
@@ -148,7 +148,7 @@
             <tr>
               <th scope="row" class="spec-component">Causal contrast</th>
               <td>Intention-to-treat effect, per-protocol effect, or both.</td>
-              <td>The observational analogue of each, stated explicitly. Per-protocol effects may require artificial censoring and weighting.</td>
+              <td>The observational analogue of each, stated explicitly. The analogue of intention to treat is the effect of treatment initiation, and unlike its trial counterpart it is not protected by randomisation, so it still requires full baseline confounding control and is not the conservative option. Per-protocol effects may require artificial censoring and weighting.</td>
             </tr>
             <tr>
               <th scope="row" class="spec-component">Analysis plan</th>
@@ -173,13 +173,13 @@
           <span class="service-num">01</span>
           <h3>Active-comparator, new-user design</h3>
           <p class="service-lead">The default starting point.</p>
-          <p>A new-user restriction removes prevalent-user bias, the depletion of susceptibles that arises when a comparison conditions on having already tolerated treatment. Choosing an active comparator that shares the indication reduces confounding by indication, to the extent that both arms genuinely sit at the same decision point. That equipoise is an argument to be made per question, not a property of the design, and it does not address channelling by severity within the indication.</p>
+          <p>A new-user restriction addresses prevalent-user bias on both of its mechanisms: the depletion of susceptibles that arises when a comparison conditions on having already tolerated treatment, and the adjustment for covariates that treatment has itself already altered. It works only if the lookback window is long enough to separate true initiators from re-initiators, which register history bounds. Choosing an active comparator that shares the indication reduces confounding by indication, to the extent that both arms genuinely sit at the same decision point. That equipoise is an argument to be made per question, not a property of the design, and it does not address channelling by severity within the indication.</p>
         </div>
         <div class="service-card">
           <span class="service-num">02</span>
           <h3>Time-zero alignment and cloning</h3>
           <p class="service-lead">For strategies not assignable at baseline.</p>
-          <p>Where a strategy is defined by what happens after time zero, cloning preserves assignment at a common time zero. Clones are censored when their observed treatment history departs from the assigned strategy. That censoring is non-random with respect to prognosis, so inverse-probability-of-censoring weights are fitted on the time-varying covariates that predict it. Because cloning duplicates individuals, confidence intervals are obtained by bootstrapping over persons.</p>
+          <p>Where a strategy is defined by what happens after time zero, each individual whose baseline data are compatible with more than one strategy is assigned to every such strategy, so the arms are identical at time zero by construction. Clones are censored when their observed treatment history departs from the assigned strategy. That censoring is non-random with respect to prognosis, so inverse-probability-of-censoring weights are fitted on the time-varying covariates that predict it. Validity rests on those covariates being sufficient, with no unmeasured common cause of deviation and outcome, and on positivity holding among those still uncensored. That is the strongest and least testable assumption in the procedure, and we state it. Because cloning duplicates individuals, confidence intervals are obtained by bootstrapping over persons.</p>
         </div>
         <div class="service-card">
           <span class="service-num">03</span>
@@ -262,9 +262,9 @@
       <p class="eyebrow">Scope and limits</p>
       <h2 class="section-title">Assumptions, stated.</h2>
       <div class="tte-intro">
-        <p>Every effect estimate from observational data rests on identifying assumptions: conditional exchangeability given the measured covariate history, positivity within every stratum of the covariates conditioned on, and consistency, which requires the treatment strategies to be sufficiently well defined. No interference between individuals is assumed alongside consistency. Emulation makes these assumptions explicit rather than implicit, and makes some of them checkable: positivity can be diagnosed directly in the data, and exchangeability can be probed indirectly with negative controls and quantified through bias analysis. Exchangeability and consistency cannot be tested. Emulation makes them visible; it does not discharge them.</p>
+        <p>Every effect estimate from observational data rests on identifying assumptions: conditional exchangeability given the measured covariate history, positivity within every stratum of the covariates conditioned on, and consistency, which requires the treatment strategies to be sufficiently well defined. No interference between individuals is assumed alongside consistency. Emulation makes these assumptions explicit rather than implicit, and makes some of them checkable: violations of positivity from sparsity can be seen directly in the data, though structural violations cannot be distinguished from sparsity at any sample size and remain a subject-matter judgement. Violations of exchangeability can sometimes be detected with negative controls and their consequences quantified through bias analysis. Exchangeability and consistency themselves cannot be verified. Emulation makes them visible; it does not discharge them.</p>
         <div class="callout-box">
-          <strong>Observational data remain observational.</strong> Emulating a trial does not reproduce randomisation and does not eliminate residual confounding by unmeasured factors. What it does is remove the design biases that are avoidable, so that what remains is a confounding problem you can reason about and quantify sensitivity to.
+          <strong>Observational data remain observational.</strong> Emulating a trial does not reproduce randomisation, and it removes neither residual confounding by unmeasured factors nor the mismeasurement inherent in register proxies, where a dispensing stands in for ingestion and a diagnosis code for severity. What it does is remove the design biases that are avoidable, so that what remains is a confounding problem you can reason about and quantify sensitivity to.
         </div>
         <p>We report the assumptions each estimate depends on, evaluate observable implications and diagnostics where possible, quantify sensitivity to unmeasured confounding, and say plainly when a question cannot be answered credibly in the registers available.</p>
       </div>
@@ -287,7 +287,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
-        <p class="footer-tagline">Real-world evidence from Danish health registries, with Nordic study capabilities. Registry study design &middot; Epidemiology &middot; Biostatistics &middot; Analysis &middot; Reporting</p>
+        <p class="footer-tagline">Real-world evidence &middot; Registry study design &middot; Epidemiology &middot; Biostatistics &middot; Analysis &middot; Reporting</p>
         <p>© 2026 Frameshift ApS · Copenhagen, Denmark · CVR 44531410 · <a href="mailto:info@frameshift.dk">info@frameshift.dk</a></p>
       </div>
       <div class="footer-links">
@@ -304,10 +304,10 @@
   (() => {
     const ghost = document.querySelector('.ghost-toggle');
     if (!ghost) return;
-    if (localStorage.getItem('dark') === '1') document.body.classList.add('dark');
+    try { if (localStorage.getItem('dark') === '1') document.body.classList.add('dark'); } catch (e) {}
     ghost.addEventListener('click', () => {
       document.body.classList.toggle('dark');
-      localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0');
+      try { localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0'); } catch (e) {}
     });
   })();
   (() => {

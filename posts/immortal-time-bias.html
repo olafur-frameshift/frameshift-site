@@ -110,9 +110,9 @@
 
       <p>Immortal time bias is structurally invisible in the most common study designs: large registry cohorts, long follow-up, exposures defined by events that require surviving to experience them. These are also the conditions associated with high-powered, high-credibility studies. The bias does not appear in any coefficient; it lives in the denominator.</p>
 
-      <p>The lottery exercise makes the diagnostic explicit. If replacing the exposure with something biologically inert produces the same result, the exposure is not doing the work.</p>
+      <p>The lottery exercise makes the diagnostic explicit. If replacing the exposure with something biologically inert produces the same result, the design is capable of manufacturing the association on its own. That does not prove the true effect is null; it shows the result cannot be taken as evidence that it is not.</p>
 
-      <p>In matched or registry-based cohort studies, the key question is simple: does follow-up start at the same calendar time for cases and controls? If cases are defined by a post-baseline event and controls are not subject to that constraint, you are likely looking at immortal time.</p>
+      <p>In matched or registry-based cohort studies, the key question is simple: does follow-up start at the same point relative to eligibility and exposure assignment, and is that point defined without using information from the future? Calendar dates will differ between individuals in a correct design; what matters is that the exposed group is not defined by surviving long enough to become exposed.</p>
 
       <details>
         <summary>Simulation code (R)</summary>
@@ -185,7 +185,7 @@ coxph(Surv(time, event) ~ prize, data = correct) |&gt; coef() |&gt; exp()
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
-        <p class="footer-tagline">Real-world evidence from Danish health registries, with Nordic study capabilities. Registry study design &middot; Epidemiology &middot; Biostatistics &middot; Analysis &middot; Reporting</p>
+        <p class="footer-tagline">Real-world evidence &middot; Registry study design &middot; Epidemiology &middot; Biostatistics &middot; Analysis &middot; Reporting</p>
         <p>© 2026 Frameshift ApS · Copenhagen, Denmark · CVR 44531410 · <a href="mailto:info@frameshift.dk">info@frameshift.dk</a></p>
       </div>
       <div class="footer-links">
@@ -201,10 +201,10 @@ coxph(Surv(time, event) ~ prize, data = correct) |&gt; coef() |&gt; exp()
   (() => {
     const ghost = document.querySelector('.ghost-toggle');
     if (!ghost) return;
-    if (localStorage.getItem('dark') === '1') document.body.classList.add('dark');
+    try { if (localStorage.getItem('dark') === '1') document.body.classList.add('dark'); } catch (e) {}
     ghost.addEventListener('click', () => {
       document.body.classList.toggle('dark');
-      localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0');
+      try { localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0'); } catch (e) {}
     });
   })();
   (() => {

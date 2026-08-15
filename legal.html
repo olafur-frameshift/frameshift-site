@@ -50,10 +50,10 @@
 
         <h2>Registry data access</h2>
         <p>Frameshift ApS holds its own authorisation to work with Danish register data. Individual studies additionally require project-level approval, which is obtained per study and which we account for in the project timeline at scoping. Documentation of our authorisation is available to prospective clients on request.</p>
-        <p>Register data are analysed within the approved environment for the project. The underlying data remain the property of the relevant Danish authorities. <strong>No personal data are transferred to clients, and clients do not send us personal data for registry work.</strong> What is delivered is the analysis, its outputs and its documentation, including the cohort, exposure, covariate and outcome definitions the results rest on. Analysis code is written against the approved environment and is not portable outside it, so the specification rather than the code is what makes the work reproducible.</p>
+        <p>Register data are analysed within the approved environment for the project. The underlying data remain the property of the relevant Danish authorities. <strong>No personal data are transferred to clients, and clients do not send us personal data for registry work.</strong> What is delivered is the analysis, its outputs and its documentation, including the cohort, exposure, covariate and outcome definitions the results rest on.</p>
 
         <h2>Data protection</h2>
-        <p>Registry work runs under our own authorisation, and no personal data are transferred to or from clients. Controller and processor roles are established in the contract for each engagement, since those roles follow from who determines the purposes and means of the processing rather than from whether data physically move. Where an engagement involves a client providing personal data, a data processing agreement is put in place before any processing begins. A standard agreement is available on request.</p>
+        <p>Registry work runs under our own authorisation, and no personal data are transferred to or from clients. Controller and processor roles follow from who determines the purposes and means of the processing, not from whether personal data physically move. We confirm and record the roles for each engagement before work begins. Where an engagement involves a client providing personal data, a data processing agreement is put in place before any processing begins. A standard agreement is available on request.</p>
 
         <h2>How studies are run</h2>
         <p>The following apply to every study we deliver.</p>
@@ -79,7 +79,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
-        <p class="footer-tagline">Real-world evidence from Danish health registries, with Nordic study capabilities. Registry study design &middot; Epidemiology &middot; Biostatistics &middot; Analysis &middot; Reporting</p>
+        <p class="footer-tagline">Real-world evidence &middot; Registry study design &middot; Epidemiology &middot; Biostatistics &middot; Analysis &middot; Reporting</p>
         <p>&copy; 2026 Frameshift ApS &middot; Copenhagen, Denmark &middot; CVR 44531410 &middot; <a href="mailto:info@frameshift.dk">info@frameshift.dk</a></p>
       </div>
       <div class="footer-links">
@@ -93,10 +93,10 @@
   (() => {
     const ghost = document.querySelector('.ghost-toggle');
     if (!ghost) return;
-    if (localStorage.getItem('dark') === '1') document.body.classList.add('dark');
+    try { if (localStorage.getItem('dark') === '1') document.body.classList.add('dark'); } catch (e) {}
     ghost.addEventListener('click', () => {
       document.body.classList.toggle('dark');
-      localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0');
+      try { localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0'); } catch (e) {}
     });
   })();
   (() => {
