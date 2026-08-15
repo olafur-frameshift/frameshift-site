@@ -24,7 +24,7 @@ function SiteHeroAnim() {
   const breathRef = React.useRef(0);
   const breathTargetRef = React.useRef(0);
   const safeRectRef = React.useRef(null);
-  const END_STATES = ['bell', 'km', 'regression', 'pedigree', 'hex'];
+  const END_STATES = ['bell', 'km', 'map', 'pedigree', 'hex'];
   const [endIdx, setEndIdx] = React.useState(0);
   const endIdxRef = React.useRef(0); // first state is bell (index 0)
 
