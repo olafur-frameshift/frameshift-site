@@ -47,7 +47,14 @@ except ImportError:
 
 def load_ink(path, threshold, invert):
     """Return (ink_pixels, width, height). Ink is anything darker than threshold."""
-    img = Image.open(path).convert("L")
+    img = Image.open(path)
+    if img.mode == "RGBA":
+        # Flatten onto white, or transparent regions read as black once
+        # converted and the whole canvas becomes ink.
+        bg = Image.new("RGB", img.size, "white")
+        bg.paste(img, mask=img.split()[3])
+        img = bg
+    img = img.convert("L")
     w, h = img.size
     px = img.load()
     ink = []
@@ -58,6 +65,55 @@ def load_ink(path, threshold, invert):
             if dark:
                 ink.append((x, y))
     return ink, w, h
+
+
+def crop_to_ink(ink, pad_frac):
+    """Trim to the drawing's bounding box so white margins in the source do not
+    shrink the shape once it is fitted into the plot box. Returns the recentred
+    points and the new width/height."""
+    xs = [p[0] for p in ink]
+    ys = [p[1] for p in ink]
+    x0, x1 = min(xs), max(xs)
+    y0, y1 = min(ys), max(ys)
+    w, h = x1 - x0 + 1, y1 - y0 + 1
+    pad = int(round(max(w, h) * pad_frac))
+    out = [(x - x0 + pad, y - y0 + pad) for (x, y) in ink]
+    return out, w + pad * 2, h + pad * 2
+
+
+def label_components(ink):
+    """Flood-fill the ink into connected strokes (8-connectivity).
+
+    Returns {pixel: component_id} and a list of component sizes. This is what
+    makes it possible to accent whole strokes rather than rectangles: in a
+    line drawing the small components are usually the details you want to pick
+    out (the rungs of a helix, the atoms hanging off a ring) while the large
+    ones are the main structure.
+    """
+    ink_set = set(ink)
+    comp = {}
+    sizes = []
+    cid = 0
+    for start in ink:
+        if start in comp:
+            continue
+        stack = [start]
+        comp[start] = cid
+        n = 0
+        while stack:
+            (x, y) = stack.pop()
+            n += 1
+            for dx in (-1, 0, 1):
+                for dy in (-1, 0, 1):
+                    if dx == 0 and dy == 0:
+                        continue
+                    q = (x + dx, y + dy)
+                    if q in ink_set and q not in comp:
+                        comp[q] = cid
+                        stack.append(q)
+        sizes.append(n)
+        cid += 1
+    return comp, sizes
 
 
 def dart_throw(points, radius, limit):
@@ -148,7 +204,22 @@ def main():
     ap.add_argument("--plot-aspect", type=float, default=2.43,
                     help="pixel width/height of the plot box (default 2.43)")
     ap.add_argument("--accent-box", default=None,
-                    help="x0,y0,x1,y1 as fractions of the IMAGE; points inside are marked accent")
+                    help="x0,y0,x1,y1 as fractions of the IMAGE; points inside are marked accent. "
+                         "Separate several boxes with ';' to accent more than one region.")
+    ap.add_argument("--accent-smallest", type=int, default=0, metavar="K",
+                    help="accent the K smallest connected strokes. In a line drawing these are "
+                         "usually the details worth picking out, and unlike a box this follows "
+                         "the stroke exactly, including diagonals.")
+    ap.add_argument("--accent-components", default=None, metavar="IDS",
+                    help="accent these connected strokes by id, comma separated. Run "
+                         "--list-components first to see the ids and sizes.")
+    ap.add_argument("--list-components", action="store_true",
+                    help="print the connected strokes and their sizes, then exit")
+    ap.add_argument("--crop", action="store_true",
+                    help="trim white margins to the drawing's bounding box first, so the shape "
+                         "fills the plot box instead of inheriting the source image's padding")
+    ap.add_argument("--crop-pad", type=float, default=0.02,
+                    help="breathing room left around the drawing when cropping (default 0.02)")
     ap.add_argument("--seed", type=int, default=7)
     ap.add_argument("--name", default="SHAPE_PTS")
     ap.add_argument("--preview", default=None, help="write a PNG preview of the sampled points")
@@ -159,17 +230,54 @@ def main():
         sys.exit("No ink pixels found. Try adjusting --threshold or --invert.")
     print(f"image {iw}x{ih}, ink pixels {len(ink)}", file=sys.stderr)
 
+    if args.crop:
+        ink, iw, ih = crop_to_ink(ink, args.crop_pad)
+        print(f"cropped to {iw}x{ih} (aspect {iw/ih:.3f})", file=sys.stderr)
+
+    comp = sizes = None
+    if args.accent_smallest or args.list_components or args.accent_components:
+        comp, sizes = label_components(ink)
+        order = sorted(range(len(sizes)), key=lambda c: sizes[c])
+        if args.list_components:
+            print(f"{len(sizes)} connected strokes, smallest first:", file=sys.stderr)
+            for c in order:
+                print(f"  stroke {c}: {sizes[c]} px", file=sys.stderr)
+            return
+
     pts = sample_evenly(ink, args.n, args.seed)
     print(f"sampled {len(pts)} points", file=sys.stderr)
 
     accent = set()
+    if args.accent_smallest and comp is not None:
+        order = sorted(range(len(sizes)), key=lambda c: sizes[c])
+        chosen = set(order[:args.accent_smallest])
+        for i, pt in enumerate(pts):
+            if comp.get(pt) in chosen:
+                accent.add(i)
+        picked = sorted(sizes[c] for c in chosen)
+        print(f"accent points: {len(accent)} from the {args.accent_smallest} smallest "
+              f"strokes ({picked} px)", file=sys.stderr)
+
+    if args.accent_components and comp is not None:
+        chosen = set(int(v) for v in args.accent_components.split(","))
+        for i, pt in enumerate(pts):
+            if comp.get(pt) in chosen:
+                accent.add(i)
+        print(f"accent points: {len(accent)} from strokes {sorted(chosen)}", file=sys.stderr)
+
     if args.accent_box:
-        ax0, ay0, ax1, ay1 = (float(v) for v in args.accent_box.split(","))
+        boxes = []
+        for spec in args.accent_box.split(";"):
+            spec = spec.strip()
+            if spec:
+                boxes.append(tuple(float(v) for v in spec.split(",")))
         for i, (px, py) in enumerate(pts):
             u, v = px / iw, py / ih
-            if ax0 <= u <= ax1 and ay0 <= v <= ay1:
-                accent.add(i)
-        print(f"accent points: {len(accent)}", file=sys.stderr)
+            for (ax0, ay0, ax1, ay1) in boxes:
+                if ax0 <= u <= ax1 and ay0 <= v <= ay1:
+                    accent.add(i)
+                    break
+        print(f"accent points: {len(accent)} from {len(boxes)} box(es)", file=sys.stderr)
 
     if args.preview:
         prev = Image.new("RGB", (iw, ih), "white")
