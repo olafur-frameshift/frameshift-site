@@ -7,7 +7,7 @@
 //   • Measure the existing .hero-content element and expose it as a safeRect
 //     (in plot-fraction coords) so particles fade around the copy
 //   • Drive a "breath" value based on IntersectionObserver + hover state
-//   • Cycle through end states on each hover-in (bell → km → map → pedigree → dna → molecule)
+//   • Cycle through end states on each hover-in (bell → sheet → km → map → pedigree → molecule)
 //   • Respect prefers-reduced-motion (mount static, no animation)
 //   • Auto-skip on narrow viewports (the site's CSS also hides us via display:none)
 
@@ -24,7 +24,7 @@ function SiteHeroAnim() {
   const breathRef = React.useRef(0);
   const breathTargetRef = React.useRef(0);
   const safeRectRef = React.useRef(null);
-  const END_STATES = ['bell', 'km', 'map', 'pedigree', 'dna', 'molecule'];
+  const END_STATES = ['bell', 'sheet', 'km', 'map', 'pedigree', 'molecule'];
   const [endIdx, setEndIdx] = React.useState(0);
   const endIdxRef = React.useRef(0); // first state is bell (index 0)
 
