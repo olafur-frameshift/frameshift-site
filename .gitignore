@@ -34,6 +34,17 @@ AGENT_NOTES.md
 # Handoff / spec documents for external reviewers (private, do not publish)
 *-page-spec.txt
 
+# Internal planning notes (private, do not publish)
+tte-example-notes.md
+
+# Post sources. GitHub Pages serves every file on the branch, so while these
+# were tracked they were live and crawlable at frameshift.dk (confirmed HTTP
+# 200), publishing stale prose the rendered pages had already corrected. Kept
+# locally as the source of truth for the articles.
+posts/*/post.md
+posts/*/linkedin_post.md
+posts/*/post.txt
+
 # Python bytecode from tools/
 __pycache__/
 *.pyc

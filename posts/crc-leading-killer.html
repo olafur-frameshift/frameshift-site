@@ -10,25 +10,32 @@
   <link rel="icon" type="image/x-icon" href="../favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
-  <meta property="og:title" content="Colon Cancer Is the Leading Killer of Young Americans. How Do the Nordics Compare?">
+  <meta property="og:title" content="Colon Cancer Is Now the Leading Cancer Killer of Young Americans. How Do the Nordics Compare?">
   <meta property="og:description" content="Colorectal cancer incidence is rising sharply in young Nordic adults. How does the trend compare to the US, and is CRC really the leading cancer killer under 50?">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://frameshift.dk/posts/crc-leading-killer.html">
-  <meta property="og:image" content="https://frameshift.dk/posts/crc-leading-killer/fig1_under50_incidence_sex.webp">
-</head>
+  <meta property="og:image" content="https://frameshift.dk/share-1200x630.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Frameshift: biostatistics and evidence generation, from trials to national registers.">
+  <meta property="og:site_name" content="Frameshift">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Colon Cancer Is Now the Leading Cancer Killer of Young Americans. How Do the Nordics Compare?","description":"Colorectal cancer incidence is rising sharply in young Nordic adults. How does the trend compare to the US, and is CRC really the leading cancer killer under 50?","url":"https://frameshift.dk/posts/crc-leading-killer.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://frameshift.dk/posts/crc-leading-killer.html"},"datePublished":"2026-04-01","dateModified":"2026-04-01","image":"https://frameshift.dk/share-1200x630.png","inLanguage":"en-GB","author":{"@type":"Person","name":"Ólafur B. Davíðsson"},"publisher":{"@id":"https://frameshift.dk/#organization"}}</script>
+  </head>
 <body>
   <header class="site-header">
     <div class="container">
       <a href="../index.html" class="site-logo">
         <img src="../logo.svg" alt="Frameshift">
       </a>
-      <button class="nav-toggle" aria-label="Toggle navigation">
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">
         <span></span><span></span><span></span>
       </button>
-      <nav class="site-nav">
+      <nav class="site-nav" id="site-nav">
         <a href="../index.html#home">Home</a>
-        <a href="../index.html#registry-data">Registry Data</a>
         <a href="../index.html#services">Capabilities</a>
+        <a href="../index.html#registry-data">Registry Data</a>
         <a href="../index.html#research">Selected Work</a>
         <a href="../index.html#about">About</a>
         <a href="../index.html#posts">Insights</a>
@@ -36,7 +43,7 @@
         <a class="nav-mobile-cta" href="../index.html#contact">Discuss a study</a>
       </nav>
       <a href="../index.html#contact" class="btn btn--primary nav-cta">Discuss a study</a>
-      <button class="ghost-toggle" aria-label="Toggle dark mode">
+      <button class="ghost-toggle" aria-label="Toggle dark mode" aria-pressed="false">
         <img src="../ghost.webp" alt="">
       </button>
     </div>
@@ -59,9 +66,9 @@
     <hr class="post-divider">
 
     <article class="post-body">
-      <p>In March 2026, <a href="https://www.theguardian.com/us-news/2026/mar/12/colon-cancer-leading-deaths" target="_blank" rel="noopener">The Guardian</a> reported that colorectal cancer (CRC) had overtaken all other cancers as the leading cause of cancer death among Americans under 50. That is a striking headline, and it raises a natural question from a Nordic vantage point: is the same pattern playing out here?</p>
+      <p>In March 2026, <a href="https://www.theguardian.com/us-news/2026/mar/12/colon-cancer-leading-deaths" target="_blank" rel="noopener">The Guardian</a> reported that colorectal cancer (CRC) had overtaken all other cancers as the leading cause of cancer death among Americans under 50. The obvious question from here is whether the Nordics look the same.</p>
 
-      <p>Fortunately, this is a question we can actually answer. <a href="https://nordcan.iarc.fr/en" target="_blank" rel="noopener">NORDCAN</a>, maintained by the International Agency for Research on Cancer (IARC) in collaboration with the national cancer registries of Denmark, Finland, Iceland, Norway, and Sweden, has been making high-quality, harmonised cancer data freely available to the public for decades. It is one of the most valuable open resources in cancer epidemiology, and work like this would not be possible without it. Pulling roughly 40 years of <a href="../index.html#registry-data">registry data</a> and pooling across all five Nordic countries from 1980 to 2024, I find that the answer is nuanced. The trend is there, but the ranking as per the Guardian headline does not translate directly.</p>
+      <p><a href="https://nordcan.iarc.fr/en" target="_blank" rel="noopener">NORDCAN</a>, maintained by IARC with the national cancer registries of Denmark, Finland, Iceland, Norway and Sweden, publishes harmonised incidence, mortality and survival data for all five countries, free to anyone. We pooled 44 years of that <a href="../index.html#registry-data">register data</a>, 1980 to 2024. The trend is real; the ranking in the Guardian headline does not transfer.</p>
 
       <figure>
         <img loading="lazy" src="crc-leading-killer/fig1_under50_incidence_sex.webp" alt="Figure 1: CRC incidence in under-50s by sex, 1980-2024">
@@ -70,7 +77,7 @@
 
       <p>CRC incidence in under-50s has risen steeply in both men and women. In males, rates climbed from 3.4 to 8.2 per 100,000, a 140% increase. In females, rates went from 4.7 to 9.0 per 100,000, a 90% increase. Women have had higher absolute rates throughout the period, but the male trajectory is steeper and accelerating faster, especially in the last decade. This rise predates organised screening programmes; most Nordic countries did not introduce population-based CRC screening until the 2010s, and those programmes target ages 50 and above.</p>
 
-      <p>A natural follow-up question would be: is CRC incidence rising in step with cancer incidence overall, or is it growing disproportionately fast?</p>
+      <p>Is CRC rising in step with cancer incidence overall, or faster?</p>
 
       <figure>
         <img loading="lazy" src="crc-leading-killer/fig2_crc_share.webp" alt="Figure 2: CRC as a share of all cancer incidence in under-50s">
@@ -79,19 +86,19 @@
 
       <p>For young men, CRC is not just becoming more common; it is taking up an increasing share of the cancer burden. A shift from 7% to 10% of all cancer diagnoses means CRC is outpacing cancer incidence in general. For women, the share has moved less, suggesting CRC incidence is rising roughly in line with the overall trend. This sex difference is one of the more notable features of the data: whatever is driving the rise is acting disproportionately on young men.</p>
 
-      <p>Alongside rising incidence, outcomes are improving. Five-year relative survival for CRC across the Nordic countries has climbed from approximately 71% in the mid-1980s to 88% today. Better surgical techniques, targeted therapies, and earlier symptomatic detection have all undoubtedly contributed. But improving survival does not fully offset the concern. So is CRC really the leading cancer killer in young Nordic adults, as it now is in the US?</p>
+      <p>Alongside rising incidence, outcomes are improving. Five-year relative survival for CRC across the Nordic countries has climbed from approximately 71% in the mid-1980s to 88% today. Better surgery, targeted therapies and earlier symptomatic detection have all contributed. Improving survival does not settle the question, though. So is CRC really the leading cancer killer in young Nordic adults, as it now is in the US?</p>
 
       <figure>
         <img loading="lazy" src="crc-leading-killer/fig4_ranking_sex.webp" alt="Figure 4: Cancer death ranking in under-50s by sex">
         <figcaption>Cancer death rankings in under-50s across all Nordic countries, shown separately for men and women. CRC (highlighted) has held a consistent #3 position for both sexes across the entire period.</figcaption>
       </figure>
 
-      <p>In the Nordic countries, the answer is no. CRC ranks #3 among cancer deaths in under-50s for both sexes and has held that position remarkably consistently since 1980. In men, brain tumours and leukaemia claim the top two spots. In women, breast cancer has historically dominated the first position by a wide margin, though a striking development is visible in the most recent period: lung cancer appears to have overtaken breast cancer as the leading cause of cancer death in young Nordic women. That shift deserves its own analysis and will be the subject of a future post. The Guardian headline reflects a US-specific ranking that does not directly map to the Nordic picture, likely driven by differences in screening uptake, dietary patterns, and the relative burden of other cancers across the two populations.</p>
+      <p>In the Nordic countries, the answer is no. CRC ranks #3 among cancer deaths in under-50s for both sexes and has held it since 1980. In men, brain tumours and leukaemia claim the top two spots. In women, breast cancer has historically dominated the first position by a wide margin, though the most recent period shows something new: lung cancer appears to have overtaken breast cancer as the leading cause of cancer death in young Nordic women. That shift deserves its own analysis and will be the subject of a future post. The Guardian headline reflects a US-specific ranking that does not directly map to the Nordic picture, likely driven by differences in screening uptake, dietary patterns, and the relative burden of other cancers across the two populations.</p>
 
-      <p>What the Nordic data does confirm is the direction. CRC incidence in younger adults is rising, has been rising for over four decades, and is accelerating. The share of all cancers attributable to CRC is growing, particularly in young men. These are not features of a stable epidemiological landscape. Whether CRC eventually climbs to #1 in the Nordics is less important than the fact that it is moving in that direction in a population that historically had very low rates, and in which screening programmes offer no protection.</p>
+      <p>What the Nordic data do confirm is the direction. CRC incidence in younger adults is rising, has been rising for over four decades, and is accelerating. The share of all cancers attributable to CRC is growing, particularly in young men. Whether CRC eventually climbs to #1 in the Nordics is less important than the fact that it is moving in that direction in a population that historically had very low rates, and in which screening programmes offer no protection.</p>
 
       <div class="callout">
-        <a href="../index.html">Frameshift</a> generates real-world evidence using Danish health registry data. We support pharmaceutical and biotech teams from feasibility and study design through registry analysis, reporting, and publication. If you need incidence and survival trends, treatment patterns, or population-scale epidemiology, <a href="../index.html#contact">discuss an RWE study</a> with us.
+        The analysis above is descriptive epidemiology, which <a href="../index.html">Frameshift</a> does at national scale: incidence and survival trends, treatment patterns and burden of disease, from open sources such as NORDCAN and from individual-level Danish register data. If you need a trend or burden analysis that will hold up in review, <a href="../index.html#contact">tell us what you are trying to establish</a>.
       </div>
 
       <div class="post-author-bio">
@@ -99,7 +106,7 @@
         <div>
           <p class="post-author-name">Ólafur B. Davíðsson, PhD</p>
           <p class="post-author-role">Co-Founder &amp; Lead Biostatistician</p>
-          <p class="post-author-desc">Statistical epidemiologist working across clinical trials, nationwide Danish registry studies, and genetic epidemiology.</p>
+          <p class="post-author-desc">Statistical epidemiologist working across clinical trials, nationwide Danish registry studies and genetic epidemiology.</p>
           <div class="post-author-links">
             <a href="https://www.linkedin.com/in/olafurbirgir/" target="_blank" rel="noopener">LinkedIn →</a>
             <a href="https://scholar.google.com/citations?user=dEJX3rcAAAAJ" target="_blank" rel="noopener">Scholar →</a>
@@ -113,7 +120,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
-        <p class="footer-tagline">Real-world evidence &middot; Registry study design &middot; Epidemiology &middot; Biostatistics &middot; Analysis &middot; Reporting</p>
+        <p class="footer-tagline">Trial statistics, registry studies and epidemiology, designed and run in Copenhagen.</p>
         <p>&copy; 2026 Frameshift ApS &middot; Copenhagen, Denmark &middot; CVR 44531410 &middot; <a href="mailto:info@frameshift.dk">info@frameshift.dk</a></p>
       </div>
       <div class="footer-links">
@@ -129,10 +136,17 @@
   (() => {
     const ghost = document.querySelector('.ghost-toggle');
     if (!ghost) return;
-    try { if (localStorage.getItem('dark') === '1') document.body.classList.add('dark'); } catch (e) {}
+    const setDark = (on) => {
+      document.body.classList.toggle('dark', on);
+      ghost.setAttribute('aria-pressed', on ? 'true' : 'false');
+    };
+    let isDark = false;
+    try { isDark = localStorage.getItem('dark') === '1'; } catch (e) { /* storage unavailable; default to light */ }
+    setDark(isDark);
     ghost.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      try { localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0'); } catch (e) {}
+      isDark = !isDark;
+      setDark(isDark);
+      try { localStorage.setItem('dark', isDark ? '1' : '0'); } catch (e) { /* not persisted */ }
     });
   })();
   (() => {
@@ -140,11 +154,13 @@
     const nav = document.querySelector('.site-nav');
     if (toggle && nav) {
       toggle.addEventListener('click', () => {
-        toggle.classList.toggle('active');
-        nav.classList.toggle('open');
+        const open = nav.classList.toggle('open');
+        toggle.classList.toggle('active', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
     }
   })();
   </script>
+  <script src="../lightbox.js" defer></script>
 </body>
 </html>

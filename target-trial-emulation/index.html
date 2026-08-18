@@ -14,7 +14,13 @@
   <meta property="og:description" content="Answer trial-like causal questions and generate real-world evidence from longitudinal registry data. Frameshift brings trial-level design discipline to Danish registry studies.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://frameshift.dk/target-trial-emulation/">
-  <meta property="og:image" content="https://frameshift.dk/apple-touch-icon.png">
+  <meta property="og:image" content="https://frameshift.dk/share-1200x630.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Frameshift: biostatistics and evidence generation, from trials to national registers.">
+  <meta property="og:site_name" content="Frameshift">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
   <header class="site-header">
@@ -22,13 +28,13 @@
       <a href="../index.html" class="site-logo">
         <img src="../logo.svg" alt="Frameshift">
       </a>
-      <button class="nav-toggle" aria-label="Toggle navigation">
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">
         <span></span><span></span><span></span>
       </button>
-      <nav class="site-nav">
+      <nav class="site-nav" id="site-nav">
         <a href="../index.html#home">Home</a>
-        <a href="../index.html#registry-data">Registry Data</a>
         <a href="../index.html#services">Capabilities</a>
+        <a href="../index.html#registry-data">Registry Data</a>
         <a href="../index.html#research">Selected Work</a>
         <a href="../index.html#about">About</a>
         <a href="../index.html#posts">Insights</a>
@@ -36,7 +42,7 @@
         <a class="nav-mobile-cta" href="../index.html#contact">Discuss a study</a>
       </nav>
       <a href="../index.html#contact" class="btn btn--primary nav-cta">Discuss a study</a>
-      <button class="ghost-toggle" aria-label="Toggle dark mode">
+      <button class="ghost-toggle" aria-label="Toggle dark mode" aria-pressed="false">
         <img src="../ghost.webp" alt="">
       </button>
     </div>
@@ -52,7 +58,7 @@
           <h1 class="section-title">Target Trial Emulation</h1>
           <p class="section-lead">Answer trial-like causal questions and generate real-world evidence from longitudinal registry data.</p>
           <div class="tte-intro">
-            <p>Frameshift applies the target trial framework to comparative-effectiveness questions in Danish registry data. The protocol of the hypothetical randomised trial is written in full and fixed before the outcome is examined, and each component is then emulated in the observational data.</p>
+            <p>Frameshift applies the target trial framework to comparative-effectiveness questions in Danish registry data. The protocol of the hypothetical randomised trial is written in full and fixed before the outcome is examined, and each component is then emulated in the observational data. We also run the statistics on randomised trials, which is where the design discipline described below comes from.</p>
             <p>The discipline is in the sequence. Eligibility, treatment assignment and the start of follow-up are aligned at a single time zero, preventing immortal-time and related design biases. Where treatment initiation is the decision of interest, a new-user design avoids conditioning the comparison on prior treatment survival or tolerance. Where the available data cannot faithfully reproduce a component of the target trial, we state the departure explicitly and assess its likely impact, quantitatively where possible.</p>
           </div>
         </div>
@@ -153,12 +159,12 @@
             <tr>
               <th scope="row" class="spec-component">Analysis plan</th>
               <td>Prespecified estimator, adjustment set and subgroup analyses.</td>
-              <td>Prespecified before the outcome is examined. Estimator chosen to match the contrast, not the other way round.</td>
+              <td>Prespecified before the outcome is examined, with the estimator chosen to match the causal contrast.</td>
             </tr>
           </tbody>
         </table>
       </div>
-      <p class="spec-note">Departures from the target trial are documented as part of the deliverable. An emulation whose compromises are visible is worth more than one whose are not.</p>
+      <p class="spec-note">Departures from the target trial are documented as part of the deliverable.</p>
     </div>
   </section>
 
@@ -167,7 +173,7 @@
     <div class="container">
       <p class="eyebrow">Method</p>
       <h2 class="section-title">How the estimate is built.</h2>
-      <p class="section-lead">Design choices first, estimator second. The analysis follows from the causal contrast, not from what is convenient in the data.</p>
+      <p class="section-lead">The analysis follows from the causal contrast, not from what is convenient in the data.</p>
       <div class="services-grid">
         <div class="service-card">
           <span class="service-num">01</span>
@@ -185,19 +191,19 @@
           <span class="service-num">03</span>
           <h3>Confounding control</h3>
           <p class="service-lead">Matched to the estimand.</p>
-          <p>Inverse probability of treatment weighting, standardisation, or g-methods where treatment and confounders vary over time. Weight distributions and covariate balance are reported, not assumed.</p>
+          <p>We use inverse probability of treatment weighting, standardisation, or g-methods where treatment and confounders vary over time. We report the weight distributions and the covariate balance the weights actually achieve.</p>
         </div>
         <div class="service-card">
           <span class="service-num">04</span>
           <h3>Competing events and censoring</h3>
-          <p class="service-lead">Matched to the clinical question.</p>
+          <p class="service-lead">When the patient dies first.</p>
           <p>Death may preclude the outcome of interest and should be handled according to the estimand rather than treated mechanically as censoring. Cause-specific hazards, cumulative incidence functions and other competing-event quantities answer different questions, and we state which one the clinical question requires.</p>
         </div>
         <div class="service-card">
           <span class="service-num">05</span>
           <h3>Sensitivity and bias analysis</h3>
           <p class="service-lead">Where the estimate earns trust.</p>
-          <p>Negative control outcomes and exposures, alternative adjustment sets and lookback windows, and quantitative bias analysis to establish how strong unmeasured confounding would need to be to explain the result.</p>
+          <p>We run negative control outcomes and exposures, alternative adjustment sets and lookback windows, and quantitative bias analysis to establish how strong unmeasured confounding would need to be to explain the result.</p>
         </div>
       </div>
     </div>
@@ -208,7 +214,7 @@
     <div class="container">
       <p class="eyebrow">Questions it answers</p>
       <h2 class="section-title">When to use it.</h2>
-      <p class="section-lead">Best suited to comparative questions where randomisation is unavailable, impractical, or too short to reach the outcome that matters.</p>
+      <p class="section-lead">Best suited to comparative questions where randomisation is unavailable or impractical, or where a trial's follow-up is too short to reach the outcome that matters.</p>
       <ul class="checklist">
         <li>How does treatment A compare with treatment B under routine care conditions?</li>
         <li>What are the long-term effectiveness and safety outcomes of competing treatment strategies?</li>
@@ -225,7 +231,7 @@
     <div class="container">
       <p class="eyebrow">Deliverables</p>
       <h2 class="section-title">What we deliver.</h2>
-      <p class="section-lead">From feasibility through final evidence package, the work is structured around the target-trial protocol rather than added retrospectively at the analysis stage.</p>
+      <p class="section-lead">Each deliverable below maps onto a part of the target-trial protocol.</p>
       <div class="deliver-list">
         <div class="deliver-item">
           <span class="deliver-num">01</span>
@@ -287,7 +293,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
-        <p class="footer-tagline">Real-world evidence &middot; Registry study design &middot; Epidemiology &middot; Biostatistics &middot; Analysis &middot; Reporting</p>
+        <p class="footer-tagline">Trial statistics, registry studies and epidemiology, designed and run in Copenhagen.</p>
         <p>© 2026 Frameshift ApS · Copenhagen, Denmark · CVR 44531410 · <a href="mailto:info@frameshift.dk">info@frameshift.dk</a></p>
       </div>
       <div class="footer-links">
@@ -304,10 +310,17 @@
   (() => {
     const ghost = document.querySelector('.ghost-toggle');
     if (!ghost) return;
-    try { if (localStorage.getItem('dark') === '1') document.body.classList.add('dark'); } catch (e) {}
+    const setDark = (on) => {
+      document.body.classList.toggle('dark', on);
+      ghost.setAttribute('aria-pressed', on ? 'true' : 'false');
+    };
+    let isDark = false;
+    try { isDark = localStorage.getItem('dark') === '1'; } catch (e) { /* storage unavailable; default to light */ }
+    setDark(isDark);
     ghost.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      try { localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0'); } catch (e) {}
+      isDark = !isDark;
+      setDark(isDark);
+      try { localStorage.setItem('dark', isDark ? '1' : '0'); } catch (e) { /* not persisted */ }
     });
   })();
   (() => {
@@ -315,8 +328,9 @@
     const nav = document.querySelector('.site-nav');
     if (toggle && nav) {
       toggle.addEventListener('click', () => {
-        toggle.classList.toggle('active');
-        nav.classList.toggle('open');
+        const open = nav.classList.toggle('open');
+        toggle.classList.toggle('active', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
     }
   })();

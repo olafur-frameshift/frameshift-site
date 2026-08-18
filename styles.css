@@ -66,6 +66,27 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+/* Italic. These are variable-weight files, so one per subset covers the whole
+   400 to 700 range the roman faces declare individually. Without a real italic
+   face `<em>` fell back to synthetic oblique, which is why `.post-body em` used
+   to switch italics off entirely and flatten journal names inside citations. */
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(fonts/eb-garamond-italic-latin-ext.woff2) format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'EB Garamond';
+  font-style: italic;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url(fonts/eb-garamond-italic-latin.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 /* ── Tokens ─────────────────────────────────────────────────── */
 :root {
   /* Colour */
@@ -111,6 +132,12 @@
 
 /* ── Reset ───────────────────────────────────────────────────── */
 html { scroll-behavior: smooth; font-size: 112.5%; /* 16px → 18px base; rem-based sizing scales up */ }
+
+/* .site-header is position:sticky, and .section top padding bottoms out at its
+   36px clamp floor, which is less than the header height at every viewport.
+   Without this every in-page anchor lands with its eyebrow behind the header.
+   Both selectors are needed: #home is .hero, the rest are .section[id]. */
+.hero, .section[id] { scroll-margin-top: 5rem; }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
@@ -716,6 +743,27 @@ img { display: block; max-width: 100%; }
   line-height: 1.65;
 }
 
+/* Emphasised practice area, used on the real-world-evidence card in #services.
+   Same faint-green treatment as .service-card--featured and
+   .research-card--engagement, so "this one matters more" reads the same way
+   everywhere. No badge: the tint, the position and the copy carry it. */
+.why-card--featured {
+  background: var(--accent-dim);
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface));
+  border: 1px solid var(--accent);
+  box-shadow: var(--shadow-md);
+}
+
+/* .service-lead is (0,1,0) and loses to `.service-card p` / `.why-card p`
+   (0,1,1), which set --muted. The emphasis line on every service card has
+   therefore been rendering muted rather than ink since it was introduced.
+   Two classes to out-specify the descendant selectors. */
+.service-card .service-lead,
+.why-card .service-lead {
+  color: var(--ink);
+  font-weight: 600;
+}
+
 /* ── Contact meta ────────────────────────────────────────────── */
 .contact-meta {
   display: flex;
@@ -914,6 +962,14 @@ img { display: block; max-width: 100%; }
 
 .research-card--engagement .research-venue {
   flex-basis: 100%;
+}
+
+/* Let the study-type label and the "Client engagement" badge share a row when
+   the card is wide enough for both (roughly 1800px and up); below that they
+   wrap and the meta block is three rows deep. That is fine: card titles in this
+   grid are not aligned anyway, because long journal names wrap to two lines. */
+.research-card--engagement .research-type {
+  flex-basis: auto;
 }
 
 /* ── Works archive page ─────────────────────────────────────── */
@@ -1148,8 +1204,11 @@ a.research-card {
   width: 100%;
 }
 
+/* Was a hardcoded #767676, which is 4.54:1 on the light --surface but drops to
+   3.07:1 once body.dark switches --surface to #2c2c2e. The token is
+   theme-aware and clears AA in both (6.35:1 light, 5.57:1 dark). */
 .form-group input::placeholder,
-.form-group textarea::placeholder { color: #767676; }
+.form-group textarea::placeholder { color: var(--muted); }
 
 .form-group input:focus,
 .form-group select:focus,
@@ -1221,7 +1280,16 @@ a.research-card {
 
 .post-body li { margin-bottom: var(--space-2); }
 .post-body strong { font-weight: 700; }
-.post-body em { font-style: normal; }
+
+/* .post-disclaimer had no rule at all, so it rendered identical to body copy
+   despite being marked up as an aside. */
+.post-body .post-disclaimer {
+  margin-top: var(--space-8);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border);
+  font-size: 0.875rem;
+  color: var(--muted);
+}
 
 .post-body figure {
   margin: var(--space-8) 0;
@@ -1239,6 +1307,100 @@ a.research-card {
   color: var(--muted);
   margin-top: var(--space-3);
 }
+
+/* Figure viewer (see lightbox.js). Post charts are authored at 2400 to 3000 px
+   but render at 453 px on a phone, so the dense ones need pan and zoom rather
+   than just a larger box. The overlay commits to a dark backdrop with light
+   chrome in both themes: the charts have white backgrounds, and this is the
+   contrast that makes them read. */
+.figure-zoom {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: zoom-in;
+}
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: none;
+  flex-direction: column;
+  background: rgba(0, 0, 0, 0.88);
+}
+
+/* No fade. An overlay that animates its own opacity has a failure mode where a
+   stalled animation leaves it invisible but still capturing clicks, and a
+   180 ms fade buys nothing on an image viewer. It simply appears. */
+.lightbox.is-open { display: flex; }
+
+.lightbox-bar {
+  flex: none;
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+}
+
+.lightbox-btn {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-family: var(--font);
+  font-size: 0.9rem;
+  padding: var(--space-2) var(--space-4);
+  cursor: pointer;
+}
+
+.lightbox-btn:hover { border-color: rgba(255, 255, 255, 0.7); }
+
+.lightbox-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--space-4);
+  -webkit-overflow-scrolling: touch;
+}
+
+.lightbox-scroll img {
+  display: block;
+  margin: auto;
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: var(--radius-sm);
+  cursor: zoom-in;
+}
+
+/* Native resolution: drop the fit constraints so the container can pan. */
+.lightbox.is-zoomed .lightbox-scroll {
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.lightbox.is-zoomed .lightbox-scroll img {
+  max-width: none;
+  max-height: none;
+  cursor: zoom-out;
+}
+
+.lightbox-caption {
+  flex: none;
+  margin: 0;
+  padding: var(--space-3) var(--space-6) var(--space-5);
+  text-align: center;
+  font-size: 0.83rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+body.lightbox-open { overflow: hidden; }
 
 .post-body .callout,
 .callout-box {
@@ -1773,6 +1935,11 @@ body.dark .post-body pre {
   background: #252527;
 }
 
-body.dark img:not(.site-logo img):not(.ghost-toggle img) {
+/* :not() takes the specificity of its argument, so this selector was (0,3,4)
+   and beat the (0,1,0) `border-radius: 50%` on .team-avatar and
+   .post-author-avatar: in dark mode the four round portraits rendered as 8px
+   rounded squares. The avatars are now excluded explicitly. Post figures get
+   their radius from `.post-body figure img` regardless of theme. */
+body.dark img:not(.site-logo img):not(.ghost-toggle img):not(.team-avatar):not(.post-author-avatar) {
   border-radius: var(--radius-sm);
 }

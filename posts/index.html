@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Articles on Danish registry research, real-world evidence methods, and epidemiological study design from the Frameshift team.">
+  <meta name="description" content="Articles on study design, biostatistics and epidemiology from the Frameshift team, covering clinical trials, Danish registry research and real-world evidence methods.">
   <title>Insights | Frameshift</title>
   <link rel="canonical" href="https://frameshift.dk/posts/">
   <link rel="stylesheet" href="../styles.css">
@@ -11,10 +11,16 @@
   <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
   <link rel="apple-touch-icon" href="../apple-touch-icon.png">
   <meta property="og:title" content="Insights | Frameshift">
-  <meta property="og:description" content="Articles on Danish registry research, real-world evidence methods, and epidemiological study design from the Frameshift team.">
+  <meta property="og:description" content="Articles on study design, biostatistics and epidemiology from the Frameshift team, covering clinical trials, Danish registry research and real-world evidence methods.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://frameshift.dk/posts/">
-  <meta property="og:image" content="https://frameshift.dk/apple-touch-icon.png">
+  <meta property="og:image" content="https://frameshift.dk/share-1200x630.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Frameshift: biostatistics and evidence generation, from trials to national registers.">
+  <meta property="og:site_name" content="Frameshift">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
   <header class="site-header">
@@ -22,13 +28,13 @@
       <a href="../index.html" class="site-logo">
         <img src="../logo.svg" alt="Frameshift">
       </a>
-      <button class="nav-toggle" aria-label="Toggle navigation">
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">
         <span></span><span></span><span></span>
       </button>
-      <nav class="site-nav">
+      <nav class="site-nav" id="site-nav">
         <a href="../index.html#home">Home</a>
-        <a href="../index.html#registry-data">Registry Data</a>
         <a href="../index.html#services">Capabilities</a>
+        <a href="../index.html#registry-data">Registry Data</a>
         <a href="../index.html#research">Selected Work</a>
         <a href="../index.html#about">About</a>
         <a href="../index.html#posts">Insights</a>
@@ -36,7 +42,7 @@
         <a class="nav-mobile-cta" href="../index.html#contact">Discuss a study</a>
       </nav>
       <a href="../index.html#contact" class="btn btn--primary nav-cta">Discuss a study</a>
-      <button class="ghost-toggle" aria-label="Toggle dark mode">
+      <button class="ghost-toggle" aria-label="Toggle dark mode" aria-pressed="false">
         <img src="../ghost.webp" alt="">
       </button>
     </div>
@@ -46,19 +52,19 @@
     <div class="container">
       <p class="eyebrow">Frameshift Insights</p>
       <h1 class="section-title">All posts.</h1>
-      <p class="section-lead">Methodological essays on epidemiology, biostatistics, and study design.</p>
+      <p class="section-lead">Methodological essays on epidemiology, biostatistics and study design.</p>
 
       <!-- Filters -->
       <div class="filter-bar">
         <div class="filter-group">
-          <span class="filter-label">Tags</span>
-          <div class="filter-tags" id="tag-filters">
+          <span class="filter-label" id="tag-filter-label">Tags</span>
+          <div class="filter-tags" id="tag-filters" role="group" aria-labelledby="tag-filter-label">
             <!-- Populated by JS from post data attributes -->
           </div>
         </div>
 
         <div class="filter-group">
-          <span class="filter-label">Author</span>
+          <label class="filter-label" for="author-filter">Author</label>
           <select class="filter-select" id="author-filter">
             <option value="all">All authors</option>
             <!-- Populated by JS -->
@@ -106,7 +112,7 @@
             <span class="post-tag">Registry Data</span>
           </div>
           <h2 class="post-title">
-            <a href="crc-leading-killer.html">Colon Cancer Is the Leading Killer of Young Americans. How Do the Nordics Compare?</a>
+            <a href="crc-leading-killer.html">Colon Cancer Is Now the Leading Cancer Killer of Young Americans. How Do the Nordics Compare?</a>
           </h2>
           <p class="post-excerpt">The Guardian reported that CRC is now the #1 cancer killer in Americans under 50. We pooled 44 years of NORDCAN data across five countries. The trend is real, but the ranking is not: CRC is #3 in the Nordics for both sexes, and the rise is hitting young men hardest.</p>
           <div class="post-footer">
@@ -127,7 +133,7 @@
           <h2 class="post-title">
             <a href="immortal-time-bias.html">Sun Exposure, Skin Cancer, and a Methodological Sunburn</a>
           </h2>
-          <p class="post-excerpt">A 2013 Danish register study found that skin cancer patients had half the all-cause mortality of the general population, an effect that survives even a lottery prize with no biological mechanism whatsoever. Here is why.</p>
+          <p class="post-excerpt">A 2013 Danish register study found that skin cancer patients had half the all-cause mortality of the general population. Swap the diagnosis for a lottery prize and the same design manufactures the same survival advantage, because the exposure is defined by having lived long enough to receive it.</p>
           <div class="post-footer">
             <span class="post-author">Ólafur B. Davíðsson, PhD</span>
             <a href="immortal-time-bias.html" class="read-more">Read post →</a>
@@ -143,7 +149,7 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
-        <p class="footer-tagline">Real-world evidence &middot; Registry study design &middot; Epidemiology &middot; Biostatistics &middot; Analysis &middot; Reporting</p>
+        <p class="footer-tagline">Trial statistics, registry studies and epidemiology, designed and run in Copenhagen.</p>
         <p>© 2026 Frameshift ApS · Copenhagen, Denmark · CVR 44531410 · <a href="mailto:info@frameshift.dk">info@frameshift.dk</a></p>
       </div>
       <div class="footer-links">
@@ -161,11 +167,18 @@
     (() => {
       const ghost = document.querySelector('.ghost-toggle');
       if (!ghost) return;
-      try { if (localStorage.getItem('dark') === '1') document.body.classList.add('dark'); } catch (e) {}
-      ghost.addEventListener('click', () => {
-        document.body.classList.toggle('dark');
-        try { localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0'); } catch (e) {}
-      });
+    const setDark = (on) => {
+          document.body.classList.toggle('dark', on);
+          ghost.setAttribute('aria-pressed', on ? 'true' : 'false');
+        };
+        let isDark = false;
+        try { isDark = localStorage.getItem('dark') === '1'; } catch (e) { /* storage unavailable; default to light */ }
+        setDark(isDark);
+        ghost.addEventListener('click', () => {
+          isDark = !isDark;
+          setDark(isDark);
+          try { localStorage.setItem('dark', isDark ? '1' : '0'); } catch (e) { /* not persisted */ }
+        });
     })();
 
     /* Hamburger toggle */
@@ -174,8 +187,9 @@
       const nav = document.querySelector('.site-nav');
       if (toggle && nav) {
         toggle.addEventListener('click', () => {
-          toggle.classList.toggle('active');
-          nav.classList.toggle('open');
+          const open = nav.classList.toggle('open');
+          toggle.classList.toggle('active', open);
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
         });
       }
     })();
@@ -202,6 +216,7 @@
       allBtn.className = 'tag-filter-btn active';
       allBtn.textContent = 'All';
       allBtn.dataset.tag = 'all';
+      allBtn.setAttribute('aria-pressed', 'true');
       tagContainer.appendChild(allBtn);
 
       Array.from(allTags).sort().forEach(tag => {
@@ -209,6 +224,7 @@
         btn.className = 'tag-filter-btn';
         btn.textContent = tag.charAt(0).toUpperCase() + tag.slice(1);
         btn.dataset.tag = tag.toLowerCase();
+        btn.setAttribute('aria-pressed', 'false');
         tagContainer.appendChild(btn);
       });
 
@@ -257,8 +273,13 @@
       // Tag click
       tagContainer.addEventListener('click', (e) => {
         if (!e.target.classList.contains('tag-filter-btn')) return;
-        tagContainer.querySelectorAll('.tag-filter-btn').forEach(b => b.classList.remove('active'));
-        e.target.classList.add('active');
+        /* Selection was conveyed by the .active class alone, so which filter
+           was applied could be seen but not announced. */
+        tagContainer.querySelectorAll('.tag-filter-btn').forEach(b => {
+          const on = b === e.target;
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
         activeTag = e.target.dataset.tag;
         applyFilters();
       });

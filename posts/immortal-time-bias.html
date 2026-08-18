@@ -14,21 +14,28 @@
   <meta property="og:description" content="How immortal time bias can distort epidemiological findings, illustrated through the sun exposure and skin cancer survival paradox.">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://frameshift.dk/posts/immortal-time-bias.html">
-  <meta property="og:image" content="https://frameshift.dk/posts/immortal-time-bias/fig1_nmsc.webp">
-</head>
+  <meta property="og:image" content="https://frameshift.dk/share-1200x630.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Frameshift: biostatistics and evidence generation, from trials to national registers.">
+  <meta property="og:site_name" content="Frameshift">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Sun Exposure, Skin Cancer, and a Methodological Sunburn","description":"How immortal time bias can distort epidemiological findings, illustrated through the sun exposure and skin cancer survival paradox.","url":"https://frameshift.dk/posts/immortal-time-bias.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://frameshift.dk/posts/immortal-time-bias.html"},"datePublished":"2026-03-26","dateModified":"2026-03-26","image":"https://frameshift.dk/share-1200x630.png","inLanguage":"en-GB","author":{"@type":"Person","name":"Ólafur B. Davíðsson"},"publisher":{"@id":"https://frameshift.dk/#organization"}}</script>
+  </head>
 <body>
   <header class="site-header">
     <div class="container">
       <a href="../index.html" class="site-logo">
         <img src="../logo.svg" alt="Frameshift">
       </a>
-      <button class="nav-toggle" aria-label="Toggle navigation">
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">
         <span></span><span></span><span></span>
       </button>
-      <nav class="site-nav">
+      <nav class="site-nav" id="site-nav">
         <a href="../index.html#home">Home</a>
-        <a href="../index.html#registry-data">Registry Data</a>
         <a href="../index.html#services">Capabilities</a>
+        <a href="../index.html#registry-data">Registry Data</a>
         <a href="../index.html#research">Selected Work</a>
         <a href="../index.html#about">About</a>
         <a href="../index.html#posts">Insights</a>
@@ -36,7 +43,7 @@
         <a class="nav-mobile-cta" href="../index.html#contact">Discuss a study</a>
       </nav>
       <a href="../index.html#contact" class="btn btn--primary nav-cta">Discuss a study</a>
-      <button class="ghost-toggle" aria-label="Toggle dark mode">
+      <button class="ghost-toggle" aria-label="Toggle dark mode" aria-pressed="false">
         <img src="../ghost.webp" alt="">
       </button>
     </div>
@@ -60,7 +67,7 @@
     <article class="post-body">
       <p>In 2013, Brøndum-Jacobsen and colleagues published a study in the <em>International Journal of Epidemiology</em> testing whether sun exposure (proxied by skin cancer diagnosis) was associated with better downstream health outcomes. The logic is biologically plausible: more sun means more vitamin D, with downstream effects on bone metabolism and cardiovascular function.</p>
 
-      <p>The dataset is exceptional. The investigators used linked Danish national registries covering the <strong>entire Danish population above age 40 from 1980 to 2006</strong>: 4.4 million individuals. Denmark's administrative registers are among the most valuable resources in epidemiology: every resident carries a unique civil registration number (CPR) assigned at birth, enabling exact linkage across the National Patient Registry, the Cancer Registry, the Civil Registration System, and the Cause of Death Registry. No sampling, no recall bias, near-complete ascertainment of diagnoses and deaths across a quarter century.</p>
+      <p>The dataset is exceptional. The investigators used linked Danish national registers covering the <strong>entire Danish population above age 40 from 1980 to 2006</strong>: 4.4 million individuals. Denmark's administrative registers are among the most valuable resources in epidemiology: every resident carries a unique civil registration number (CPR) assigned at birth, enabling exact linkage across the National Patient Register, the Cancer Register, the Civil Registration System, and the Cause of Death Register. No sampling, no recall bias, near-complete ascertainment of diagnoses and deaths across a quarter century.</p>
 
       <p>The results were striking. Compared to the general population:</p>
       <ul>
@@ -159,7 +166,7 @@ coxph(Surv(time, event) ~ prize, data = correct) |&gt; coef() |&gt; exp()
       </details>
 
       <div class="callout">
-        <a href="../index.html">Frameshift</a> generates real-world evidence using Danish health registry data. We support pharmaceutical and biotech teams from feasibility and study design through registry analysis, reporting, and publication. If your study involves time-to-event outcomes or post-baseline exposures, <a href="../index.html#contact">discuss an RWE study</a> with us.
+        <a href="../index.html">Frameshift</a> is a biostatistics and evidence-generation consultancy. Time zero, eligibility and the handling of post-baseline exposures are settled at the design stage, in randomised trials and in nationwide register studies alike. If a study of yours turns on when follow-up starts, <a href="../index.html#contact">discuss the design with us</a>.
       </div>
 
       <div class="post-author-bio">
@@ -167,7 +174,7 @@ coxph(Surv(time, event) ~ prize, data = correct) |&gt; coef() |&gt; exp()
         <div>
           <p class="post-author-name">Ólafur B. Davíðsson, PhD</p>
           <p class="post-author-role">Co-Founder &amp; Lead Biostatistician</p>
-          <p class="post-author-desc">Statistical epidemiologist working across clinical trials, nationwide Danish registry studies, and genetic epidemiology.</p>
+          <p class="post-author-desc">Statistical epidemiologist working across clinical trials, nationwide Danish registry studies and genetic epidemiology.</p>
           <div class="post-author-links">
             <a href="https://www.linkedin.com/in/olafurbirgir/" target="_blank" rel="noopener">LinkedIn →</a>
             <a href="https://scholar.google.com/citations?user=dEJX3rcAAAAJ" target="_blank" rel="noopener">Scholar →</a>
@@ -185,7 +192,7 @@ coxph(Surv(time, event) ~ prize, data = correct) |&gt; coef() |&gt; exp()
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
-        <p class="footer-tagline">Real-world evidence &middot; Registry study design &middot; Epidemiology &middot; Biostatistics &middot; Analysis &middot; Reporting</p>
+        <p class="footer-tagline">Trial statistics, registry studies and epidemiology, designed and run in Copenhagen.</p>
         <p>© 2026 Frameshift ApS · Copenhagen, Denmark · CVR 44531410 · <a href="mailto:info@frameshift.dk">info@frameshift.dk</a></p>
       </div>
       <div class="footer-links">
@@ -201,10 +208,17 @@ coxph(Surv(time, event) ~ prize, data = correct) |&gt; coef() |&gt; exp()
   (() => {
     const ghost = document.querySelector('.ghost-toggle');
     if (!ghost) return;
-    try { if (localStorage.getItem('dark') === '1') document.body.classList.add('dark'); } catch (e) {}
+    const setDark = (on) => {
+      document.body.classList.toggle('dark', on);
+      ghost.setAttribute('aria-pressed', on ? 'true' : 'false');
+    };
+    let isDark = false;
+    try { isDark = localStorage.getItem('dark') === '1'; } catch (e) { /* storage unavailable; default to light */ }
+    setDark(isDark);
     ghost.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      try { localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0'); } catch (e) {}
+      isDark = !isDark;
+      setDark(isDark);
+      try { localStorage.setItem('dark', isDark ? '1' : '0'); } catch (e) { /* not persisted */ }
     });
   })();
   (() => {
@@ -212,11 +226,13 @@ coxph(Surv(time, event) ~ prize, data = correct) |&gt; coef() |&gt; exp()
     const nav = document.querySelector('.site-nav');
     if (toggle && nav) {
       toggle.addEventListener('click', () => {
-        toggle.classList.toggle('active');
-        nav.classList.toggle('open');
+        const open = nav.classList.toggle('open');
+        toggle.classList.toggle('active', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
     }
   })();
   </script>
+  <script src="../lightbox.js" defer></script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Privacy policy for Frameshift, a registry-based real-world evidence and biostatistics company in Copenhagen, Denmark.">
+  <meta name="description" content="Privacy policy for Frameshift, a biostatistics and evidence-generation consultancy in Copenhagen, Denmark.">
   <title>Privacy Policy | Frameshift</title>
   <link rel="canonical" href="https://frameshift.dk/privacy.html">
   <link rel="stylesheet" href="styles.css">
@@ -17,13 +17,13 @@
       <a href="index.html" class="site-logo">
         <img src="logo.svg" alt="Frameshift">
       </a>
-      <button class="nav-toggle" aria-label="Toggle navigation">
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">
         <span></span><span></span><span></span>
       </button>
-      <nav class="site-nav">
+      <nav class="site-nav" id="site-nav">
         <a href="index.html#home">Home</a>
-        <a href="index.html#registry-data">Registry Data</a>
         <a href="index.html#services">Capabilities</a>
+        <a href="index.html#registry-data">Registry Data</a>
         <a href="index.html#research">Selected Work</a>
         <a href="index.html#about">About</a>
         <a href="index.html#posts">Insights</a>
@@ -31,7 +31,7 @@
         <a class="nav-mobile-cta" href="index.html#contact">Discuss a study</a>
       </nav>
       <a href="index.html#contact" class="btn btn--primary nav-cta">Discuss a study</a>
-      <button class="ghost-toggle" aria-label="Toggle dark mode">
+      <button class="ghost-toggle" aria-label="Toggle dark mode" aria-pressed="false">
         <img src="ghost.webp" alt="">
       </button>
     </div>
@@ -44,9 +44,9 @@
 
       <article class="post-body">
         <h2>Who we are</h2>
-        <p>Frameshift ApS ("Frameshift") is a real-world evidence and biostatistics company registered in Denmark (CVR 44531410). Our website address is <a href="https://frameshift.dk">https://frameshift.dk</a>.</p>
+        <p>Frameshift ApS ("Frameshift") is a biostatistics and evidence-generation consultancy registered in Denmark (CVR 44531410). Our website address is <a href="https://frameshift.dk">https://frameshift.dk</a>.</p>
 
-        <p><strong>This policy covers this website only.</strong> Personal data processed in the course of research studies is handled separately, under the authorisations and agreements described on our <a href="legal.html">legal page</a>. Register data are analysed inside the approved environment and no personal data are transferred to clients in either direction.</p>
+        <p><strong>This policy covers this website only.</strong> Personal data processed in the course of research studies is handled separately, under the authorisations and agreements described on our <a href="legal.html">legal page</a>. Register data are analysed inside the approved environment, and no personal data are transferred to clients in either direction. Where an engagement does involve a client sending us personal data, for example clinical-trial work, that processing runs under a data processing agreement.</p>
 
         <h2>What data we collect</h2>
         <p>This website is a static site hosted on GitHub Pages. We do not use cookies, tracking scripts, or analytics tools, and we do not collect personal data automatically. Like most web hosts, our hosting provider (GitHub, Inc.) may log technical data such as visitor IP addresses for security and operational purposes; see <a href="https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection" target="_blank" rel="noopener">GitHub's data collection notes</a>. If you switch the site to dark mode, that preference is stored in your own browser and is never transmitted to us or anyone else.</p>
@@ -71,10 +71,13 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
-        <p class="footer-tagline">Real-world evidence &middot; Registry study design &middot; Epidemiology &middot; Biostatistics &middot; Analysis &middot; Reporting</p>
+        <p class="footer-tagline">Trial statistics, registry studies and epidemiology, designed and run in Copenhagen.</p>
         <p>&copy; 2026 Frameshift ApS &middot; Copenhagen, Denmark &middot; CVR 44531410 &middot; <a href="mailto:info@frameshift.dk">info@frameshift.dk</a></p>
       </div>
       <div class="footer-links">
+        <a href="https://www.linkedin.com/in/olafurbirgir/" target="_blank" rel="noopener">&Oacute;lafur</a>
+        <a href="https://www.linkedin.com/in/ragnarpk/" target="_blank" rel="noopener">Ragnar</a>
+        <a href="https://www.linkedin.com/in/mikkel-werling-a200202ba/" target="_blank" rel="noopener">Mikkel</a>
         <a href="privacy.html">Privacy</a>
         <a href="legal.html">Legal</a>
       </div>
@@ -85,10 +88,17 @@
   (() => {
     const ghost = document.querySelector('.ghost-toggle');
     if (!ghost) return;
-    try { if (localStorage.getItem('dark') === '1') document.body.classList.add('dark'); } catch (e) {}
+    const setDark = (on) => {
+      document.body.classList.toggle('dark', on);
+      ghost.setAttribute('aria-pressed', on ? 'true' : 'false');
+    };
+    let isDark = false;
+    try { isDark = localStorage.getItem('dark') === '1'; } catch (e) { /* storage unavailable; default to light */ }
+    setDark(isDark);
     ghost.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      try { localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0'); } catch (e) {}
+      isDark = !isDark;
+      setDark(isDark);
+      try { localStorage.setItem('dark', isDark ? '1' : '0'); } catch (e) { /* not persisted */ }
     });
   })();
   (() => {
@@ -96,8 +106,9 @@
     const nav = document.querySelector('.site-nav');
     if (toggle && nav) {
       toggle.addEventListener('click', () => {
-        toggle.classList.toggle('active');
-        nav.classList.toggle('open');
+        const open = nav.classList.toggle('open');
+        toggle.classList.toggle('active', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
     }
   })();

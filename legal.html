@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Legal information and company details for Frameshift, a registry-based real-world evidence and biostatistics company in Copenhagen, Denmark.">
+  <meta name="description" content="Legal information and company details for Frameshift, a biostatistics and evidence-generation consultancy in Copenhagen, Denmark.">
   <title>Legal | Frameshift</title>
   <link rel="canonical" href="https://frameshift.dk/legal.html">
   <link rel="stylesheet" href="styles.css">
@@ -17,13 +17,13 @@
       <a href="index.html" class="site-logo">
         <img src="logo.svg" alt="Frameshift">
       </a>
-      <button class="nav-toggle" aria-label="Toggle navigation">
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">
         <span></span><span></span><span></span>
       </button>
-      <nav class="site-nav">
+      <nav class="site-nav" id="site-nav">
         <a href="index.html#home">Home</a>
-        <a href="index.html#registry-data">Registry Data</a>
         <a href="index.html#services">Capabilities</a>
+        <a href="index.html#registry-data">Registry Data</a>
         <a href="index.html#research">Selected Work</a>
         <a href="index.html#about">About</a>
         <a href="index.html#posts">Insights</a>
@@ -31,7 +31,7 @@
         <a class="nav-mobile-cta" href="index.html#contact">Discuss a study</a>
       </nav>
       <a href="index.html#contact" class="btn btn--primary nav-cta">Discuss a study</a>
-      <button class="ghost-toggle" aria-label="Toggle dark mode">
+      <button class="ghost-toggle" aria-label="Toggle dark mode" aria-pressed="false">
         <img src="ghost.webp" alt="">
       </button>
     </div>
@@ -47,25 +47,26 @@
         Copenhagen, Denmark<br>
         CVR: 44531410<br>
         Email: <a href="mailto:info@frameshift.dk">info@frameshift.dk</a></p>
+        <p>Frameshift ApS provides biostatistics and evidence generation for life-science organisations: clinical-trial statistics, real-world evidence and registry studies, and epidemiological and statistical analysis. The arrangements below describe how that work is carried out.</p>
 
         <h2>Registry data access</h2>
         <p>Frameshift ApS holds its own authorisation to work with Danish register data. Individual studies additionally require project-level approval, which is obtained per study and which we account for in the project timeline at scoping. Documentation of our authorisation is available to prospective clients on request.</p>
         <p>Register data are analysed within the approved environment for the project. The underlying data remain the property of the relevant Danish authorities. <strong>No personal data are transferred to clients, and clients do not send us personal data for registry work.</strong> What is delivered is the analysis, its outputs and its documentation, including the cohort, exposure, covariate and outcome definitions the results rest on.</p>
 
         <h2>Data protection</h2>
-        <p>Registry work runs under our own authorisation, and no personal data are transferred to or from clients. Controller and processor roles follow from who determines the purposes and means of the processing, not from whether personal data physically move. We confirm and record the roles for each engagement before work begins. Where an engagement involves a client providing personal data, a data processing agreement is put in place before any processing begins. A standard agreement is available on request.</p>
+        <p>Registry work runs under our own authorisation, and no personal data are transferred to or from clients. Controller and processor roles follow from who determines the purposes and means of the processing, not from whether personal data physically move. We confirm and record the roles for each engagement before work begins. Where an engagement involves a client providing personal data, for example clinical-trial data, a data processing agreement is put in place before any processing begins. A standard agreement is available on request.</p>
 
         <h2>How studies are run</h2>
         <p>The following apply to every study we deliver.</p>
         <ul>
           <li>The statistical analysis plan is signed off before outcome data are examined.</li>
           <li>Primary results are independently checked by a second member of the team.</li>
-          <li>Any deviation from the pre-specified plan is logged and reported alongside the findings.</li>
+          <li>Any deviation from the prespecified plan is logged and reported alongside the findings.</li>
         </ul>
         <p>Where a study rests on assumptions that cannot be verified in the available data, those assumptions are stated in the reporting rather than left implicit.</p>
 
         <h2>Disclaimer</h2>
-        <p>The content on this website, including blog posts and analyses, is provided for informational and educational purposes only. While we strive for accuracy, nothing on this site constitutes medical advice, regulatory guidance, or a professional recommendation. Any data analyses, simulations, or interpretations presented are illustrative and should not be used as a basis for clinical or business decisions without independent verification.</p>
+        <p>The content on this website, including blog posts and analyses, is provided for informational and educational purposes only. We check what we publish, but nothing on this site constitutes medical advice, regulatory guidance, or a professional recommendation. Any data analyses, simulations, or interpretations presented are illustrative and should not be used as a basis for clinical or business decisions without independent verification.</p>
 
         <h2>Intellectual property</h2>
         <p>All original content on this website, including text, figures, code, and design, is the property of Frameshift ApS unless otherwise stated. Content may be shared or referenced with appropriate attribution. Where third-party data sources are used (e.g. NORDCAN, national registries), the underlying data remain the property of their respective owners.</p>
@@ -79,10 +80,13 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <div class="footer-left">
-        <p class="footer-tagline">Real-world evidence &middot; Registry study design &middot; Epidemiology &middot; Biostatistics &middot; Analysis &middot; Reporting</p>
+        <p class="footer-tagline">Trial statistics, registry studies and epidemiology, designed and run in Copenhagen.</p>
         <p>&copy; 2026 Frameshift ApS &middot; Copenhagen, Denmark &middot; CVR 44531410 &middot; <a href="mailto:info@frameshift.dk">info@frameshift.dk</a></p>
       </div>
       <div class="footer-links">
+        <a href="https://www.linkedin.com/in/olafurbirgir/" target="_blank" rel="noopener">&Oacute;lafur</a>
+        <a href="https://www.linkedin.com/in/ragnarpk/" target="_blank" rel="noopener">Ragnar</a>
+        <a href="https://www.linkedin.com/in/mikkel-werling-a200202ba/" target="_blank" rel="noopener">Mikkel</a>
         <a href="privacy.html">Privacy</a>
         <a href="legal.html">Legal</a>
       </div>
@@ -93,10 +97,17 @@
   (() => {
     const ghost = document.querySelector('.ghost-toggle');
     if (!ghost) return;
-    try { if (localStorage.getItem('dark') === '1') document.body.classList.add('dark'); } catch (e) {}
+    const setDark = (on) => {
+      document.body.classList.toggle('dark', on);
+      ghost.setAttribute('aria-pressed', on ? 'true' : 'false');
+    };
+    let isDark = false;
+    try { isDark = localStorage.getItem('dark') === '1'; } catch (e) { /* storage unavailable; default to light */ }
+    setDark(isDark);
     ghost.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      try { localStorage.setItem('dark', document.body.classList.contains('dark') ? '1' : '0'); } catch (e) {}
+      isDark = !isDark;
+      setDark(isDark);
+      try { localStorage.setItem('dark', isDark ? '1' : '0'); } catch (e) { /* not persisted */ }
     });
   })();
   (() => {
@@ -104,8 +115,9 @@
     const nav = document.querySelector('.site-nav');
     if (toggle && nav) {
       toggle.addEventListener('click', () => {
-        toggle.classList.toggle('active');
-        nav.classList.toggle('open');
+        const open = nav.classList.toggle('open');
+        toggle.classList.toggle('active', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
     }
   })();

@@ -3,18 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Frameshift generates real-world evidence from Danish health registries, with particular expertise in target trial emulation and trial-inspired observational study design.">
-<title>Danish Registry Studies & Real-World Evidence | Frameshift</title>
+<meta name="description" content="Copenhagen biostatistics consultancy: clinical-trial statistics, real-world evidence from Danish health registries, and epidemiological study design.">
+<title>Biostatistics, Trials & Real-World Evidence | Frameshift</title>
 <link rel="canonical" href="https://frameshift.dk/">
 <link rel="stylesheet" href="styles.css">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<meta property="og:title" content="Danish Registry Studies & Real-World Evidence | Frameshift">
-<meta property="og:description" content="Frameshift generates real-world evidence from Danish health registries, with particular expertise in target trial emulation and trial-inspired observational study design.">
+<meta property="og:title" content="Biostatistics, Trials & Real-World Evidence | Frameshift">
+<meta property="og:description" content="Copenhagen biostatistics consultancy: clinical-trial statistics, real-world evidence from Danish health registries, and epidemiological study design.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://frameshift.dk/">
-<meta property="og:image" content="https://frameshift.dk/apple-touch-icon.png">
+<meta property="og:image" content="https://frameshift.dk/share-1200x630.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Frameshift: biostatistics and evidence generation, from trials to national registers.">
+<meta property="og:site_name" content="Frameshift">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
 
 <!-- ─── ANIMATION ADDITIONS ONLY ─── -->
 <style>
@@ -75,6 +81,7 @@
      would stay at opacity:0. Show it all instead. -->
 <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 <!-- ─────────────────────────────────── -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","@id":"https://frameshift.dk/#organization","name":"Frameshift","legalName":"Frameshift ApS","url":"https://frameshift.dk/","logo":"https://frameshift.dk/logo.webp","image":"https://frameshift.dk/share-1200x630.png","email":"info@frameshift.dk","vatID":"DK44531410","taxID":"44531410","description":"Frameshift is a Copenhagen biostatistics and evidence-generation consultancy: clinical-trial statistics, real-world evidence from Danish health registries, and epidemiological study design.","address":{"@type":"PostalAddress","addressLocality":"Copenhagen","addressCountry":"DK"},"areaServed":[{"@type":"Country","name":"Denmark"},{"@type":"Place","name":"Nordic countries"}],"knowsAbout":["Biostatistics","Clinical trial statistics","Real-world evidence","Target trial emulation","Pharmacoepidemiology","Danish health registries","Epidemiology","Causal inference"],"founder":[{"@type":"Person","name":"Ólafur B. Davíðsson","jobTitle":"Co-Founder & Lead Biostatistician","sameAs":["https://www.linkedin.com/in/olafurbirgir/","https://scholar.google.com/citations?user=dEJX3rcAAAAJ"]},{"@type":"Person","name":"Ragnar P. Kristjánsson","jobTitle":"Co-Founder & Managing Director","sameAs":["https://www.linkedin.com/in/ragnarpk/","https://scholar.google.com/citations?user=UzdcPIMAAAAJ"]}]}</script>
 </head>
 <body>
 
@@ -83,13 +90,13 @@
     <a href="#home" class="site-logo">
       <img src="logo.svg" alt="Frameshift">
     </a>
-    <button class="nav-toggle" aria-label="Toggle navigation">
+    <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">
       <span></span><span></span><span></span>
     </button>
-    <nav class="site-nav">
+    <nav class="site-nav" id="site-nav">
       <a href="#home">Home</a>
-      <a href="#registry-data">Registry Data</a>
       <a href="#services">Capabilities</a>
+      <a href="#registry-data">Registry Data</a>
       <a href="#research">Selected Work</a>
       <a href="#about">About</a>
       <a href="#posts">Insights</a>
@@ -97,7 +104,7 @@
       <a class="nav-mobile-cta" href="#contact">Discuss a study</a>
     </nav>
     <a href="#contact" class="btn btn--primary nav-cta">Discuss a study</a>
-    <button class="ghost-toggle" aria-label="Toggle dark mode">
+    <button class="ghost-toggle" aria-label="Toggle dark mode" aria-pressed="false">
       <img src="ghost.webp" alt="">
     </button>
   </div>
@@ -113,35 +120,106 @@
   </div>
   <div class="container hero-layout">
     <div class="hero-content">
-      <p class="eyebrow">Real-world evidence · Danish registry data</p>
-      <h1 class="hero-title">Real-world evidence from Danish health registries.</h1>
-      <p class="hero-sub">Frameshift designs and executes registry-based studies for pharmaceutical, biotech and research organisations, from feasibility and study design through cohort definition, statistical analysis and publication-ready reporting. We also run the statistics on clinical trials, which is where our standards for design and prespecification were set.</p>
+      <p class="eyebrow">Clinical trials · Real-world evidence · Epidemiology</p>
+      <h1 class="hero-title">Biostatistics and evidence generation, from trials to national registers.</h1>
+      <p class="hero-sub">Frameshift designs and runs studies for pharmaceutical, biotech and research organisations: clinical trials, registry-based real-world evidence, and the epidemiological and statistical work underneath both. Studies in the Danish national registers are our deepest area.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn btn--primary">Discuss a study</a>
-        <a href="#registry-data" class="btn btn--ghost">Explore registry capabilities</a>
+        <a href="#services" class="btn btn--ghost">Explore our capabilities</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section section--tinted">
+  <div class="container">
+    <p class="eyebrow">Capabilities</p>
+    <h2 class="section-title">What we generate.</h2>
+    <p class="section-lead">Three areas of work. The data source changes between them; the standard for designing a study does not.</p>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <h3>Clinical trials</h3>
+        <p class="service-lead">The statistician's half of a trial.</p>
+        <p>We write the analysis plan, run the primary and secondary analyses, and draft the methods and results for the paper.</p>
+        <a class="service-cta" href="#trials">Trial work &rarr;</a>
+      </div>
+      <div class="why-card why-card--featured reveal reveal-d1">
+        <h3>Real-world evidence &amp; registry studies</h3>
+        <p class="service-lead">We work inside the approved Danish data environment ourselves.</p>
+        <p>We run six recurring study types there, target trial emulation among them, on registers that cover the whole population.</p>
+        <a class="service-cta" href="#registry-data">Why Danish registry data &rarr;</a>
+      </div>
+      <div class="why-card reveal reveal-d2">
+        <h3>Biostatistics &amp; epidemiology</h3>
+        <p class="service-lead">The methods work underneath both.</p>
+        <p>We design cohort and case-control studies, run survival, competing-risks and causal-inference analyses, and work in statistical genetics and prediction modelling.</p>
+        <a class="service-cta" href="#research">Selected work &rarr;</a>
+      </div>
+    </div>
+
+    <h3 class="about-sub-heading">Real-world evidence and registry studies</h3>
+    <p class="section-lead">The six questions clients bring us most often.</p>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <span class="service-num">01</span>
+        <h3>Disease Epidemiology &amp; Burden</h3>
+        <p class="service-lead">Establish the size and shape of the patient population.</p>
+        <p>We quantify incidence, prevalence, survival, disease trajectories and healthcare use across the whole national population carrying the diagnosis, so the figures describe routine care.</p>
+      </div>
+      <div class="service-card reveal reveal-d1">
+        <span class="service-num">02</span>
+        <h3>Treatment Patterns &amp; Patient Journeys</h3>
+        <p class="service-lead">What actually happens after diagnosis.</p>
+        <p>We reconstruct treatment initiation, sequencing, switching, adherence and persistence from prescription and hospital records, and show the pathways patients follow over years of routine care.</p>
+      </div>
+      <div class="service-card service-card--featured reveal reveal-d2">
+        <span class="service-num">03</span>
+        <h3>Target Trial Emulation</h3>
+        <p class="service-lead">Bring trial-level design discipline to real-world data.</p>
+        <p>We define the trial we would ideally run, then emulate its design in longitudinal registry data to estimate comparative treatment effects in routine clinical practice.</p>
+        <a class="service-cta" href="target-trial-emulation/">Explore Target Trial Emulation &rarr;</a>
+      </div>
+      <div class="service-card reveal">
+        <span class="service-num">04</span>
+        <h3>External Control Arms</h3>
+        <p class="service-lead">Give a single-arm study something to compare against.</p>
+        <p>We build comparator and natural-history cohorts from registry data, applying your trial's own eligibility criteria and follow-up windows so the control arm is drawn from patients who would have qualified for it.</p>
+      </div>
+      <div class="service-card reveal reveal-d1">
+        <span class="service-num">05</span>
+        <h3>Post-Authorisation Effectiveness &amp; Safety</h3>
+        <p class="service-lead">After launch, in the patients who were never enrolled.</p>
+        <p>We follow the treated population for as long as the registers run, which is usually years past the trial's database lock, and report effectiveness, safety signals and healthcare outcomes across the whole of it.</p>
+      </div>
+      <div class="service-card reveal reveal-d2">
+        <span class="service-num">06</span>
+        <h3>Feasibility &amp; Data Strategy</h3>
+        <p class="service-lead">Find out whether the question can be answered at all.</p>
+        <p>We establish which registers hold the variables you need, how complete they are, what sample size is achievable and which design is realistic, before anyone commits to a full study.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- REGISTRY DATA -->
-<section id="registry-data" class="section section--tinted">
+<section id="registry-data" class="section">
   <div class="container">
     <p class="eyebrow">The data environment</p>
     <h2 class="section-title">Why Danish registry data?</h2>
-    <p class="section-lead">Denmark holds unusually rich longitudinal health data, allowing population-based studies across diagnoses, treatments, prescriptions, outcomes, and long-term follow-up. The other Nordic countries hold comparable registers, which makes a design developed here extendable where the question warrants it and the approvals allow.</p>
+    <p class="section-lead">Denmark has recorded every hospital admission since 1977 and every prescription filled at a pharmacy since 1995, linked to diagnoses, cancer data, causes of death and socioeconomic information through a personal identifier issued at birth. The other Nordic countries hold comparable registers, so a design developed here can often be extended, where the question warrants it and the approvals allow.</p>
     <div class="why-grid">
       <div class="why-card reveal">
         <h3>Nationwide longitudinal cohorts</h3>
-        <p>Study complete or near-complete national populations rather than selected research samples, followed across years or decades.</p>
+        <p>Study complete or near-complete national populations, followed across years or decades, with emigration and death almost the only routes out of the cohort.</p>
       </div>
       <div class="why-card reveal reveal-d1">
         <h3>Linkable health data</h3>
-        <p>Combine diagnoses, procedures, prescriptions, cancer data, mortality, and socioeconomic information across national data sources.</p>
+        <p>The same identifier links parents to children, and health records to education and income data. That is what makes sibling-matched and within-family designs possible.</p>
       </div>
       <div class="why-card reveal reveal-d2">
-        <h3>Decision-relevant evidence</h3>
-        <p>Generate evidence on epidemiology, treatment patterns, effectiveness, safety, burden of disease, and external comparators.</p>
+        <h3>The registers by name</h3>
+        <p>The National Patient Register, the National Prescription Register, the Danish Cancer Register, the Register of Causes of Death, and Statistics Denmark's education and income data, all linked on the same identifier.</p>
       </div>
       <div class="why-card reveal reveal-d3">
         <h3>Access and authorisation</h3>
@@ -151,62 +229,40 @@
   </div>
 </section>
 
-<!-- SERVICES -->
-<section id="services" class="section">
+<!-- TRIALS -->
+<section id="trials" class="section section--tinted">
   <div class="container">
-    <p class="eyebrow">Evidence we generate</p>
-    <h2 class="section-title">What we generate.</h2>
-    <p class="section-lead">Registry-based studies that answer clinical, regulatory, and commercial questions at population scale.</p>
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <span class="service-num">01</span>
-        <h3>Disease Epidemiology &amp; Burden</h3>
-        <p class="service-lead">Establish the size and shape of the patient population.</p>
-        <p>Incidence, prevalence, natural history, survival, disease trajectories, and healthcare utilisation, quantified in a defined national population so the figures describe routine care rather than a trial sample.</p>
+    <p class="eyebrow">Clinical trials</p>
+    <h2 class="section-title">Trial statistics, end to end.</h2>
+    <p class="section-lead">We run the statistics on clinical trials: design and sample size, statistical analysis plans, primary and secondary analyses, reporting and publication.</p>
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <h3>Prespecification is not optional</h3>
+        <p>Estimands, endpoints and analysis populations are settled before the data are examined. In a trial the protocol forces that on you; in a registry study, usually nothing does. We hold registry studies to the same rule anyway.</p>
       </div>
-      <div class="service-card reveal reveal-d1">
-        <span class="service-num">02</span>
-        <h3>Treatment Patterns &amp; Patient Journeys</h3>
-        <p class="service-lead">See what actually happens after diagnosis.</p>
-        <p>Treatment initiation, sequencing, switching, adherence, and persistence, reconstructed from prescription and hospital records to show the pathways patients follow through routine care over years.</p>
+      <div class="why-card reveal reveal-d1">
+        <h3>Every engagement on our record is a trial</h3>
+        <p>All three of the client engagements we have delivered are randomised trials, published in NEJM Evidence, the International Wound Journal and Wound Repair and Regeneration. The analyses we led are there to read.</p>
       </div>
-      <div class="service-card service-card--featured reveal reveal-d2">
-        <span class="service-num">03</span>
-        <h3>Target Trial Emulation</h3>
-        <p class="service-lead">Bring trial-level design discipline to real-world data.</p>
-        <p>We define the clinical trial we would ideally run and emulate its key design elements using longitudinal registry data to estimate comparative treatment effects in routine clinical practice.</p>
-        <a class="service-cta" href="target-trial-emulation/">Explore Target Trial Emulation &rarr;</a>
+      <div class="why-card reveal reveal-d2">
+        <h3>Both, on the same project</h3>
+        <p>Trial and registry work often answer neighbouring questions for the same programme. We take on either, and say which one the question actually needs.</p>
       </div>
-      <div class="service-card reveal">
-        <span class="service-num">04</span>
-        <h3>External Control Arms</h3>
-        <p class="service-lead">Give a single-arm study something to compare against.</p>
-        <p>Real-world comparator and natural-history cohorts built from registry data, with eligibility and follow-up aligned to the trial protocol so the comparison rests on a matched population rather than a convenient one.</p>
-      </div>
-      <div class="service-card reveal reveal-d1">
-        <span class="service-num">05</span>
-        <h3>Post-Authorisation Effectiveness &amp; Safety</h3>
-        <p class="service-lead">Follow a treatment once it reaches routine use.</p>
-        <p>Long-term effectiveness, safety signals, and healthcare outcomes after launch, using nationwide follow-up that continues well beyond the trial period and covers patients who would never have been enrolled.</p>
-      </div>
-      <div class="service-card reveal reveal-d2">
-        <span class="service-num">06</span>
-        <h3>Trial Feasibility &amp; Data Strategy</h3>
-        <p class="service-lead">Find out whether the question can be answered at all.</p>
-        <p>Which registers hold the variables you need, how complete they are, what sample size is achievable, and which design is realistic, all established before committing to a full study.</p>
-      </div>
+    </div>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn--ghost">Discuss a trial &rarr;</a>
     </div>
   </div>
 </section>
 
 <!-- RESEARCH -->
-<section id="research" class="section section--tinted">
+<section id="research" class="section">
   <div class="container">
     <p class="eyebrow">Track record</p>
     <div class="section-header-row">
       <div>
         <h2 class="section-title">Selected work.</h2>
-        <p class="section-lead">Registry and population-based studies from our team, and client engagements where we led the statistics.</p>
+        <p class="section-lead">Registry and population-based studies from our team, alongside randomised trials, genetic epidemiology and clinical prediction work, and client engagements where we led the statistics.</p>
       </div>
       <a href="selected-work.html" class="btn btn--ghost btn--see-all">See all →</a>
     </div>
@@ -215,7 +271,7 @@
         <div class="research-card reveal">
           <div class="research-meta">
             <div class="research-venue"><span class="research-journal">npj Aging</span><span class="research-year">2026</span></div>
-            <span class="research-type">Population-scale RWE</span>
+            <span class="research-type">National cancer burden</span>
           </div>
           <h3 class="research-title">Disentangling shifting demographic and treatment effects on years of life lost to cancer in Denmark</h3>
           <p class="research-summary">Nationwide decomposition separating demographic change from treatment progress in years of life lost to cancer across Denmark.</p>
@@ -233,7 +289,7 @@
         <div class="research-card reveal reveal-d2">
           <div class="research-meta">
             <div class="research-venue"><span class="research-journal">The Lancet Obstetrics, Gynaecology, &amp; Women's Health</span><span class="research-year">2026</span></div>
-            <span class="research-type">Nationwide cohort study</span>
+            <span class="research-type">Cohort and genetic epidemiology</span>
           </div>
           <h3 class="research-title">Epidemiological and genetic evidence for shared mechanisms between migraine and pre-eclampsia</h3>
           <p class="research-summary">Nationwide Danish cohort and genetic risk score study finding shared aetiological pathways between migraine and pre-eclampsia, with implications for cardiovascular risk stratification.</p>
@@ -242,6 +298,7 @@
         <div class="research-card research-card--engagement reveal reveal-d3">
           <div class="research-meta">
             <div class="research-venue"><span class="research-journal">NEJM Evidence</span><span class="research-year">2024</span></div>
+            <span class="research-type">Randomised clinical trial</span>
             <span class="research-role">Client engagement</span>
           </div>
           <h3 class="research-title">Intact Fish Skin Graft to Treat Deep Diabetic Foot Ulcers</h3>
@@ -251,7 +308,7 @@
         <div class="research-card reveal">
           <div class="research-meta">
             <div class="research-venue"><span class="research-journal">HemaSphere</span><span class="research-year">2026</span></div>
-            <span class="research-type">Real-world outcomes</span>
+            <span class="research-type">Clinical prediction modelling</span>
           </div>
           <h3 class="research-title">Machine learning enhances risk stratification and treatment failure prediction in diffuse large B-cell lymphoma</h3>
           <p class="research-summary">Machine-learning models that sharpen risk stratification and predict treatment failure in diffuse large B-cell lymphoma from routine clinical data.</p>
@@ -284,11 +341,11 @@
 </section>
 
 <!-- ABOUT -->
-<section id="about" class="section">
+<section id="about" class="section section--tinted">
   <div class="container">
     <p class="eyebrow">Why Frameshift</p>
     <h2 class="section-title">Design before data.</h2>
-    <p class="section-lead">Real-world evidence is only as good as the study design. Large registry datasets do not remove the need for careful epidemiology: cohort construction, timing, comparability, confounding, endpoint definition, and estimands are settled before analysis begins.</p>
+    <p class="section-lead">A study is only as good as its design. In a trial that means the endpoints, the estimands and the analysis populations are fixed before anyone sees the data; in a registry study it means eligibility, time zero, exposure and comparators are fixed on the same terms. No amount of sample size fixes a cohort defined wrong, a time zero that leaks information from the future, or an endpoint chosen after someone has seen the curves.</p>
 
     <div class="team-grid">
       <div class="team-card reveal reveal-d1">
@@ -296,7 +353,7 @@
         <div class="team-info">
           <h3>Ólafur B. Davíðsson</h3>
           <span class="team-role">Co-Founder &amp; Lead Biostatistician</span>
-          <p>Statistical epidemiologist with a PhD from the University of Copenhagen. He trained in statistical genetics at deCODE genetics and held research posts at Statens Serum Institut and the Danish Cancer Institute before co-founding Frameshift. He has led the statistical work on randomized clinical trials, nationwide Danish registry studies, and genetic epidemiology, including research published in NEJM Evidence, the British Journal of Cancer, and The Lancet Obstetrics, Gynaecology &amp; Women's Health. At Frameshift he leads study design, analysis strategy, statistical programming, and reporting.</p>
+          <p>Statistical epidemiologist with a PhD from the University of Copenhagen. He trained in statistical genetics at deCODE genetics and held research posts at Statens Serum Institut and the Danish Cancer Institute before co-founding Frameshift. He has led the statistical work on randomised clinical trials, nationwide Danish registry studies and genetic epidemiology, including research published in NEJM Evidence, the British Journal of Cancer and The Lancet Obstetrics, Gynaecology &amp; Women's Health. At Frameshift he leads study design, analysis strategy, statistical programming and reporting.</p>
           <div class="team-links">
             <a class="team-linkedin" href="https://www.linkedin.com/in/olafurbirgir/" target="_blank" rel="noopener">LinkedIn →</a>
             <a class="team-linkedin" href="https://scholar.google.com/citations?user=dEJX3rcAAAAJ" target="_blank" rel="noopener">Scholar →</a>
@@ -308,7 +365,7 @@
         <div class="team-info">
           <h3>Ragnar P. Kristjánsson</h3>
           <span class="team-role">Co-Founder &amp; Managing Director</span>
-          <p>Statistical geneticist with a PhD in immunology and infectious diseases from the University of Copenhagen. He spent nearly a decade at deCODE genetics working on large-scale human genetics, with further experience in cancer epidemiology at the Danish Cancer Institute, spanning gene discovery, population cohorts, and registry-based research. At Frameshift he leads the practice and works on study design, genetic and observational analyses, and turning complex biomedical questions into tractable statistical ones.</p>
+          <p>Statistical geneticist with a PhD in immunology and infectious diseases from the University of Copenhagen. He spent nearly a decade at deCODE genetics working on large-scale human genetics, with further experience in cancer epidemiology at the Danish Cancer Institute, spanning gene discovery, population cohorts and registry-based research. At Frameshift he leads the practice and works on study design, genetic and observational analyses, and turning complex biomedical questions into tractable statistical ones.</p>
           <div class="team-links">
             <a class="team-linkedin" href="https://www.linkedin.com/in/ragnarpk/" target="_blank" rel="noopener">LinkedIn →</a>
             <a class="team-linkedin" href="https://scholar.google.com/citations?user=UzdcPIMAAAAJ" target="_blank" rel="noopener">Scholar →</a>
@@ -320,7 +377,7 @@
         <div class="team-info">
           <h3>Mikkel Werling</h3>
           <span class="team-role">Computational Methods Lead</span>
-          <p>Machine learning and computational analysis for clinical and health research, built on a background in software engineering and data science. His published work spans machine-learning models for clinical risk prediction and the assembly of research-ready health-data infrastructure from real-world records. At Frameshift he leads computational and machine-learning work, bringing model development and validation to problems where standard statistical methods fall short.</p>
+          <p>He works on machine learning and computational analysis for clinical and health research, built on a background in software engineering and data science. His published work spans machine-learning models for clinical risk prediction and the assembly of research-ready health-data infrastructure from real-world records. At Frameshift he leads computational and machine-learning work, bringing model development and validation to problems where standard statistical methods fall short.</p>
           <div class="team-links">
             <a class="team-linkedin" href="https://www.linkedin.com/in/mikkel-werling-a200202ba/" target="_blank" rel="noopener">LinkedIn →</a>
             <a class="team-linkedin" href="https://scholar.google.com/citations?user=K4Uw3h0AAAAJ" target="_blank" rel="noopener">Scholar →</a>
@@ -333,46 +390,20 @@
     <div class="why-grid">
       <div class="why-card reveal">
         <h3>Epidemiology before analysis</h3>
-        <p>Bias, timing, and comparability decide whether a registry result means anything. We settle the design questions first, and say plainly what the data can and cannot support.</p>
+        <p>Bias, timing and comparability decide whether a result means anything, in a trial or in a register. We settle the design questions first, and say plainly what the data can and cannot support.</p>
       </div>
       <div class="why-card reveal reveal-d1">
-        <h3>Direct senior involvement</h3>
-        <p>Projects are led and executed by experienced scientists. You work with the people responsible for the study design and the analysis, not through layers of consulting staff.</p>
+        <h3>The designer is the analyst</h3>
+        <p>Whoever designs a study writes its analysis and drafts its methods section. Questions about why an estimate moved go to the person who produced it.</p>
       </div>
       <div class="why-card reveal reveal-d2">
-        <h3>End-to-end execution</h3>
-        <p>From feasibility and data strategy through cohort specification, analysis, and reporting. A study taken to a decision-ready output, not an isolated statistical task.</p>
+        <h3>Feasibility to manuscript</h3>
+        <p>A study runs from the feasibility read through cohort and endpoint definitions to the analysis and the write-up. Tables, figures and methods text are delivered in the state they need to be in for a submission.</p>
       </div>
       <div class="why-card reveal reveal-d3">
         <h3>Prespecified, then checked</h3>
         <p>The analysis plan is signed off before outcome data are examined. Primary results are independently checked by a second team member, and any deviation from the plan is logged and reported alongside the findings.</p>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- TRIALS -->
-<section id="trials" class="section section--tinted">
-  <div class="container">
-    <p class="eyebrow">Clinical trials</p>
-    <h2 class="section-title">Where the discipline comes from.</h2>
-    <p class="section-lead">We run trial statistics: design, statistical analysis plans, primary and secondary analyses, reporting, and publication. Our client engagements to date include randomised trials, and that work is where the standards behind everything else on this page were set.</p>
-    <div class="why-grid">
-      <div class="why-card reveal">
-        <h3>Prespecification is not optional</h3>
-        <p>Estimands, endpoints, analysis populations, and the analysis strategy are settled before the data are examined. We hold registry studies to the same rule.</p>
-      </div>
-      <div class="why-card reveal reveal-d1">
-        <h3>Comparability is designed, not repaired</h3>
-        <p>A trial earns comparable arms by construction. An observational study has to build it deliberately, which is exactly what target trial emulation makes explicit.</p>
-      </div>
-      <div class="why-card reveal reveal-d2">
-        <h3>Both, on the same project</h3>
-        <p>Trial and registry work often answer neighbouring questions for the same programme. We take on either, and say which one the question actually needs.</p>
-      </div>
-    </div>
-    <div class="hero-actions">
-      <a href="#contact" class="btn btn--ghost">Discuss a trial &rarr;</a>
     </div>
   </div>
 </section>
@@ -384,7 +415,7 @@
     <div class="section-header-row">
       <div>
         <h2 class="section-title">From the team.</h2>
-        <p class="section-lead">Methodological essays on epidemiology, biostatistics, and study design.</p>
+        <p class="section-lead">Methodological essays on epidemiology, biostatistics and study design.</p>
       </div>
       <a href="posts/" class="btn btn--ghost btn--see-all">See all posts →</a>
     </div>
@@ -412,7 +443,7 @@
           <span class="post-tag">Registry Data</span>
         </div>
         <h3 class="post-title">
-          <a href="posts/crc-leading-killer.html">Colon Cancer Is the Leading Killer of Young Americans. How Do the Nordics Compare?</a>
+          <a href="posts/crc-leading-killer.html">Colon Cancer Is Now the Leading Cancer Killer of Young Americans. How Do the Nordics Compare?</a>
         </h3>
         <p class="post-excerpt">The Guardian reported that CRC is now the #1 cancer killer in Americans under 50. We pooled 44 years of NORDCAN data across five countries. The trend is real, but the ranking is not: CRC is #3 in the Nordics for both sexes, and the rise is hitting young men hardest.</p>
         <div class="post-footer">
@@ -429,7 +460,7 @@
         <h3 class="post-title">
           <a href="posts/immortal-time-bias.html">Sun Exposure, Skin Cancer, and a Methodological Sunburn</a>
         </h3>
-        <p class="post-excerpt">A 2013 Danish register study found that skin cancer patients had half the all-cause mortality of the general population, an effect that survives even a lottery prize with no biological mechanism whatsoever. Here is why.</p>
+        <p class="post-excerpt">A 2013 Danish register study found that skin cancer patients had half the all-cause mortality of the general population. Swap the diagnosis for a lottery prize and the same design manufactures the same survival advantage, because the exposure is defined by having lived long enough to receive it.</p>
         <div class="post-footer">
           <span class="post-author">Ólafur B. Davíðsson, PhD</span>
           <a href="posts/immortal-time-bias.html" class="read-more">Read post →</a>
@@ -443,13 +474,13 @@
 <section id="contact" class="section section--tinted">
   <div class="container container--narrow">
     <p class="eyebrow">Get in touch</p>
-    <h2 class="section-title">Planning a<br>registry-based study?</h2>
-    <p class="section-lead">We work best with teams that have an evidence question and need registry expertise, epidemiological design, analysis, or reporting behind it. Tell us what you are trying to establish and we will typically respond within one business day.</p>
+    <h2 class="section-title">Planning a trial<br>or a registry study?</h2>
+    <p class="section-lead">We are most useful when you already have the question and need the design, the statistics or the reporting behind it, whether the data come from a randomised trial or from the national registers. Tell us what you are trying to establish and we will usually reply the same or next working day.</p>
     <div class="contact-meta">
       <div class="contact-steps">
         <span class="contact-step"><span class="step-num">1</span> 15–20 min scoping call</span>
         <span class="contact-arrow">→</span>
-        <span class="contact-step"><span class="step-num">2</span> Quick assessment</span>
+        <span class="contact-step"><span class="step-num">2</span> Feasibility read, in writing</span>
         <span class="contact-arrow">→</span>
         <span class="contact-step"><span class="step-num">3</span> Proposal</span>
       </div>
@@ -475,15 +506,25 @@
           <label for="project-type">What are you looking to study?</label>
           <select id="project-type" name="project-type">
             <option value="" selected disabled>Select…</option>
-            <option>Registry / RWE study</option>
-            <option>Feasibility assessment</option>
-            <option>Burden of disease</option>
-            <option>Treatment patterns</option>
-            <option>Comparative effectiveness / safety</option>
-            <option>External comparator</option>
-            <option>Post-market evidence</option>
-            <option>Clinical trial biostatistics</option>
-            <option>Other</option>
+            <optgroup label="Real-world evidence &amp; registry">
+              <option>Registry / RWE study</option>
+              <option>Feasibility assessment</option>
+              <option>Burden of disease</option>
+              <option>Treatment patterns</option>
+              <option>Comparative effectiveness / safety</option>
+              <option>External comparator</option>
+              <option>Post-market evidence</option>
+            </optgroup>
+            <optgroup label="Clinical trials">
+              <option>Trial design or sample size</option>
+              <option>Statistical analysis plan</option>
+              <option>Trial analysis and reporting</option>
+            </optgroup>
+            <optgroup label="Biostatistics &amp; epidemiology">
+              <option>Design or analysis of my own dataset</option>
+              <option>Study design or SAP review</option>
+              <option>Other</option>
+            </optgroup>
           </select>
         </div>
       </div>
@@ -517,7 +558,7 @@
 <footer class="site-footer">
   <div class="container footer-inner">
     <div class="footer-left">
-      <p class="footer-tagline">Real-world evidence &middot; Registry study design &middot; Epidemiology &middot; Biostatistics &middot; Analysis &middot; Reporting</p>
+      <p class="footer-tagline">Trial statistics, registry studies and epidemiology, designed and run in Copenhagen.</p>
       <p>© 2026 Frameshift ApS · Copenhagen, Denmark · CVR 44531410 · <a href="mailto:info@frameshift.dk">info@frameshift.dk</a></p>
     </div>
     <div class="footer-links">
@@ -537,8 +578,9 @@
   const nav = document.querySelector('.site-nav');
   if (toggle && nav) {
     toggle.addEventListener('click', () => {
-      toggle.classList.toggle('active');
-      nav.classList.toggle('open');
+      const open = nav.classList.toggle('open');
+      toggle.classList.toggle('active', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
     nav.addEventListener('click', (e) => {
       if (e.target.tagName === 'A') {
@@ -557,12 +599,18 @@
 (() => {
   const ghost = document.querySelector('.ghost-toggle');
   if (!ghost) return;
-  try {
-    if (localStorage.getItem('dark') === '1') document.body.classList.add('dark');
-  } catch (e) { /* storage unavailable; default to light */ }
+  /* aria-pressed has to be written on load as well as on click: a returning
+     visitor with dark stored got a dark page whose toggle reported nothing. */
+  const setDark = (on) => {
+    document.body.classList.toggle('dark', on);
+    ghost.setAttribute('aria-pressed', on ? 'true' : 'false');
+  };
+  let isDark = false;
+  try { isDark = localStorage.getItem('dark') === '1'; } catch (e) { /* storage unavailable; default to light */ }
+  setDark(isDark);
   ghost.addEventListener('click', () => {
-    const isDark = document.body.classList.toggle('dark');
-    ghost.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+    isDark = !isDark;
+    setDark(isDark);
     try { localStorage.setItem('dark', isDark ? '1' : '0'); } catch (e) { /* not persisted */ }
   });
 })();
