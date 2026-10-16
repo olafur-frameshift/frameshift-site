@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How Frameshift works with the Danish national registers: what they hold, how access through Statistics Denmark works, what happens to the data, and where the registers have limits.">
+  <title>Danish Register Data | Frameshift</title>
+  <link rel="canonical" href="https://frameshift.dk/registry-data.html">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <meta property="og:title" content="Danish Register Data | Frameshift">
+  <meta property="og:description" content="What the Danish registers hold, how Frameshift accesses them through Statistics Denmark, and what the results can be used for.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://frameshift.dk/registry-data.html">
+  <meta property="og:image" content="https://frameshift.dk/share-1200x630.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Frameshift: biostatistics and evidence generation, from trials to national registers.">
+  <meta property="og:site_name" content="Frameshift">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    /* Page-local: the register table on this page only. */
+    .reg-table-wrap { overflow-x: auto; margin: var(--space-6) 0; }
+    .reg-table { width: 100%; border-collapse: collapse; font-size: 0.95rem; line-height: 1.5; }
+    .reg-table th, .reg-table td { text-align: left; vertical-align: top; padding: var(--space-3) var(--space-3) var(--space-3) 0; border-bottom: 1px solid var(--border); }
+    .reg-table thead th { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); border-bottom: 2px solid var(--accent); }
+    .reg-table tbody th { font-weight: 700; color: var(--ink); width: 38%; }
+    .reg-table td:last-child, .reg-table th:last-child { text-align: right; padding-right: 0; white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="site-logo">
+        <img src="logo.svg" alt="Frameshift">
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav">
+        <a href="index.html#home">Home</a>
+        <a href="index.html#services">Capabilities</a>
+        <a href="registry-data.html">Register Data</a>
+        <a href="index.html#research">Selected Work</a>
+        <a href="about.html">About</a>
+        <a href="posts/">Insights</a>
+        <a href="index.html#contact">Contact</a>
+        <a class="nav-mobile-cta" href="index.html#contact">Discuss a study</a>
+      </nav>
+      <a href="index.html#contact" class="btn btn--primary nav-cta">Discuss a study</a>
+      <button class="ghost-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+        <img src="ghost.webp" alt="">
+      </button>
+    </div>
+  </header>
+
+  <main class="section">
+    <div class="container container--wide">
+      <a href="index.html" class="back-link">&larr; Home</a>
+      <p class="eyebrow">Register data</p>
+      <h1 class="section-title">Working with the Danish registers.</h1>
+      <p class="section-lead">How register access works, the rules that apply, and where the registers are strong and weak. This is general information, not legal advice; the rules for a specific study are confirmed with Statistics Denmark and the Danish Health Data Authority.</p>
+
+      <div class="post-body">
+        <h2>What do the registers hold?</h2>
+        <p>Every Danish resident has a personal identification number, which the registers use to link a person's records over time. The registers most used in health research are:</p>
+        <div class="reg-table-wrap">
+          <table class="reg-table">
+            <thead>
+              <tr>
+                <th scope="col">Register</th>
+                <th scope="col">What it holds</th>
+                <th scope="col">First year</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Civil Registration System</th><td>Births, deaths, migration, family links</td><td>1968</td></tr>
+              <tr><th scope="row">National Patient Register</th><td>Admissions from 1977; psychiatric, outpatient and emergency contacts from 1995</td><td>1977</td></tr>
+              <tr><th scope="row">National Prescription Registry</th><td>Prescriptions redeemed at community pharmacies</td><td>1995</td></tr>
+              <tr><th scope="row">Register of Causes of Death</th><td>Underlying and contributing causes of death</td><td>1970</td></tr>
+              <tr><th scope="row">Danish Cancer Registry</th><td>Cancer diagnoses</td><td>1943</td></tr>
+              <tr><th scope="row">National Health Service Register</th><td>GP, specialist and other services (no diagnoses)</td><td>1990</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>Statistics Denmark also holds registers on education, income and employment, linked in the same way. Denmark has about 6.0 million residents, so the registers can show rare events and long-term outcomes that a small population cannot.</p>
+        <p><small>Sources: Pedersen, Scand J Public Health 2011; Schmidt et al., Clin Epidemiol 2015; Pottegård et al., Int J Epidemiol 2017; Helweg-Larsen, Scand J Public Health 2011; Gjerstorff, Scand J Public Health 2011; Andersen et al., Scand J Public Health 2011; Statistics Denmark, StatBank FOLK1A (6,031,699 residents, third quarter 2026).</small></p>
+
+        <h2>How does Frameshift get access?</h2>
+        <p>Only authorised institutions can submit projects to Statistics Denmark (DST). Authorisation requires a permanent Danish research environment with at least three experienced researchers, a data-security set-up and, for private firms, a year of operation. Frameshift ApS holds authorisation no. 743 under DST's researcher scheme.</p>
+        <p>Our own project at DST is an approved multi-disease research programme. It does not cover every possible study: each analysis must fit the scope approved by DST and, for health data, the Danish Health Data Authority. Work outside it needs new permissions or data.</p>
+        <p><small>Sources: Statistics Denmark, authorisation of research institutions; DST Autorisationsaftale, §§1-2; Danish Health Data Authority, Research Services.</small></p>
+
+        <h2>What happens to the data?</h2>
+        <p>Identifiers are replaced by codes before we see the data, and the GDPR still applies. We work on DST's servers through secure remote access, and individual-level data cannot be copied out. Only disclosure-cleared, non-identifying outputs, such as statistical summaries, tables and figures, may leave; register microdata never do. We check each file against DST's disclosure rules (at least three observations per table cell, more for some registers), and DST's transfer tool also scans it.</p>
+        <p><small>Sources: Statistics Denmark, rules on transfer of analysis results; DST Brugeraftale, §§5 and 7; Autorisationsaftale, §9.</small></p>
+
+        <h2>What can the results be used for?</h2>
+        <p>Register microdata may be processed only for approved statistical or scientific purposes, and never for administrative decisions or casework about individuals. A study may be commissioned by a company, but it must meet the same purpose requirements as any other research, and each new analysis is checked against the actual DST and Danish Health Data Authority approvals rather than assumed to be covered.</p>
+        <p>Once results are anonymised and cleared for release, they can support clinical, regulatory or commercial decisions, such as trial planning, a payer dossier or an investor case, subject to the contract and to the rule that no publication may identify persons or firms.</p>
+        <p><small>Sources: DST Autorisationsaftale, §5, with reference to the Danish Data Protection Act §10; Brugeraftale, §§9-10; Autorisationsaftale, §11.</small></p>
+
+        <h2>Can a company's own data be linked?</h2>
+        <p>Sometimes. DST can add external data to an approved project using only the key needed for linking, usually the personal identification number. The company needs a legal basis to share its data (for trial data, the consent and approvals must allow it), and DST assesses each case, so we cannot promise linkage in advance.</p>
+        <p><small>Source: Statistics Denmark, linking of external data.</small></p>
+
+        <h2>What are the registers good for, and where are their limits?</h2>
+        <p>Covering the whole population, the registers are strong for counting patients, describing care and its cost, and following outcomes for years. Their limits:</p>
+        <ul>
+          <li><strong>Medicines and devices.</strong> Prescription medicines can be identified by ATC code; hospital medicines are recorded incompletely, and devices usually lack a unique identifier in routine registers. Some clinical quality databases record implants, and approved linkage of a company's own exposure data can sometimes allow device-specific follow-up.</li>
+          <li><strong>Primary care.</strong> GP contacts and services are recorded, but GP diagnoses are not, so conditions managed in general practice are identified only through hospital care or prescriptions.</li>
+          <li><strong>Coding and detail.</strong> Coding accuracy varies between diagnoses, and disease severity, imaging and patient-reported outcomes are mostly missing. Laboratory results can be added on application.</li>
+          <li><strong>Time lag and design.</strong> Register data arrive with a delay; the latest available year varies by register and by what has been approved and delivered to a given project. Register studies are observational, so fair comparisons between treatments need careful design.</li>
+        </ul>
+        <p><small>Source: Schmidt et al., Clin Epidemiol 2015.</small></p>
+
+        <h2>How long does a register study take?</h2>
+        <p>It depends on scope. A suitably scoped analysis that fits our approved project and uses data already available in it can start once the protocol is agreed; as a planning estimate, analysis and a report take two to three months. When new data, permissions or linkage are needed, add the approval time first: DST approval typically takes one to two months, and the Danish Health Data Authority reports that more than half of its applications are processed within three to four months. A scientific manuscript, when wanted, typically adds two to three months.</p>
+        <p><small>Sources: Frameshift estimates; Danish Health Data Authority, delivery times.</small></p>
+      </div>
+
+      <div class="hero-actions">
+        <a href="index.html#contact" class="btn btn--primary">Discuss a study</a>
+        <a href="target-trial-emulation/" class="btn btn--ghost">Target trial emulation &rarr;</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <p class="footer-tagline">Trial statistics, register studies and epidemiology, designed and run in Copenhagen.</p>
+        <p>&copy; 2026 Frameshift ApS &middot; Copenhagen, Denmark &middot; CVR 44531410 &middot; <a href="mailto:info@frameshift.dk">info@frameshift.dk</a></p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/olafurbirgir/" target="_blank" rel="noopener">&Oacute;lafur</a>
+        <a href="https://www.linkedin.com/in/ragnarpk/" target="_blank" rel="noopener">Ragnar</a>
+        <a href="https://www.linkedin.com/in/mikkel-werling-a200202ba/" target="_blank" rel="noopener">Mikkel</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="legal.html">Legal</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* Ghost dark-mode toggle */
+    (() => {
+      const ghost = document.querySelector('.ghost-toggle');
+      if (!ghost) return;
+    const setDark = (on) => {
+          document.body.classList.toggle('dark', on);
+          ghost.setAttribute('aria-pressed', on ? 'true' : 'false');
+        };
+        let isDark = false;
+        try { isDark = localStorage.getItem('dark') === '1'; } catch (e) { /* storage unavailable; default to light */ }
+        setDark(isDark);
+        ghost.addEventListener('click', () => {
+          isDark = !isDark;
+          setDark(isDark);
+          try { localStorage.setItem('dark', isDark ? '1' : '0'); } catch (e) { /* not persisted */ }
+        });
+    })();
+
+    /* Hamburger toggle */
+    (() => {
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('.site-nav');
+      if (toggle && nav) {
+        toggle.addEventListener('click', () => {
+          const open = nav.classList.toggle('open');
+          toggle.classList.toggle('active', open);
+          toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      }
+    })();
+  </script>
+</body>
+</html>

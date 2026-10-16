@@ -166,6 +166,13 @@ img { display: block; max-width: 100%; }
   padding: 0 var(--space-6);
 }
 
+/* 960px column: the contact section and the registry-data page. */
+.container--wide {
+  max-width: calc(960px + 2 * var(--space-6));
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
 /* ── Navigation ──────────────────────────────────────────────── */
 .site-header {
   position: sticky;
@@ -812,6 +819,83 @@ img { display: block; max-width: 100%; }
   color: var(--accent);
 }
 
+/* ── Contact code window ─────────────────────────────────────── */
+/* The enquiry form sits inside a light mock R console. Colours come from the
+   theme tokens, so the panel follows the site's light and dark modes. */
+.term {
+  --term-string: #8a5a14;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  margin-top: var(--space-6);
+}
+body.dark .term { --term-string: #e8c58a; }
+
+.term-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 1rem;
+  background: var(--tint);
+  border-bottom: 1px solid var(--border);
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.term-dots i {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--border);
+  margin-right: 6px;
+}
+
+.term-body { padding: var(--space-6) var(--space-6) var(--space-8); }
+
+.term-log {
+  margin: 0 0 var(--space-6);
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.75;
+  white-space: pre-wrap;
+  color: var(--ink);
+}
+.term-p { color: var(--accent); }
+.term-c { color: var(--muted); }
+a.term-s { color: var(--term-string); }
+a.term-s:hover { text-decoration: underline; }
+
+/* Form fields read as the arguments to scope(). */
+.term-form .form-group label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.term-form .form-group label::before { content: "  "; white-space: pre; }
+.term-form .form-group input,
+.term-form .form-group select,
+.term-form .form-group textarea {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  background: var(--bg);
+  box-shadow: none;
+}
+
+.form-note {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: var(--space-4);
+  text-align: center;
+  line-height: 1.5;
+}
+
 /* Visible keyboard focus. Nothing may suppress the outline without
    supplying a replacement that clears 3:1 against its background.
    :focus-visible keeps it off mouse clicks. */
@@ -1156,6 +1240,87 @@ a.research-card {
   font-size: 0.93rem;
   color: var(--muted);
   line-height: 1.65;
+}
+
+/* ── Compact homepage blocks ─────────────────────────────────── */
+/* The homepage carries one line per idea; the long form lives on the
+   subpages (about.html, selected-work.html, target-trial-emulation/). */
+
+/* Six registry study types: a numbered list, two columns, no cards. */
+.study-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: var(--space-12);
+  border-top: 1px solid var(--border);
+}
+.study-list li {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  column-gap: var(--space-2);
+  padding: var(--space-6) 0;
+  border-bottom: 1px solid var(--border);
+}
+.study-list .service-num { margin: 0.3rem 0 0; grid-column: 1; grid-row: 1; }
+.study-list h3,
+.study-list p { grid-column: 2; }
+.study-list li { align-content: start; }
+.study-list h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: var(--space-1);
+}
+.study-list h3 a { color: inherit; }
+.study-list p { font-size: 0.97rem; color: var(--muted); line-height: 1.55; }
+.study-list .service-cta { margin-top: 0; margin-left: var(--space-2); white-space: nowrap; }
+.study-list--featured h3,
+.study-list--featured h3 a { color: var(--accent); }
+@media (max-width: 760px) {
+  .study-list { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Four principles, one line each. */
+.principles {
+  list-style: none;
+  margin: 0 0 var(--space-12);
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-6);
+}
+.principles li { border-top: 2px solid var(--accent); padding-top: var(--space-4); }
+.principles h3 { font-size: 1.15rem; font-weight: 700; color: var(--ink); margin-bottom: var(--space-2); }
+.principles p { font-size: 0.97rem; color: var(--muted); line-height: 1.55; }
+@media (max-width: 900px) {
+  .principles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 480px) {
+  .principles { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* Three papers and the "+N more" card: four across on desktop, 2x2 on tablets. */
+.research-grid--home { grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+
+/* Team without bios: three cards in a row. */
+.team-grid--compact {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+.team-grid--compact .team-card {
+  align-items: center;
+  padding: var(--space-6);
+  gap: var(--space-4);
+}
+.team-grid--compact .team-role { margin-bottom: var(--space-2); }
+@media (max-width: 900px) {
+  .team-grid--compact { grid-template-columns: minmax(0, 1fr); }
+  .team-grid--compact .team-card { flex-direction: row; }
 }
 
 /* ── Contact form ────────────────────────────────────────────── */
@@ -1801,10 +1966,13 @@ body.lightbox-open { overflow: hidden; }
 /* Phone: header rules already handled by the 1000px block above. */
 @media (max-width: 600px) {
   .container { padding: 0 var(--space-4); }
-  .container--narrow { padding: 0 var(--space-4); }
+  .container--narrow,
+  .container--wide { padding: 0 var(--space-4); }
   .form-row { grid-template-columns: 1fr; }
   .footer-inner { flex-direction: column; align-items: flex-start; gap: var(--space-3); }
   .contact-steps { flex-direction: column; align-items: flex-start; }
+  .term-body { padding: var(--space-4) var(--space-4) var(--space-6); }
+  .term-log { font-size: 0.78rem; }
   .contact-arrow { display: none; }
   .team-card { flex-direction: column; gap: var(--space-4); }
   /* On mobile, the canvas doesn't mount, so show the static illustration
