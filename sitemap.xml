@@ -2,12 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://frameshift.dk/</loc>
-    <lastmod>2026-10-16</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://frameshift.dk/target-trial-emulation/</loc>
     <lastmod>2026-08-18</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://frameshift.dk/health-ai/</loc>
+    <lastmod>2026-11-19</lastmod>
     <priority>0.9</priority>
   </url>
   <url>

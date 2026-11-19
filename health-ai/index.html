@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Frameshift works with health AI teams on Danish register data: external evaluation of clinical prediction models, cohort and outcome definition for model development, and population studies that test model-generated hypotheses.">
+  <title>Health AI Model Evaluation on Danish Registers | Frameshift</title>
+  <link rel="canonical" href="https://frameshift.dk/health-ai/">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="icon" type="image/x-icon" href="../favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <meta property="og:title" content="Health AI Model Evaluation on Danish Registers | Frameshift">
+  <meta property="og:description" content="Evaluate a clinical model in a national population, define the cohorts it should learn from, or test what it predicts against observed outcomes.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://frameshift.dk/health-ai/">
+  <meta property="og:image" content="https://frameshift.dk/share-1200x630.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Frameshift: real-world evidence for drug development and health AI.">
+  <meta property="og:site_name" content="Frameshift">
+  <meta property="og:locale" content="en_GB">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="site-logo">
+        <img src="../logo.svg" alt="Frameshift">
+      </a>
+      <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="site-nav">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="site-nav" id="site-nav">
+        <a href="../index.html#services">Capabilities</a>
+        <a href="../health-ai/">Health AI</a>
+        <a href="../registry-data.html">Register Data</a>
+        <a href="../index.html#research">Selected Work</a>
+        <a href="../about.html">About</a>
+        <a href="../posts/">Insights</a>
+        <a href="../index.html#contact">Contact</a>
+        <a class="nav-mobile-cta" href="../index.html#contact">Discuss a study</a>
+      </nav>
+      <a href="../index.html#contact" class="btn btn--primary nav-cta">Discuss a study</a>
+      <button class="ghost-toggle" aria-label="Toggle dark mode" aria-pressed="false">
+        <img src="../ghost.webp" alt="">
+      </button>
+    </div>
+  </header>
+
+  <!-- INTRO -->
+  <section class="section">
+    <div class="container">
+      <a href="../index.html#services" class="back-link">&larr; Home</a>
+      <p class="eyebrow">Health AI</p>
+      <h1 class="section-title">Health AI on Danish register data.</h1>
+      <p class="section-lead">Evaluate a clinical model in a national population, define the cohorts it should learn from, or test what it predicts against observed outcomes.</p>
+      <div class="tte-intro">
+        <p>Frameshift works with teams building clinical prediction and patient-trajectory models. The Danish registers follow every resident through hospital contacts, redeemed prescriptions, cancer diagnoses and death, linked by one personal identifier over decades. That makes them a demanding place to ask whether a model trained elsewhere still works, and a useful one in which to define the cohorts and outcomes a model should learn from.</p>
+        <p>Our team covers epidemiology, biostatistics and clinical machine learning, and we run the work ourselves inside the approved research environment, under Frameshift's own authorisation with Statistics Denmark (no. 743). Our contribution is the epidemiology: what a register code does and does not measure, where a label leaks information from the future, and what a fair comparison looks like.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFFERS -->
+  <section class="section section--tinted">
+    <div class="container">
+      <p class="eyebrow">Ways to work with us</p>
+      <h2 class="section-title">Three kinds of project.</h2>
+      <div class="services-grid">
+        <div class="service-card" id="evaluation">
+          <span class="service-num">01</span>
+          <h3>External model evaluation</h3>
+          <p class="service-lead">How a model performs in a population it has not seen.</p>
+          <p>We map the model's inputs to what the registers record, define the target population, prediction horizon and outcome, and fix the evaluation protocol before the model is run. The report covers discrimination, calibration, performance over calendar time and across patient groups, and a comparison with conventional statistical baselines on the same inputs. Inputs the registers cannot represent are identified at feasibility, before the evaluation is scoped.</p>
+        </div>
+        <div class="service-card" id="development">
+          <span class="service-num">02</span>
+          <h3>Cohorts and outcomes for model development</h3>
+          <p class="service-lead">What the model learns from, defined with care.</p>
+          <p>A trajectory model depends on its event histories and its outcome definitions. We define cohorts, phenotypes and outcomes from register data, prepare longitudinal event sequences, and set up a held-out evaluation that stays apart from anything used for training or adaptation. Training on register data takes place inside the approved environment. The compute route, and what may leave the environment afterwards, are settled for each project (see <a href="#environment">what the environment allows</a>).</p>
+        </div>
+        <div class="service-card" id="hypothesis-studies">
+          <span class="service-num">03</span>
+          <h3>Population studies for model-generated hypotheses</h3>
+          <p class="service-lead">From a nominated relationship to an estimate.</p>
+          <p>When a platform nominates a drug-disease relationship, a patient subgroup or a suspected adverse effect, we assess whether the registers hold an adequate population, an observable outcome and a defensible comparator, then run the prespecified study. Causal questions are designed as <a href="../target-trial-emulation/">target trial emulations</a>. Null and inconclusive results are reported as such.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVALUATION PROTOCOL -->
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Evaluation protocol</p>
+      <h2 class="section-title">Fixed before the model is run.</h2>
+      <p class="section-lead">An external evaluation is a study, and it is specified like one. Each component below is written down first and then mapped to what the registers can support.</p>
+      <div class="spec-table-wrap">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th scope="col">Component</th>
+              <th scope="col">What is specified</th>
+              <th scope="col">In register data</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row" class="spec-component">Intended use</th>
+              <td>The decision the model supports and the point in care at which it is applied.</td>
+              <td>Sets the index date. A prediction made at diagnosis and one made at the start of treatment are different problems with different cohorts.</td>
+            </tr>
+            <tr>
+              <th scope="row" class="spec-component">Target population</th>
+              <td>Eligibility at the index date, on information available at that time.</td>
+              <td>Applied using pre-index register history, with the lookback window stated.</td>
+            </tr>
+            <tr>
+              <th scope="row" class="spec-component">Inputs</th>
+              <td>Each predictor, its source and its time window.</td>
+              <td>Mapped to register variables. Hospital diagnoses, procedures and redeemed prescriptions are recorded. Laboratory results can be applied for. Imaging and clinical notes are not in the registers.</td>
+            </tr>
+            <tr>
+              <th scope="row" class="spec-component">Outcome and horizon</th>
+              <td>The outcome definition and the prediction window.</td>
+              <td>Mapped to register definitions, whose coding accuracy varies between diagnoses. Death as a competing event is handled according to what the prediction is for.</td>
+            </tr>
+            <tr>
+              <th scope="row" class="spec-component">Model version</th>
+              <td>One frozen model, with its preprocessing and its handling of missing inputs.</td>
+              <td>The evaluation describes that version. Recalibration or adaptation is a separate step and is labelled as one.</td>
+            </tr>
+            <tr>
+              <th scope="row" class="spec-component">Test data</th>
+              <td>Data neither the model nor its developers have used.</td>
+              <td>Kept apart from any adaptation. Repeated rounds of feedback on one test set turn it into training data, so the number of looks is agreed in advance.</td>
+            </tr>
+            <tr>
+              <th scope="row" class="spec-component">Metrics and baselines</th>
+              <td>Discrimination, calibration and the comparators.</td>
+              <td>Compared with a conventional regression or survival model on the same inputs, so that what the added complexity buys is measured.</td>
+            </tr>
+            <tr>
+              <th scope="row" class="spec-component">Groups and time</th>
+              <td>Prespecified patient groups and calendar periods.</td>
+              <td>Performance by age, sex, comorbidity and period, each with its uncertainty.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="spec-note">Departures from the protocol are documented as part of the deliverable.</p>
+    </div>
+  </section>
+
+  <!-- ENVIRONMENT -->
+  <section class="section section--tinted" id="environment">
+    <div class="container">
+      <p class="eyebrow">Scope and limits</p>
+      <h2 class="section-title">What the environment allows.</h2>
+      <div class="tte-intro">
+        <p>Register microdata stay on Statistics Denmark's servers. We work through secure remote access, and only disclosure-cleared, non-identifying outputs leave: tables, figures, performance estimates and reports. Nobody downloads the records, ourselves included. The data may be processed only for approved statistical or scientific purposes. A collaboration normally runs as its own project, set up and approved for that work, and each analysis has to fit the scope approved for it. A commissioned evaluation meets that requirement in the same way as any other research. The <a href="../registry-data.html">register data page</a> sets out the rules in full.</p>
+        <div class="callout-box">
+          <strong>Model files are a separate question.</strong> Whether a model built elsewhere can be brought into the environment, where training can run, and whether trained weights, checkpoints or embeddings may leave it are decided for the specific project with Statistics Denmark. The rules for statistical outputs do not answer these questions, and we do not assume the answer. We establish it at feasibility, before anyone commits to a plan that depends on it.
+        </div>
+        <p>Clinical notes, images and genomic data do not come with register access. Where a partner holds such data for a Danish cohort, Statistics Denmark can sometimes link them to an approved project, and it assesses each case. The registers cannot supply follow-up for patients outside Denmark.</p>
+        <p>A retrospective evaluation shows how a model performed in a defined population over a defined period. It can support a wider development programme. On its own it does not show that a model is ready for clinical use.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM RESEARCH -->
+  <section class="section">
+    <div class="container">
+      <p class="eyebrow">Team research</p>
+      <h2 class="section-title">Published work behind this.</h2>
+      <p class="section-lead">Peer-reviewed research by members of the team on clinical prediction in Danish haematology. These are research publications, not Frameshift client engagements.</p>
+      <div class="research-grid">
+        <a class="research-card" href="https://doi.org/10.1111/ejh.70012" target="_blank" rel="noopener">
+          <div class="research-meta">
+            <div class="research-venue"><span class="research-journal">European Journal of Haematology</span><span class="research-year">2025</span></div>
+            <span class="research-type">Clinical prediction</span>
+          </div>
+          <h3 class="research-title">Machine Learning for Prediction of High-Risk Hospitalizations in Lymphoma Patients: A Danish Population-Based Study</h3>
+          <span class="research-link">View Article &rarr;</span>
+        </a>
+        <a class="research-card" href="https://doi.org/10.2340/1651-226X.2026.44569" target="_blank" rel="noopener">
+          <div class="research-meta">
+            <div class="research-venue"><span class="research-journal">Acta Oncologica</span><span class="research-year">2026</span></div>
+            <span class="research-type">Domain adaptation</span>
+          </div>
+          <h3 class="research-title">Post-treatment infection prediction in CLL using domain adaptation of lymphoma electronic health records</h3>
+          <span class="research-link">View Article &rarr;</span>
+        </a>
+        <a class="research-card" href="https://doi.org/10.1002/hem3.70336" target="_blank" rel="noopener">
+          <div class="research-meta">
+            <div class="research-venue"><span class="research-journal">HemaSphere</span><span class="research-year">2026</span></div>
+            <span class="research-type">Risk stratification</span>
+          </div>
+          <h3 class="research-title">Machine learning enhances risk stratification and treatment failure prediction in diffuse large B-cell lymphoma</h3>
+          <span class="research-link">View Article &rarr;</span>
+        </a>
+      </div>
+      <div class="hero-actions" style="margin-top: var(--space-8)">
+        <a href="../selected-work.html" class="btn btn--ghost">All selected work &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--tinted">
+    <div class="container container--narrow">
+      <p class="eyebrow">Get in touch</p>
+      <h2 class="section-title">Building a clinical model?</h2>
+      <p class="section-lead">Send a non-confidential description of the model or question, the inputs it needs and the population you care about. We will tell you whether the registers can support it, what would have to be settled with Statistics Denmark, and what a first project would look like.</p>
+      <div class="hero-actions">
+        <a href="../index.html#contact" class="btn btn--primary">Discuss a model or study</a>
+        <a href="../registry-data.html" class="btn btn--ghost">How register access works</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <p class="footer-tagline">Register studies, epidemiology and health AI evaluation, designed and run in Copenhagen.</p>
+        <p>© 2026 Frameshift ApS · Copenhagen, Denmark · CVR 44531410 · <a href="mailto:info@frameshift.dk">info@frameshift.dk</a></p>
+      </div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/olafurbirgir/" target="_blank" rel="noopener">Ólafur</a>
+        <a href="https://www.linkedin.com/in/ragnarpk/" target="_blank" rel="noopener">Ragnar</a>
+        <a href="https://www.linkedin.com/in/mikkel-werling-a200202ba/" target="_blank" rel="noopener">Mikkel</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../legal.html">Legal</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  (() => {
+    const ghost = document.querySelector('.ghost-toggle');
+    if (!ghost) return;
+    const setDark = (on) => {
+      document.body.classList.toggle('dark', on);
+      ghost.setAttribute('aria-pressed', on ? 'true' : 'false');
+    };
+    let isDark = false;
+    try { isDark = localStorage.getItem('dark') === '1'; } catch (e) { /* storage unavailable; default to light */ }
+    setDark(isDark);
+    ghost.addEventListener('click', () => {
+      isDark = !isDark;
+      setDark(isDark);
+      try { localStorage.setItem('dark', isDark ? '1' : '0'); } catch (e) { /* not persisted */ }
+    });
+  })();
+  (() => {
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.site-nav');
+    if (toggle && nav) {
+      toggle.addEventListener('click', () => {
+        const open = nav.classList.toggle('open');
+        toggle.classList.toggle('active', open);
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+  })();
+  </script>
+</body>
+</html>
