@@ -56,8 +56,8 @@
       <h1 class="section-title">Health AI on Danish register data.</h1>
       <p class="section-lead">Evaluate a clinical model in a national population, define the cohorts it should learn from, or test what it predicts against observed outcomes.</p>
       <div class="tte-intro">
-        <p>Frameshift works with teams building clinical prediction and patient-trajectory models. The Danish registers follow every resident through hospital contacts, redeemed prescriptions, cancer diagnoses and death, linked by one personal identifier over decades. That makes them a demanding place to ask whether a model trained elsewhere still works, and a useful one in which to define the cohorts and outcomes a model should learn from.</p>
-        <p>Our team covers epidemiology, biostatistics and clinical machine learning, and we run the work ourselves inside the approved research environment, under Frameshift's own authorisation with Statistics Denmark (no. 743). Our contribution is the epidemiology: what a register code does and does not measure, where a label leaks information from the future, and what a fair comparison looks like.</p>
+        <p>The Danish registers follow every resident through hospital contacts, redeemed prescriptions, cancer diagnoses and death, linked by one personal identifier over decades.</p>
+        <p>We run the work ourselves inside the approved research environment, under Frameshift's own authorisation with Statistics Denmark (no. 743). Our contribution is the epidemiology: what a register code does and does not measure, where a label leaks information from the future, and what a fair comparison looks like.</p>
       </div>
     </div>
   </section>
@@ -72,19 +72,19 @@
           <span class="service-num">01</span>
           <h3>External model evaluation</h3>
           <p class="service-lead">How a model performs in a population it has not seen.</p>
-          <p>We map the model's inputs to what the registers record, define the target population, prediction horizon and outcome, and fix the evaluation protocol before the model is run. The report covers discrimination, calibration, performance over calendar time and across patient groups, and a comparison with conventional statistical baselines on the same inputs. Inputs the registers cannot represent are identified at feasibility, before the evaluation is scoped.</p>
+          <p>We map the model's inputs to what the registers record, and fix the population, prediction horizon, outcome and protocol before the model is run. The report covers discrimination, calibration, performance over time and across patient groups, and a comparison with conventional baselines. Inputs the registers cannot represent are identified at feasibility.</p>
         </div>
         <div class="service-card" id="development">
           <span class="service-num">02</span>
           <h3>Cohorts and outcomes for model development</h3>
           <p class="service-lead">What the model learns from, defined with care.</p>
-          <p>A trajectory model depends on its event histories and its outcome definitions. We define cohorts, phenotypes and outcomes from register data, prepare longitudinal event sequences, and set up a held-out evaluation that stays apart from anything used for training or adaptation. Training on register data takes place inside the approved environment. The compute route, and what may leave the environment afterwards, are settled for each project (see <a href="#environment">what the environment allows</a>).</p>
+          <p>We define cohorts, phenotypes and outcomes from register data, prepare longitudinal event sequences, and set up a held-out evaluation that stays apart from anything used for training or adaptation. Training takes place inside the approved environment; see <a href="#environment">what the environment allows</a>.</p>
         </div>
         <div class="service-card" id="hypothesis-studies">
           <span class="service-num">03</span>
           <h3>Population studies for model-generated hypotheses</h3>
           <p class="service-lead">From a nominated relationship to an estimate.</p>
-          <p>When a platform nominates a drug-disease relationship, a patient subgroup or a suspected adverse effect, we assess whether the registers hold an adequate population, an observable outcome and a defensible comparator, then run the prespecified study. Causal questions are designed as <a href="../target-trial-emulation/">target trial emulations</a>. Null and inconclusive results are reported as such.</p>
+          <p>When a platform nominates a drug-disease relationship, a patient subgroup or a suspected adverse effect, we assess whether the registers hold an adequate population, outcome and comparator, then run the prespecified study. Causal questions are designed as <a href="../target-trial-emulation/">target trial emulations</a>. Null results are reported as such.</p>
         </div>
       </div>
     </div>
@@ -95,7 +95,7 @@
     <div class="container">
       <p class="eyebrow">Evaluation protocol</p>
       <h2 class="section-title">Fixed before the model is run.</h2>
-      <p class="section-lead">An external evaluation is a study, and it is specified like one. Each component below is written down first and then mapped to what the registers can support.</p>
+      <p class="section-lead">Each component is written down first, then mapped to what the registers can support.</p>
       <div class="spec-table-wrap">
         <table class="spec-table">
           <thead>
@@ -158,13 +158,16 @@
     <div class="container">
       <p class="eyebrow">Scope and limits</p>
       <h2 class="section-title">What the environment allows.</h2>
+      <ul class="principles">
+        <li><h3>Records stay put</h3><p>Register microdata stay on Statistics Denmark's servers. Only disclosure-cleared outputs leave: tables, figures, performance estimates and reports. Nobody downloads the records, ourselves included.</p></li>
+        <li><h3>A project per collaboration</h3><p>A collaboration normally runs as its own project, approved for that work and for statistical or scientific purposes. <a href="../registry-data.html">How register access works</a>.</p></li>
+        <li><h3>Other data</h3><p>Imaging, clinical notes and genomic data do not come with register access. Statistics Denmark can sometimes link a partner's data for a Danish cohort. The registers cannot supply follow-up for patients outside Denmark.</p></li>
+        <li><h3>What a result shows</h3><p>A retrospective evaluation shows how a model performed in a defined population and period. On its own it does not show that a model is ready for clinical use.</p></li>
+      </ul>
       <div class="tte-intro">
-        <p>Register microdata stay on Statistics Denmark's servers. We work through secure remote access, and only disclosure-cleared, non-identifying outputs leave: tables, figures, performance estimates and reports. Nobody downloads the records, ourselves included. The data may be processed only for approved statistical or scientific purposes. A collaboration normally runs as its own project, set up and approved for that work, and each analysis has to fit the scope approved for it. A commissioned evaluation meets that requirement in the same way as any other research. The <a href="../registry-data.html">register data page</a> sets out the rules in full.</p>
         <div class="callout-box">
-          <strong>Model files are a separate question.</strong> Whether a model built elsewhere can be brought into the environment, where training can run, and whether trained weights, checkpoints or embeddings may leave it are decided for the specific project with Statistics Denmark. The rules for statistical outputs do not answer these questions, and we do not assume the answer. We establish it at feasibility, before anyone commits to a plan that depends on it.
+          <strong>Model files are a separate question.</strong> Whether a model built elsewhere can be brought into the environment, where training can run, and whether trained weights, checkpoints or embeddings may leave it are decided per project with Statistics Denmark. We establish the answer at feasibility, before anyone commits to a plan that depends on it.
         </div>
-        <p>Clinical notes, images and genomic data do not come with register access. Where a partner holds such data for a Danish cohort, Statistics Denmark can sometimes link them to an approved project, and it assesses each case. The registers cannot supply follow-up for patients outside Denmark.</p>
-        <p>A retrospective evaluation shows how a model performed in a defined population over a defined period. It can support a wider development programme. On its own it does not show that a model is ready for clinical use.</p>
       </div>
     </div>
   </section>
@@ -212,7 +215,7 @@
     <div class="container container--narrow">
       <p class="eyebrow">Get in touch</p>
       <h2 class="section-title">Building a clinical model?</h2>
-      <p class="section-lead">Send a non-confidential description of the model or question, the inputs it needs and the population you care about. We will tell you whether the registers can support it, what would have to be settled with Statistics Denmark, and what a first project would look like.</p>
+      <p class="section-lead">Send a non-confidential description of the model or question, the inputs it needs and the population you care about. We will tell you whether the registers can support it and what a first project would look like.</p>
       <div class="hero-actions">
         <a href="../index.html#contact" class="btn btn--primary">Discuss a model or study</a>
         <a href="../registry-data.html" class="btn btn--ghost">How register access works</a>
